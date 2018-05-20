@@ -2,7 +2,8 @@ book_filename: "LossDataAnalytics"
 rmd_files: ["index.Rmd",
            "Chapters/AggregateLossModels.Rmd",
            "Chapters/RiskClassification.Rmd",
-           "Chapters/DataSystems.Rmd"]
+           "Chapters/DataSystems.Rmd",
+           "Chapters/AggregateLossModelsTEXTEST.Rmd"]
            
 language:
   ui:
