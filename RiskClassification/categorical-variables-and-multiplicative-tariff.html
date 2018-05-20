@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+<meta name="author" content="Jseph H. T. Kim">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="risk-classification.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="risk-classification.html"><a href="risk-classification.html"><i class="fa fa-check"></i><b>1</b> Risk classification</a><ul>
+<li class="chapter" data-level="1.1" data-path="risk-classification.html"><a href="risk-classification.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="risk-classification.html"><a href="risk-classification.html#poisson-regression-model"><i class="fa fa-check"></i><b>1.2</b> Poisson regression model</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="risk-classification.html"><a href="risk-classification.html#need-of-poisson-regression-s-need.poi.reg"><i class="fa fa-check"></i><b>1.2.1</b> Need of Poisson regression {#S: Need.Poi.reg}</a></li>
+<li class="chapter" data-level="1.2.2" data-path="risk-classification.html"><a href="risk-classification.html#poisson-regression"><i class="fa fa-check"></i><b>1.2.2</b> Poisson regression</a></li>
+<li class="chapter" data-level="1.2.3" data-path="risk-classification.html"><a href="risk-classification.html#incorporating-exposure"><i class="fa fa-check"></i><b>1.2.3</b> Incorporating exposure</a></li>
+<li class="chapter" data-level="1.2.4" data-path="risk-classification.html"><a href="risk-classification.html#exercises"><i class="fa fa-check"></i><b>1.2.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="categorical-variables-and-multiplicative-tariff.html"><a href="categorical-variables-and-multiplicative-tariff.html"><i class="fa fa-check"></i><b>2</b> Categorical variables and multiplicative tariff</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="categorical-variables-and-multiplicative-tariff" class="section level1">
+<h1><span class="header-section-number">2</span> Categorical variables and multiplicative tariff</h1>
+<!-- %=================== -->
+\ In this section you will learn:
+
+
+<p>%===================  %===================</p>
+<p>In practice most rating factors in insurance are , meaning that they take one of the pre-determined number of possible values. Examples of categorical variables include sex, type of cars, the driver’s region of residence and occupation. Continuous variables, such as age or auto mileage, can also be grouped by bands and treated as categorical variables. Thus we can imagine that, with a small number of rating factors, there will be many policyholders falling into the same risk class, charged with the same premium. For the remaining of this chapter we assume that all rating factors are categorical variables. \</p>
+To illustrate how categorical variables are used in the pricing process, we consider a hypothetical auto insurance with only two rating factors:
+
+<p>From this classification rule, we may create an organized table or list, such as the one shown in Table , collected from all policyholders. Clearly there are <span class="math inline">\(2 \times 3=6\)</span> different risk classes in total. Each row of the table shows a combination of different risk characteristics of individual policyholders. Our goal is to compute six different premiums for each of these combinations. Once the premium for each row has been determined using the given exposure and claim counts, the insurer can replace the last two columns in Table  with a single column containing the computed premiums. This new table then can serve as a manual to determine the premium for a new policyholder given the rating factors during the underwriting process. In non-life insurance, a table (or a set of tables) or list that contains each set of rating factors and the associated premium is referred to as a . Each unique combination of the rating factors in a tariff is called a ; thus, in Table  the number of tariff cells is six, same as the number of risk classes.\</p>
+
+<p>%</p>
+<p>Let us now look at the loss information in Table  more closely. The exposure in each row represents the sum of the length of insurance coverages, or in-force times, in the unit of year, of all the policyholders in that tariff cell. Similarly the claim counts in each row is the number of claims at each cell. Naturally the exposures and claim counts vary due to the different number of drivers across the cells, as well as different in-force time periods among the drivers within each cell.</p>
+In light of the Poisson regression framework, we denote the exposure and claim count of cell <span class="math inline">\((j,k)\)</span> as <span class="math inline">\(m_{jk}\)</span> and <span class="math inline">\(y_{jk}\)</span>, respectively, and define the claim count per unit exposure as
+<span class="math display">\[\begin{equation}
+\label{z.jk}\nonumber
+z_{jk}= \frac{y_{jk}}{ m_{jk}}, \qquad j=1,2;\, k=1, 2,3.
+\end{equation}\]</span>
+<p>For example, <span class="math inline">\(z_{12}=8/208.5=0.03837\)</span>, meaning that a policyholder in tariff cell (1,2) would have 0.03837 accidents if insured for a full year on average. The set of <span class="math inline">\(z_{ij}\)</span> values then corresponds to the rate parameter in the Poisson distribution () as they are the event occurrence rates per unit exposure. That is, we have <span class="math inline">\(z_{jk}=\hat{\lambda}_{jk}\)</span> where <span class="math inline">\({\lambda}_{jk}\)</span> is the Poisson rate parameter. Producing <span class="math inline">\(z_{ij}\)</span> values however does not do much beyond comparing the average loss frequencies across risk classes. To fully exploit the dataset, we will construct a pricing model from Table  using the Poisson regression, for the remaining part of the chapter. \</p>
+<p>We comment that actual loss records used by insurers typically include much more risk factors, in which case the number of cells grows exponentially. The tariff would then consist of a set of tables, instead of one, separated by some of the basic rating factors, such as sex or territory.</p>
+%===================  %=================== %\ In this subsection, we introduce the multiplicative tariff model, a popular pricing structure that can be naturally used within the Poisson regression framework. The developments here is based on Table . Recall that the loss count of a policyholder is described by the Poisson regression model with rate <span class="math inline">\(\lambda\)</span> and the exposure <span class="math inline">\(m\)</span>, so that the expected loss count becomes <span class="math inline">\(m\lambda\)</span>. As <span class="math inline">\(m\)</span> is a known constant, we are essentially concerned with modelling <span class="math inline">\(\lambda\)</span>, so that it responds to the change in the rating factors. Among other possible functional forms, we commonly choose the multiplicative relation to model the Poisson rate <span class="math inline">\(\lambda_{jk}\)</span> for rating factor (<span class="math inline">\(j,k\)</span>):
+<span class="math display">\[\begin{equation}
+\label{multiplicative.tarrif}
+\lambda_{jk}= f_0 \times f_{1j} \times f_{2k}, \qquad j=1,2;\, k=1, 2,3.
+\end{equation}\]</span>
+<p>Here <span class="math inline">\(\{ f_{1j}, j=1,2\}\)</span> are the parameters associated with the two levels in the first rating factor, car type, and <span class="math inline">\(\{ f_{2k}, k=1,2,3\}\)</span> associated with the three levels in the age band, the second rating factor. For instance, the Poisson rate for a mid-aged policyholder with a Type B vehicle is given by <span class="math inline">\(\lambda_{22}=f_0 \times f_{12} \times f_{22}\)</span>. The first term <span class="math inline">\(f_0\)</span> is some base value to be discussed shortly. Thus these six parameters are understood as numerical representations of the levels within each rating factor, and are to be estimated from the dataset. \</p>
+<p>The multiplicative form () is easy to understand and use, because it clearly shows how the expected loss count (per unit exposure) changes as each rating factor varies. For example, if <span class="math inline">\(f_{11}=1\)</span> and <span class="math inline">\(f_{12}=1.2\)</span>, then the expected loss count of a policyholder with a vehicle of type B would be 20% larger than type A, when the other factors are the same. In non-life insurance, the parameters <span class="math inline">\(f_{1j}\)</span> and <span class="math inline">\(f_{2k}\)</span> are known as  as they determine how much expected loss should change relative to the base value <span class="math inline">\(f_0\)</span>. The idea of relativity is quite convenient in practice, as we can decide the premium for a policyholder by simply multiplying a series of corresponding relativities to the base value. % For example, suppose there are <span class="math inline">\(p\)</span> different risk factors, each of which has 3 levels. Then the expected loss frequency of a specific policyholder whose levels are given as, say, <span class="math inline">\((2,1,3,3,2)\)</span> for each risk factor respectively, is simply <span class="math inline">\(\lambda=f_0 \, f_{12}\, f_{21}\, f_{33}\, f_{43}\, f_{52}\)</span>. Dropping an existing rating factor or adding a new one is also transparent with this multiplicative structure. In addition, the insurer may easily adjust the overall premium for all policyholders by controlling the base value <span class="math inline">\(f_0\)</span> without changing individual relativities. However, by adopting the multiplicative form, we implicitly assume that there is no serious interaction among the risk factors.\</p>
+When the multiplicative form is used we need to address an identification issue. That is, for any <span class="math inline">\(c&gt;0\)</span>, we can write
+<span class="math display">\[\begin{equation}
+\label{multi.tariff.2}\nonumber
+\lambda_{jk}= f_0 \times \frac{f_{1j}}{c} \times c\,f_{2k}. 
+\end{equation}\]</span>
+<p>By comparing with (), we see that the identical rate parameter <span class="math inline">\(\lambda_{jk}\)</span> can be obtained for very different individual relativities. This over-parametrization, meaning that many different sets of parameters arrive at the identical model, obviously calls for some restriction on <span class="math inline">\(f_{1j}\)</span> and <span class="math inline">\(f_{2k}\)</span>. The standard practice is to make one relativity in each rating factor equal to one. This can be made arbitrarily, so we will assume that <span class="math inline">\(f_{11}=1\)</span> and <span class="math inline">\(f_{21}=1\)</span> for our purpose. This way all other relativities are uniquely determined. The tariff cell <span class="math inline">\((j,k)=(1,1)\)</span> is then called the, where the rate simply becomes <span class="math inline">\(\lambda_{11}=f_0\)</span>, corresponding to the base value according to (). Thus the base value <span class="math inline">\(f_0\)</span> is generally interpreted as the Poisson rate of the base tariff cell. \</p>
+Again, () is log-transformed and rewritten as
+<span class="math display">\[\begin{equation}
+\label{log-linear.tariff}
+\log \lambda_{jk}= \log f_0 + \log f_{1j} + \log f_{2k}, 
+\end{equation}\]</span>
+as it is easier to work with in estimating process, similar to (). This log linear form makes the log relativities of the base level in each rating factor equal to zero, i.e., <span class="math inline">\(\log f_{11}=\log f_{21}=0\)</span>, and leads to the following alternative, more explicit expression for ():
+<span class="math display">\[\begin{equation}
+\label{log.rate.Poi.tariff.3}
+\log \lambda=\begin{cases}
+      \log f_0 + \quad 0 \quad \,\,+ \quad 0 \quad \,\,&amp; \text{for a policy in cell $(1,1)$}, \\
+            \log f_0+ \quad 0 \quad \,\,+\log f_{22}&amp; \text{for a policy in cell $(1,2)$}, \\
+                  \log f_0+ \quad 0 \quad \,\,+\log f_{23}&amp; \text{for a policy in cell $(1,3)$}, \\
+                        \log f_0+\log f_{12}+ \quad 0 \quad \,\,&amp; \text{for a policy in cell $(2,1)$}, \\
+                              \log f_0+\log f_{12}+\log f_{22}&amp; \text{for a policy in cell $(2,2)$}, \\
+                                    \log f_0+\log f_{12}+\log f_{23}&amp; \text{for a policy in cell $(2,3)$}. \\
+\end{cases}
+\end{equation}\]</span>
+<p>This clearly shows that the Poisson rate parameter <span class="math inline">\(\lambda\)</span> varies across different tariff cells, with the same log linear form used in the Poisson regression framework. In fact the reader may see that () is an extended version of the early expression () with multiple risk factors and that the log relativities now play the role of <span class="math inline">\(\beta_i\)</span> parameters. Therefore all the relativities can be readily estimated via fitting a Poisson regression with a suitably chosen set of indicator variables.</p>
+<p>% %The log-linear model () resembles the two-way analysis of variance (ANOVA) in Statistics, which studies how two different factors or treatments affect the mean outcome of quantity of interest. Thus we may adopt the standard statistical techniques for our tariff analysis.</p>
+%One may also consider the additive form, i.e., <span class="math inline">\(\lambda_{ij}= f_0 + f_{1i} + f_{2j}\)</span>, but the multiplicative version is known to be more appropriate for actual applications. By taking logarithm on () we have the log-linear form %
+<span class="math display">\[\begin{equation}
+%\label{multi.tariff.4}
+%\log \lambda_{ij}= \log f_0 + \log f_{1i} + \log f_{2j}, \qquad i=1,2; j=1, \ldots, 5
+%\end{equation}\]</span>
+%===================  %=================== \ We now explain how the relativities can be incorporated in the Poisson regression. As seen early in this chapter we use indicator variables to deal with categorial variables. For our illustrative auto insurer, therefore, we define an indicator variable for the first rating factor as
+<span class="math display">\[\begin{equation}
+\label{ind.x1}\nonumber
+x_1=
+\begin{cases}
+      1 &amp; \text{ for vehicle type B}, \\
+      0 &amp; \text{ otherwise}.
+\end{cases}
+\end{equation}\]</span>
+For the second rating factor, we employ two indicator variables for the age band, that is,
+<span class="math display">\[\begin{equation}
+\label{ind.x2}\nonumber
+x_2=
+\begin{cases}
+     1 &amp; \text{for age band 2}, \\
+     0 &amp; \text{otherwise}.
+\end{cases}
+\end{equation}\]</span>
+and
+<span class="math display">\[\begin{equation}
+\label{ind.x3}\nonumber
+x_3=
+\begin{cases}
+     1 &amp; \text{for age band 3}, \\
+     0 &amp; \text{otherwise}.
+\end{cases}
+\end{equation}\]</span>
+<p>The triple <span class="math inline">\((x_1, x_2, x_3)\)</span> then can effectively and uniquely determine each risk class. By observing that the indicator variables associated with Type A and Age band 1 are omitted, we see that tariff cell <span class="math inline">\((j,k)=(1,1)\)</span> plays the role of the base cell. We emphasize that our choice of the three indicator variables above has been carefully made so that it is consistent with the choice of the base levels in the multiplicative tariff model in the previous subsection (i.e., <span class="math inline">\(f_{11}=1\)</span> and <span class="math inline">\(f_{21}=1\)</span>).\ % % In addition, there is a one-to-one mapping between the tariff cell index <span class="math inline">\((j,k)\)</span> and the triple <span class="math inline">\((x_1, x_2, x_3)\)</span>. %For example, cell <span class="math inline">\((j,k)=(2,2)\)</span> corresponds to <span class="math inline">\((1, 1, 0)\)</span>, and the base cell <span class="math inline">\((j,k)=(1,1)\)</span> corresponds to <span class="math inline">\((0, 0, 0)\)</span>. %</p>
+With the proposed indicator variables we can rewrite the log rate () as
+<span class="math display">\[\begin{equation}
+\label{log-linear.tariff.3}
+\log \lambda_{}= \log f_0+ \log f_{12}  \times x_1 + \log f_{22} \times x_2 +\log f_{23} \times x_3,
+\end{equation}\]</span>
+<p>which is identical to () when each triple value is actually applied. For example, we can verify that the base tariff cell <span class="math inline">\((j,k)=(1,1)\)</span> corresponds to <span class="math inline">\((x_1, x_2,x_3)=(0, 0, 0)\)</span>, and in turn produces <span class="math inline">\(\log \lambda=\log f_0\)</span> or <span class="math inline">\(\lambda= f_0\)</span> in () as required. \%Also note that we do not need to include <span class="math inline">\(f_{11}\)</span> and <span class="math inline">\(f_{21}\)</span> in () as <span class="math inline">\(\log f_{11}=\log f_{21}=0\)</span> by construction. If we reverse the binary switch for <span class="math inline">\(x_i\)</span> in () – () or select different coefficients in (), we will lose this internal consistency; % %%For example, for a policyholder at cell <span class="math inline">\((j,k)=(2,2)\)</span> we have <span class="math inline">\((x_1, x_2,x_3)=(1,1,0)\)</span> to yield, from (), <span class="math inline">\(\log \lambda_{22}=\log f_0+\log f_{22}\)</span>, and for the base cell <span class="math inline">\((j,k)=(1,1)\)</span> corresponding to <span class="math inline">\((x_1, x_2,x_3)=(0, 0, 0)\)</span>, we obtain <span class="math inline">\(\log \lambda_{11}=\log f_0\)</span>. %the base cell produces a vector of zeros, <span class="math inline">\((x_1, x_2,x_3)=(0, 0, 0)\)</span>. This way, the log intensity for the base cell yields <span class="math inline">\(\lambda_{11}=f_0\)</span> as required. Also note that we do not need to include <span class="math inline">\(f_{11}\)</span> and <span class="math inline">\(f_{21}\)</span> in () as <span class="math inline">\(\log f_{11}=\log f_{21}=0\)</span> by construction. If we reverse the binary switch for <span class="math inline">\(x_i\)</span> in () – () or select different coefficients in (), we will lose this internal consistency; %% so that it is set 1 for vehicle type A and 0 for type B, then the base cell <span class="math inline">\((j,k)=(1,1)\)</span> produces <span class="math inline">\((x_1, x_2,x_3)=(1, 0, 0)\)</span>, which in turn gives <span class="math inline">\(\log \lambda_{11}=\log f_0+ \log f_{12}\)</span> or <span class="math inline">\(\lambda_{11}=f_0\,f_{12}\)</span> from (). This is not acceptable as <span class="math inline">\(f_0\,f_{12}\)</span> describes the price relativity of cell <span class="math inline">\((2, 1)\)</span> instead of <span class="math inline">\((1, 1)\)</span>, violating our requirement of <span class="math inline">\(\lambda_{11}=f_0\)</span>. %in an exercise question, the reader is invited to check this.</p>
+\ Under this specification, let us consider <span class="math inline">\(n\)</span> policyholders in the portfolio with the <span class="math inline">\(i\)</span>th policyholder’s risk characteristic given by a vector of explanatory variables <span class="math inline">\(\mathbf{ x}_i=(x_{i1}, x_{i2},x_{i3})^{\prime}\)</span>, for <span class="math inline">\(i=1, \ldots, n\)</span>. We then recognize () as
+<span class="math display">\[\begin{equation}
+\label{log-linear.tariff.4}\nonumber
+\log \lambda_{i}= \beta_0+ \beta_1 \, x_{i1} + \beta_{2} \, x_{i2} +\beta_3  \, x_{i3}=\mathbf{ x}^{\prime}_i\beta, \qquad i=1, \ldots, n,
+\end{equation}\]</span>
+where <span class="math inline">\(\beta_0, \ldots, \beta_3\)</span> can be mapped to the corresponding log relativities in (). This is exactly the same setup as in () except for the exposure component. Therefore, by incorporating the exposure in each risk class, the Poisson regression model for this multiplicative tariff model finally becomes
+<span class="math display">\[\begin{equation}
+\label{log-linear.tariff.6}\nonumber
+\log \mu_i=\log \lambda_{i}+\log m_i= \log m_i+ \beta_0+ \beta_1 \, x_{i1} + \beta_{2} \, x_{i2} +\beta_3  \, x_{i3}=\log m_i+\mathbf{ x}^{\prime}_i\beta, 
+\end{equation}\]</span>
+for <span class="math inline">\(i=1, \ldots, n\)</span>. As a result, the relativities are given by
+<span class="math display">\[\begin{equation}
+\label{relativity.1}
+{f}_0=e^{\beta_0}, \quad {f}_{12}=e^{\beta_1}, \quad {f}_{22}=e^{\beta_2} \quad \text{and}\quad {f}_{23}=e^{\beta_3},
+\end{equation}\]</span>
+with <span class="math inline">\(f_{11}=1\)</span> and <span class="math inline">\(f_{21}=1\)</span> from the original construction. For the actual dataset, <span class="math inline">\(\beta_i\)</span>, <span class="math inline">\(i=0,1, 2, 3\)</span>, is replaced with the mle <span class="math inline">\(b_i\)</span> using the method in the technical supplement at the end of this chapter (Section ). \ % %Using the mle, we obtain the estimated parameters <span class="math inline">\(\mathbf{ b}=(b_0, \ldots, b_3)^{\prime}\)</span> and, which in turn, gives the following estimated relativities %
+<span class="math display">\[\begin{equation}
+%\label{ }
+%{f}_0=e^{b_0}, \quad {f}_{12}=e^{b_1}, \quad {f}_{22}=e^{b_2} \quad \text{and}\quad {f}_{23}=e^{b_3},
+%\end{equation}\]</span>
+<p>with <span class="math inline">\(f_{11}=1\)</span> and <span class="math inline">\(f_{21}=1\)</span> from the original construction. % %Finally, in applying this Poisson regression model to model to the data in Table , %one should be aware that the mle in Section  cannot be directly used. This is because Table  does not provides the loss counts or exposures of individual policyholders. In other words, <span class="math inline">\(y_i\)</span> and <span class="math inline">\(m_i\)</span>, needed for the mle calculation, are unavailable from the table.<br />
+% % <span class="math inline">\(f_{0}\)</span>, <span class="math inline">\(f_{1j}\)</span> and <span class="math inline">\(f_{2k}\)</span> in the same way as we did in () and (). In Table  we present the mapping between <span class="math inline">\(\beta_i\)</span> coefficients and the price relatives, keeping the same list form as Table . All columns except for the first is indexed with <span class="math inline">\(i\)</span>, giving us a complete specification for our Poisson regression. % %\begin{table}[htp] % %\begin{center} %\begin{tabular}{cccccc} % %{Rating factors } &amp; Risk class &amp; Covariates &amp; Price relativity &amp; Exposure &amp; Claim count \ %<span class="math inline">\((j,k)\)</span> &amp; <span class="math inline">\(i\)</span> &amp; <span class="math inline">\((x_{i1}, x_{i2},x_{i3})\)</span> &amp; <span class="math inline">\(\lambda_i=e^{\mathbf{ x}_i\beta}\)</span>&amp; <span class="math inline">\(m_i\)</span> &amp; <span class="math inline">\(y_i\)</span>\ %%<span class="math inline">\((1,1)\)</span> &amp; 1 &amp; <span class="math inline">\((0,0,0)\)</span> &amp; <span class="math inline">\(\lambda_1=f_0f_{11}f_{21}\)</span> &amp; 89.1 &amp; 9\ %<span class="math inline">\((1,2)\)</span> &amp;2 &amp; <span class="math inline">\((0,1,0)\)</span> &amp; <span class="math inline">\(\lambda_2=f_0f_{11}f_{22}\)</span> &amp; 208.5&amp; 8\ %<span class="math inline">\((1, 3)\)</span> &amp; 3 &amp;<span class="math inline">\((0,0,1)\)</span> &amp; <span class="math inline">\(\lambda_3=f_0f_{11}f_{23}\)</span> &amp; 155.2 &amp; 6 \ %<span class="math inline">\((2 , 1)\)</span> &amp; 4 &amp; <span class="math inline">\((1,0,0)\)</span> &amp; <span class="math inline">\(\lambda_4=f_0f_{12}f_{21}\)</span> &amp; 19.3 &amp; 1 \ %<span class="math inline">\((2 , 2)\)</span> &amp; 5 &amp; <span class="math inline">\((1,1,0)\)</span> &amp; <span class="math inline">\(\lambda_5=f_0f_{12}f_{22}\)</span>&amp; 360.4 &amp; 13 \ %<span class="math inline">\((2 , 3)\)</span> &amp; 6 &amp; <span class="math inline">\((1,0,1)\)</span> &amp; <span class="math inline">\(\lambda_6=f_0f_{12}f_{23}\)</span> &amp; 276.7 &amp; 6 \ %\end{tabular} %\end{center} % %\end{table}% % %\begin{table}[htp] % %\begin{center} %\begin{tabular}{rrccrcrc} % %  &amp;  &amp; Risk class (<span class="math inline">\(i\)</span>)&amp; <span class="math inline">\((x_{i1}, x_{i2},x_{i3})\)</span> &amp;Exposure &amp; Claim count \ %   %Type (<span class="math inline">\(j\)</span>) &amp; Age (<span class="math inline">\(k\)</span>) &amp; Type (<span class="math inline">\(j\)</span>) &amp; Age (<span class="math inline">\(k\)</span>) &amp;(Tariff cell) &amp; &amp; in year &amp; observed\ %%$j=$1 &amp; $k=$1 &amp; <span class="math inline">\(f_{11}\)</span> &amp; <span class="math inline">\(f_{21}\)</span>&amp; 1 &amp; <span class="math inline">\((0,0,0)\)</span> &amp;89.1 &amp; 9\ %1 &amp; 2 &amp;2 &amp; 208.5&amp; 8\ %1 &amp; 3 &amp; 3 &amp; 155.2 &amp; 6 \ %2 &amp; 1 &amp; 4 &amp; 19.3 &amp; 1 \ %2 &amp; 2 &amp; 5 &amp; 360.4 &amp; 13 \ %2 &amp; 3 &amp; 6 &amp; 276.7 &amp; 6 \ %\end{tabular} %\end{center} % %\end{table}% %We can generalise this to a case where there many rating factors. Assume that there are <span class="math inline">\(p\)</span> predictors, <span class="math inline">\((x_1, \ldots ,x_p)\)</span>, after accounting for all relevant indicator variables. Then</p>
+<p>%===================  %=================== We present two numerical examples of the Poisson regression. In the first example we construct a Poisson regression model from Table , which is a dataset of a hypothetical auto insurer. The second example uses an actual industry dataset with more risk factors. As our purpose is to show how the Poisson regression model can be used under a given classification rule, we are not concerned with the quality of the Poisson model fit in this chapter. \</p>
+\ In the last few subsections we considered a dataset of a hypothetical auto insurer with two risk factors, as given in Table . We now apply the Poisson regression model to this dataset. As done before, we have set <span class="math inline">\((j,k)=(1,1)\)</span> as the base tariff cell, so that <span class="math inline">\(f_{11}=f_{21}=1\)</span>. The result of the regression gives the coefficient estimates <span class="math inline">\((b_0, b_1,b_2,b_3)=(-2.3359, -0.3004, -0.7837, -1.0655 )\)</span>, which in turn produces the corresponding relativities
+<span class="math display">\[\begin{equation}
+\label{relativity.eg1} \nonumber
+{f}_0=0.0967, \quad {f}_{12}=  0.7405, \quad {f}_{22}=0.4567 \quad \text{and}\quad {f}_{23}=0.3445.
+\end{equation}\]</span>
+<p>from the relation given in (). The R script and the output are given below:</p>
+
+<p> \ This actual data is a subset of the data used by . The data is from the General Insurance Association of Singapore, an organisation consisting of non-life insurers in Singapore. The data contains the number of car accidents for <span class="math inline">\(n=7,483\)</span> auto insurance policies with several categorical explanatory variables and the exposure for each policy. The explanatory variables include four risk factors: the type of the vehicle insured (either automobile (A) or other (O), denoted by ), the age of the vehicle in years (), gender of the policyholder () and the age of the policyholder (in years, grouped into seven categories, denoted ).<br />
+Based on the data description, there are several things to remember before constructing a model (May need the table from the Jed’s pdf file). First, there are 3,842 policies with vehicle type A (automobile) and 3,641 policies with other vehicle types. However, age and sex information is available for the policies of vehicle type A only; the drivers of all other types of vehicles are recorded to be aged 21 or less with sex unspecified, except for one policy, indicating that no driver information has been collected for non-automobile vehicles. Second, type A vehicles are all classified as private vehicles and all the other types are not.\</p>
+When we include these risk factors, we assume that all unspecified sex to be male. As the age information is only applicable to type A vehicles, we set the model accordingly. That is, we apply the age variable only to vehicles of type A. Also we used five vehicle age bands, simplifying the original seven bands, by combining vehicle ages 0,1 and 2; the combined band is marked as level 2. Thus our Poisson model has the following explicit form:
+<span class="math display">\[\begin{align*}
+\label{eg2.setup}
+\log \mu_i= \mathbf{ x}^{\prime}_i\beta+&amp;\log m_i=\beta_0+\beta_1 I(Sex_i=M)+ \sum_{t=2}^6 \beta_t\, I(Vage_i=t+1) \\
+&amp;+  \sum_{t=7}^{13} \beta_t \,I(Vtype_i=A)\times I(Age_i=t-7)+\log m_i.
+\end{align*}\]</span>
+The fitting result is given in Table , for which we have several comments.<br />
+
+
+% Let us try several examples based on Table . Suppose a male policyholder aged 40 who owns a 7-year-old vehicle of type A. The expected claim frequency for this policyholder is then given by
+<span class="math display">\[\begin{equation}
+\label{ }\nonumber
+\lambda=0.167 \times 1.173 \times 0.553 \times 0.758 = 0.082.
+\end{equation}\]</span>
+As another example consider a female policyholder aged 60 who owns a 3-year-old vehicle of type O. The expected claim frequency for this policyholder is
+<span class="math display">\[\begin{equation}
+\label{ }\nonumber
+\lambda=0.167 \times 1 \times 0.843  = 0.141.
+\end{equation}\]</span>
+<p>Note that for this policy the age band variable is not used as the vehicle type is not A. The R script is given below.</p>
+% % %
+
+% %Note that the line for the interaction term of <span class="math inline">\(I(Vtype=A)I(Age\,Band=0)\)</span> has  values because there is no policy found in this category. Based on this output we may find the relativities for each risk factor, as shown in Table xxx. % %Our goal is to construct a Poisson regression model based on several risk factors. % %===================  %=================== The Poisson regression is a special member of a more general regression model class known as the generalized linear model (glm). The glm develops a unified regression framework for datasets when the response valuables are continuous, binary or discrete. The classical linear regression model with normal error is also a member of the glm. There are many standard statistical texts dealing with the glm, including . More accessible texts are ,  and . For actuarial and insurance applications of the glm see , . Also,  discusses the glm in non-life insurance pricing context with tariff analyses. %===================  %===================  In the Poisson regression the varying Poisson mean is determined by parameters <span class="math inline">\(\beta_i\)</span>’s, as shown in (). In this subsection we use the maximum likelihood method to estimate these parameters. Again, we assume that there are <span class="math inline">\(n\)</span> policyholders and the <span class="math inline">\(i\)</span>th policyholder is characterized by <span class="math inline">\(\mathbf{ x}_i=(1, x_{i1}, \ldots, x_{ik})^{\prime}\)</span> with the observed loss count <span class="math inline">\(y_i\)</span>. Then, from () and (), the log-likelihood function of vector <span class="math inline">\(\beta=(\beta_0, \dots, \beta_k)\)</span> is given by
+<span class="math display">\[\begin{align}
+\label{ll.Poi.reg}
+\nonumber \log L(\beta)    &amp;= l(\beta)=\sum^n_{i=1} \left( -\mu_i +y_i \, \log \mu_i -\log y_i! \right)  \\
+    &amp;  = \sum^n_{i=1} \left( -m_i \exp(\mathbf{ x}^{\prime}_i\beta) +y_i \,(\log m_i+\mathbf{ x}^{\prime}_i\beta)  -\log y_i! \right)  
+\end{align}\]</span>
+To obtain the mle of <span class="math inline">\(\beta=(\beta_0, \ldots, \beta_k)^{\prime}\)</span>, we differentiate <span class="math inline">\(l(\beta)\)</span> with respect to vector <span class="math inline">\(\beta\)</span> and set it to zero:
+<span class="math display">\[\begin{equation}
+\label{score.ft.Poi}
+\frac{\partial}{\partial \beta}l(\beta)\Bigg{|}_{\beta=\mathbf{ b}}=\sum^n_{i=1} \left(y_i -m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ b}) \right)\mathbf{ x}_i=\mathbf{ 0}.
+\end{equation}\]</span>
+Numerically solving this equation system gives the mle of <span class="math inline">\(\beta\)</span>, denoted by <span class="math inline">\(\mathbf{ b}=(b_0, b_1, \ldots, b_k)^{\prime}\)</span>. Note that, as <span class="math inline">\(\mathbf{ x}_i=(1, x_{i1}, \ldots, x_{ik})^{\prime}\)</span> is a column vector, Equation () is a system of <span class="math inline">\(k+1\)</span> equations with both sides written as column vectors of size <span class="math inline">\(k+1\)</span>. If we denote <span class="math inline">\(\hat{\mu}_i=m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ b})\)</span>, we can rewrite () as
+<span class="math display">\[\begin{equation}
+\label{score.ft.Poi.2}\nonumber
+\sum^n_{i=1} \left(y_i -\hat{\mu}_i \right)\mathbf{ x}_i=\mathbf{ 0}.
+\end{equation}\]</span>
+Since the solution <span class="math inline">\(\mathbf{ b}\)</span> satisfies this equation, it follows that the first among the array of <span class="math inline">\(k+1\)</span> equations, corresponding to the first constant element of <span class="math inline">\(\mathbf{ x}_i\)</span>, yields
+<span class="math display">\[\begin{equation}
+\label{ }\nonumber
+\sum^n_{i=1}\left( y_i -\hat{\mu}_i \right)\times 1={ 0},
+\end{equation}\]</span>
+which implies that we must have
+<span class="math display">\[\begin{equation}
+\label{ }\nonumber
+n^{-1}\sum_{i=1}^n y_i =\bar{y}=n^{-1}\sum_{i=1}^n \hat{\mu}_i.
+\end{equation}\]</span>
+<p>This is an interesting property saying that the average of the individual losses, <span class="math inline">\(\bar{y}\)</span>, is same as the average of the estimated values. That is, the sample mean is preserved under the fitted Poisson regression model.\</p>
+<p> Sometimes the data is not available at the individual policy level. For example, Table  provides collective loss information for each risk class after grouping individual policies. When this is the case, <span class="math inline">\(y_i\)</span> and <span class="math inline">\(m_i\)</span>, the quantities needed for the mle calculation in (), are unavailable for each <span class="math inline">\(i\)</span>. However this does not pose a problem as long as we have the total loss counts and total exposure for each risk class. \</p>
+To elaborate, let us assume that there are <span class="math inline">\(K\)</span> different risk classes, and further that, in the <span class="math inline">\(k\)</span>th risk class, we have <span class="math inline">\(n_k\)</span> policies with the total exposure <span class="math inline">\(m_{(k)}\)</span> and the average loss count <span class="math inline">\(\bar{y}_{(k)}\)</span>, for <span class="math inline">\(k=1, \ldots, K\)</span>; the total loss count for the <span class="math inline">\(k\)</span>th risk class is then <span class="math inline">\(n_k\, \bar{y}_{(k)}\)</span>. We denote the set of indices of the policies belonging to the <span class="math inline">\(k\)</span>th class by <span class="math inline">\(C_k\)</span>. As all policies in a given risk class share the same risk characteristics, we may denote <span class="math inline">\(\mathbf{ x}_i=\mathbf{ x}_{(k)}\)</span> for all <span class="math inline">\(i \in C_k\)</span>. With this notation, we can rewrite () as
+<span class="math display">\[\begin{align}
+\nonumber \sum^n_{i=1} \left(y_i -m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ b}) \right)\mathbf{ x}_i &amp;= \sum^K_{k=1}\Big{\{}\sum_{i \in C_k} \left(y_i -m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ b}) \right)\mathbf{ x}_i  \Big{\}} \\
+\nonumber     &amp;  =\sum^K_{k=1}\Big{\{} \sum_{i \in C_k} \left(y_i -m_i \exp(\mathbf{ x}^{\prime}_{(k)} \mathbf{ b}) \right)\mathbf{ x}_{(k)}  \Big{\}} \\
+\nonumber     &amp;  =\sum^K_{k=1}\Big{\{}  \Big(\sum_{i \in C_k}y_i -\sum_{i \in C_k}m_i \exp(\mathbf{ x}^{\prime}_{(k)} \mathbf{ b}) \Big)\mathbf{ x}_{(k)}  \Big{\}} \\
+\label{mle.grp.1}      &amp;  =\sum^K_{k=1} \Big(n_k\, \bar{y}_{(k)}-m_{(k)} \exp(\mathbf{ x}^{\prime}_{(k)} \mathbf{ b}) \Big)\mathbf{ x}_{(k)} =0.
+\end{align}\]</span>
+<p>Since <span class="math inline">\(n_k\, \bar{y}_{(k)}\)</span> in () represents the total loss count for the <span class="math inline">\(k\)</span>th risk class and <span class="math inline">\(m_{(k)}\)</span> is its total exposure, we see that for the Poisson regression the mle <span class="math inline">\(\mathbf{ b}\)</span> is the same whether if we use the individual data or the grouped data.\</p>
+ Taking second derivatives to () gives the information matrix of the mle estimators,
+<span class="math display">\[\begin{equation}
+\label{Inf.mtx.Poi}
+\mathbf{ I}(\beta)=-\E\left( \frac{\partial^2}{\partial \beta\partial \beta^{\prime}}l(\beta) \right)=\sum^n_{i=1}m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ \beta})\mathbf{ x}_i \mathbf{ x}_i^{\prime}=\sum^n_{i=1} {\mu}_i \mathbf{ x}_i \mathbf{ x}_i^{\prime}.
+\end{equation}\]</span>
+<p>For actual datasets, <span class="math inline">\({\mu}_i\)</span> in () is replaced with <span class="math inline">\(\hat{\mu}_i=m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ b})\)</span> to estimate the relevant variances and covariances of the mle <span class="math inline">\(\mathbf{ b}\)</span> or its functions.\</p>
+For grouped datasets, we have
+<span class="math display">\[\begin{equation}
+\label{ }\nonumber
+\mathbf{ I}(\beta)=\sum^K_{k=1} \Big{\{}\sum_{i \in C_k}m_i \exp(\mathbf{ x}^{\prime}_i \mathbf{ \beta})\mathbf{ x}_i \mathbf{ x}_i^{\prime} \Big{\}}=\sum^K_{k=1} m_{(k)} \exp(\mathbf{ x}^{\prime}_{(k)} \mathbf{ \beta})\mathbf{ x}_{(k)} \mathbf{ x}_{(k)}^{\prime}.
+\end{equation}\]</span>
+<p>% % %</p>
+<p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % This bbl file is created by econ.bst ver.2.1 % The latest econ.bst is available at % <a href="http://shirotakeda.org/home/tex/econ-bst.html" class="uri">http://shirotakeda.org/home/tex/econ-bst.html</a> %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+<p>%%% Definition of  </p>
+
+<p>\end{document}</p>
+
+
+</div>
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="risk-classification.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

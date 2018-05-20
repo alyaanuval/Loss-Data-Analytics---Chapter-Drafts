@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data And Systems</title>
+  <meta name="description" content="Data And Systems">
+  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data And Systems" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data And Systems" />
+  
+  
+  
+
+<meta name="author" content="Guojun Gan">
+
+
+<meta name="date" content="2018-02-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-analysis-preliminary.html">
+<link rel="next" href="some-r-functions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>1</b> Data</a><ul>
+<li class="chapter" data-level="1.1" data-path="data.html"><a href="data.html#data-types-and-sources"><i class="fa fa-check"></i><b>1.1</b> Data Types and Sources</a></li>
+<li class="chapter" data-level="1.2" data-path="data.html"><a href="data.html#data-structures-and-storage"><i class="fa fa-check"></i><b>1.2</b> Data Structures and Storage</a></li>
+<li class="chapter" data-level="1.3" data-path="data.html"><a href="data.html#data-quality"><i class="fa fa-check"></i><b>1.3</b> Data Quality</a></li>
+<li class="chapter" data-level="1.4" data-path="data.html"><a href="data.html#data-cleaning"><i class="fa fa-check"></i><b>1.4</b> Data Cleaning</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html"><i class="fa fa-check"></i><b>2</b> Data Analysis Preliminary</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#S:process"><i class="fa fa-check"></i><b>2.1</b> Data Analysis Process</a></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#exploratory-versus-confirmatory"><i class="fa fa-check"></i><b>2.2</b> Exploratory versus Confirmatory</a></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#supervised-versus-unsupervised"><i class="fa fa-check"></i><b>2.3</b> Supervised versus Unsupervised</a></li>
+<li class="chapter" data-level="2.4" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#parametric-versus-nonparametric"><i class="fa fa-check"></i><b>2.4</b> Parametric versus Nonparametric</a></li>
+<li class="chapter" data-level="2.5" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#S:expred"><i class="fa fa-check"></i><b>2.5</b> Explanation versus Prediction</a></li>
+<li class="chapter" data-level="2.6" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#data-modeling-versus-algorithmic-modeling"><i class="fa fa-check"></i><b>2.6</b> Data Modeling versus Algorithmic Modeling</a></li>
+<li class="chapter" data-level="2.7" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#big-data-analysis"><i class="fa fa-check"></i><b>2.7</b> Big Data Analysis</a></li>
+<li class="chapter" data-level="2.8" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#reproducible-analysis"><i class="fa fa-check"></i><b>2.8</b> Reproducible Analysis</a></li>
+<li class="chapter" data-level="2.9" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#ethical-issues"><i class="fa fa-check"></i><b>2.9</b> Ethical Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html"><i class="fa fa-check"></i><b>3</b> Data Analysis Techniques</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#exploratory-techniques"><i class="fa fa-check"></i><b>3.1</b> Exploratory Techniques</a></li>
+<li class="chapter" data-level="3.2" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#principal-component-analysis"><i class="fa fa-check"></i><b>3.2.1</b> Principal Component Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#cluster-analysis"><i class="fa fa-check"></i><b>3.3</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="3.4" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#confirmatory-techniques"><i class="fa fa-check"></i><b>3.4</b> Confirmatory Techniques</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#linear-models"><i class="fa fa-check"></i><b>3.4.1</b> Linear Models</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#generalized-linear-models"><i class="fa fa-check"></i><b>3.4.2</b> Generalized Linear Models</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#tree-based-models"><i class="fa fa-check"></i><b>3.4.3</b> Tree-based Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="some-r-functions.html"><a href="some-r-functions.html"><i class="fa fa-check"></i><b>4</b> Some R Functions</a></li>
+<li class="chapter" data-level="5" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data And Systems</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-analysis-techniques" class="section level1">
+<h1><span class="header-section-number">3</span> Data Analysis Techniques</h1>
+<!-- 7.2.1 - 7.2.3 exploratory, summarize, pca -->
+<!-- 7.3.1 - 7.3.3 machine learning, problems solved by ml, techniques -->
+<!-- statistics, machine learning, pattern recognition, data mining, predictive analytics, business intelligence, artificial intelligence -->
+<p>Techniques for data analysis are drawn from different but overlapping fields such as statistics, machine learning, pattern recognition, and data mining. Statistics is a field that addresses reliable ways of gathering data and making inferences based on them <span class="citation">(Bandyopadhyay and Forster <a href="#ref-bandyo2011">2011</a>; Bluman <a href="#ref-bluman2012">2012</a>)</span>. The term machine learning was coined by Samuel in 1959 <span class="citation">(Samuel <a href="#ref-samuel1959ml">1959</a>)</span>. Originally, machine learning refers to the field of study where computers have the ability to learn without being explicitly programmed. Nowadays, machine learning has evolved to the broad field of study where computational methods use experience (i.e., the past information available for analysis) to improve performance or to make accurate predictions <span class="citation">(Bishop <a href="#ref-bishop2007">2007</a>; Clarke, Fokoue, and Zhang <a href="#ref-clarke2009">2009</a>; Mohri, Rostamizadeh, and Talwalkar <a href="#ref-mohri2012">2012</a>; Kubat <a href="#ref-kubat2017">2017</a>)</span>. There are four types of machine learning algorithms (See Table 3.1 depending on the type of the data and the type of the learning tasks.</p>
+<p><span class="math display">\[\begin{matrix}
+\begin{array}{rll} \hline
+&amp; \textbf{Supervised} &amp; \textbf{Unsupervised} \\\hline
+\textbf{Discrete Label} &amp; \text{Classification} &amp; \text{Clustering} \\
+\textbf{Continuous Label} &amp; \text{Regression} &amp; \text{Dimension reduction} \\
+\hline
+\end{array}
+\end{matrix}
+\]</span> Table 3.1: Types of machine learning algorithms.</p>
+<p>Originating in engineering, pattern recognition is a field that is closely related to machine learning, which grew out of computer science. In fact, pattern recognition and machine learning can be considered to be two facets of the same field <span class="citation">(Bishop <a href="#ref-bishop2007">2007</a>)</span>. Data mining is a field that concerns collecting, cleaning, processing, analyzing, and gaining useful insights from data <span class="citation">(Aggarwal <a href="#ref-aggarwal2015">2015</a>)</span>.</p>
+<div id="exploratory-techniques" class="section level2">
+<h2><span class="header-section-number">3.1</span> Exploratory Techniques</h2>
+<p>Exploratory data analysis techniques include descriptive statistics as well as many unsupervised learning techniques such as data clustering and principal component analysis.</p>
+</div>
+<div id="descriptive-statistics" class="section level2">
+<h2><span class="header-section-number">3.2</span> Descriptive Statistics</h2>
+<p>In the mass noun sense, descriptive statistics is an area of statistics that concerns the collection, organization, summarization, and presentation of data <span class="citation">(Bluman <a href="#ref-bluman2012">2012</a>)</span>. In the count noun sense, descriptive statistics are summary statistics that quantitatively describe or summarize data.</p>
+<p><span class="math display">\[\begin{matrix}
+\begin{array}{ll} \hline
+&amp; \textbf{Descriptive Statistics} \\\hline
+\text{Measures of central tendency} &amp; \text{Mean, median, mode, midrange}\\
+\text{Measures of variation} &amp; \text{Range, variance, standard deviation} \\
+\text{Measures of position} &amp; \text{Quantile} \\
+\hline
+\end{array}
+\end{matrix}
+\]</span> Table 3.2: Some commonly used descriptive statistics.</p>
+<p>Table 3.2 lists some commonly used descriptive statistics. In R, we can use the function <span class="math inline">\(\texttt{summary}\)</span> to calculate some of the descriptive statistics. For numeric data, we can visualize the descriptive statistics using a boxplot.</p>
+<p>In addition to these quantitative descriptive statistics, we can also qualitatively describe shapes of the distributions <span class="citation">(Bluman <a href="#ref-bluman2012">2012</a>)</span>. For example, we can say that a distribution is positively skewed, symmetric, or negatively skewed. To visualize the distribution of a variable, we can draw a histogram.</p>
+<div id="principal-component-analysis" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Principal Component Analysis</h3>
+<p>Principal component analysis (PCA) is a statistical procedure that transforms a dataset described by possibly correlated variables into a dataset described by linearly uncorrelated variables, which are called principal components and are ordered according to their variances. PCA is a technique for dimension reduction. If the original variables are highly correlated, then the first few principal components can account for most of the variation of the original data.</p>
+<p>To describe PCA, let <span class="math inline">\(X_1,X_2,\ldots,X_d\)</span> be a set of variables. The first principal component is defined to be the normalized linear combination of the variables that has the largest variance, that is, the first principal component is defined as</p>
+<p><span class="math display">\[Z_1=w_{11} X_1 + w_{12} X_2 + \cdots + w_{1d} X_d,\]</span> where <span class="math inline">\(\textbf{w}_1=(w_{11}, w_{12}, \ldots, w_{1d})&#39;\)</span> is a vector of loadings such that <span class="math inline">\(\mathrm{Var~}{(Z_1)}\)</span> is maximized subject to the following constraint: <span class="math display">\[\textbf{w}_1&#39;\textbf{w}_1 = \sum_{j=1}^d w_{1j}^2 = 1.\]</span></p>
+<p>For <span class="math inline">\(i=2,3,\ldots,d\)</span>, the <span class="math inline">\(i\)</span>th principal component is defined as</p>
+<p><span class="math display">\[Z_i=w_{i1} X_1 + w_{i2} X_2 + \cdots + w_{id} X_d,\]</span> where <span class="math inline">\(\textbf{w}_i=(w_{i1}, w_{i2}, \ldots, w_{id})&#39;\)</span> is a vector of loadings such that <span class="math inline">\(\mathrm{Var~}{(Z_i)}\)</span> is maximized subject to the following constraints: <span class="math display">\[\textbf{w}_i&#39;\textbf{w}_i=\sum_{j=1}^d w_{ij}^2 = 1,\]</span> <span class="math display">\[\mathrm{cov~}{(Z_i, Z_j)} = 0,\quad j=1,2,\ldots,i-1.\]</span></p>
+<p>The principal components of the variables are related to the eigenvectors and eigenvectors of the covariance matrix of the variables. For <span class="math inline">\(i=1,2,\ldots,d\)</span>, let <span class="math inline">\((\lambda_i, \textbf{e}_i)\)</span> be the <span class="math inline">\(i\)</span>th eigenvalue-eigenvector pair of the covariance matrix <span class="math inline">\({\Sigma}\)</span> such that <span class="math inline">\(\lambda_1\ge \lambda_2\ge \ldots\ge \lambda_d\ge 0\)</span> and the eigenvectors are normalized. Then the <span class="math inline">\(i\)</span>th principal component is given by</p>
+<p><span class="math display">\[Z_{i} = \textbf{e}_i&#39; \textbf{X} =\sum_{j=1}^d e_{ij} X_j,\]</span> where <span class="math inline">\(\textbf{X}=(X_1,X_2,\ldots,X_d)&#39;\)</span>. It can be shown that <span class="math inline">\(\mathrm{Var~}{(Z_i)} = \lambda_i\)</span>. As a result, the proportion of variance explained by the <span class="math inline">\(i\)</span>th principal component is calculated as</p>
+<p><span class="math display">\[\dfrac{\mathrm{Var~}{(Z_i)}}{ \sum_{j=1}^{d} \mathrm{Var~}{(Z_j)}} = \dfrac{\lambda_i}{\lambda_1+\lambda_2+\cdots+\lambda_d}.\]</span></p>
+<p>For more information about PCA, readers are referred to <span class="citation">(Mirkin <a href="#ref-mirkin2011">2011</a>)</span>.</p>
+</div>
+</div>
+<div id="cluster-analysis" class="section level2">
+<h2><span class="header-section-number">3.3</span> Cluster Analysis</h2>
+<p>Cluster analysis (aka data clustering) refers to the process of dividing a dataset into homogeneous groups or clusters such that points in the same cluster are similar and points from different clusters are quite distinct <span class="citation">(Gan, Ma, and Wu <a href="#ref-gan2007">2007</a>; Gan <a href="#ref-gan2011">2011</a>)</span>. Data clustering is one of the most popular tools for exploratory data analysis and has found applications in many scientific areas.</p>
+<p>During the past several decades, many clustering algorithms have been proposed. Among these clustering algorithms, the <span class="math inline">\(k\)</span>-means algorithm is perhaps the most well-known algorithm due to its simplicity. To describe the <span class="math inline">\(k\)</span>-means algorithm, let <span class="math inline">\(X=\{\textbf{x}_1,\textbf{x}_2,\ldots,\textbf{x}_n\}\)</span> be a dataset containing <span class="math inline">\(n\)</span> points, each of which is described by <span class="math inline">\(d\)</span> numerical features. Given a desired number of clusters <span class="math inline">\(k\)</span>, the <span class="math inline">\(k\)</span>-means algorithm aims at minimizing the following objective function:</p>
+<p><span class="math display">\[P(U,Z) = \sum_{l=1}^k\sum_{i=1}^n u_{il} \Vert \textbf{x}_i-\textbf{z}_l\Vert^2,\]</span> where <span class="math inline">\(U=(u_{il})_{n\times k}\)</span> is an <span class="math inline">\(n\times k\)</span> partition matrix, <span class="math inline">\(Z=\{\textbf{z}_1,\textbf{z}_2,\ldots,\textbf{z}_k\}\)</span> is a set of cluster centers, and <span class="math inline">\(\Vert\cdot\Vert\)</span> is the <span class="math inline">\(L^2\)</span> norm or Euclidean distance. The partition matrix <span class="math inline">\(U\)</span> satisfies the following conditions:</p>
+<p><span class="math display">\[u_{il}\in \{0,1\},\quad i=1,2,\ldots,n,\:l=1,2,\ldots,k,\]</span> <span class="math display">\[\sum_{l=1}^k u_{il}=1,\quad i=1,2,\ldots,n.\]</span></p>
+<p>The <span class="math inline">\(k\)</span>-means algorithm employs an iterative procedure to minimize the objective function. It repeatedly updates the partition matrix <span class="math inline">\(U\)</span> and the cluster centers <span class="math inline">\(Z\)</span> alternately until some stop criterion is met. When the cluster centers <span class="math inline">\(Z\)</span> are fixed, the partition matrix <span class="math inline">\(U\)</span> is updated as follows:</p>
+<p><span class="math display">\[\begin{aligned}u_{il}=\left\{
+\begin{array}{ll}
+1, &amp; \text{if } \Vert \textbf{x}_i - \textbf{z}_l\Vert = \min_{1\le j\le k} \Vert \textbf{x}_i - \textbf{z}_j\Vert;\\
+0, &amp; \text{if otherwise,}
+\end{array}
+\right.
+\end{aligned}\]</span> When the partition matrix <span class="math inline">\(U\)</span> is fixed, the cluster centers are updated as follows:</p>
+<p><span class="math display">\[z_{lj} = \dfrac{\sum_{i=1}^n u_{il} x_{ij} } { \sum_{i=1}^n u_{il}},\quad l=1,2,\ldots,k,\: j=1,2,\ldots,d,\]</span> where <span class="math inline">\(z_{lj}\)</span> is the <span class="math inline">\(j\)</span>th component of <span class="math inline">\(\textbf{z}_l\)</span> and <span class="math inline">\(x_{ij}\)</span> is the <span class="math inline">\(j\)</span>th component of <span class="math inline">\(\textbf{x}_i\)</span>.</p>
+<p>For more information about <span class="math inline">\(k\)</span>-means, readers are referred to <span class="citation">(Gan, Ma, and Wu <a href="#ref-gan2007">2007</a>)</span> and <span class="citation">(Mirkin <a href="#ref-mirkin2011">2011</a>)</span>.</p>
+</div>
+<div id="confirmatory-techniques" class="section level2">
+<h2><span class="header-section-number">3.4</span> Confirmatory Techniques</h2>
+<p>Confirmatory data analysis techniques include the traditional statistical tools of inference, significance, and confidence.</p>
+<div id="linear-models" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Linear Models</h3>
+<p>Linear models, also called linear regression models, aim at using a linear function to approximate the relationship between the dependent variable and independent variables. A linear regression model is called a simple linear regression model if there is only one independent variable. When more than one independent variables are involved, a linear regression model is called a multiple linear regression model.</p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> denote the independent and the dependent variables, respectively. For <span class="math inline">\(i=1,2,\ldots,n\)</span>, let <span class="math inline">\((x_i, y_i)\)</span> be the observed values of <span class="math inline">\((X,Y)\)</span> in the <span class="math inline">\(i\)</span>th case. Then the simple linear regression model is specified as follows <span class="citation">(Frees <a href="#ref-frees2009">2009</a>)</span>:</p>
+<p><span class="math display">\[y_i  = \beta_0 + \beta_1 x_i + \epsilon_i,\quad i=1,2,\ldots,n,\]</span> where <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are parameters and <span class="math inline">\(\epsilon_i\)</span> is a random variable representing the error for the <span class="math inline">\(i\)</span>th case.</p>
+<p>When there are multiple independent variables, the following multiple linear regression model is used:</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_k x_{ik} + \epsilon_i,\]</span> where <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(\beta_k\)</span> are unknown parameters to be estimated.</p>
+<p>Linear regression models usually make the following assumptions:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(x_{i1},x_{i2},\ldots,x_{ik}\)</span> are nonstochastic variables.</p></li>
+<li><p><span class="math inline">\(\mathrm{Var~}(y_i)=\sigma^2\)</span>, where <span class="math inline">\(\mathrm{Var~}(y_i)\)</span> denotes the variance of <span class="math inline">\(y_i\)</span>.</p></li>
+<li><p><span class="math inline">\(y_1,y_2,\ldots,y_n\)</span> are independent random variables.</p></li>
+</ol>
+<p>For the purpose of obtaining tests and confidence statements with small samples, the following strong normality assumption is also made:</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(\epsilon_1,\epsilon_2,\ldots,\epsilon_n\)</span> are normally distributed.</li>
+</ol>
+</div>
+<div id="generalized-linear-models" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Generalized Linear Models</h3>
+<p>The generalized linear model (GLM) is a wide family of regression models that include linear regression models as special cases. In a GLM, the mean of the response (i.e., the dependent variable) is assumed to be a function of linear combinations of the explanatory variables, i.e.,</p>
+<p><span class="math display">\[\mu_i = E[y_i],\]</span> <span class="math display">\[\eta_i = \textbf{x}_i&#39;\boldsymbol{\beta} = g(\mu_i),\]</span> where <span class="math inline">\(\textbf{x}_i=(1,x_{i1}, x_{i2}, \ldots, x_{ik})&#39;\)</span> is a vector of regressor values, <span class="math inline">\(\mu_i\)</span> is the mean response for the <span class="math inline">\(i\)</span>th case, and <span class="math inline">\(\eta_i\)</span> is a systematic component of the GLM. The function <span class="math inline">\(g(\cdot)\)</span> is known and is called the link function. The mean response can vary by observations by allowing some parameters to change. However, the regression parameters <span class="math inline">\(\boldsymbol{\beta}\)</span> are assumed to be the same among different observations.</p>
+<p>GLMs make the following assumptions:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(x_{i1},x_{i2},\ldots,x_{in}\)</span> are nonstochastic variables.</p></li>
+<li><p><span class="math inline">\(y_1,y_2,\ldots,y_n\)</span> are independent.</p></li>
+<li><p>The dependent variable is assumed to follow a distribution from the linear exponential family.</p></li>
+<li><p>The variance of the dependent variable is not assumed to be constant but is a function of the mean, i.e.,</p></li>
+</ol>
+<p><span class="math display">\[\mathrm{Var~}{(y_i)} = \phi \nu(\mu_i),\]</span> where <span class="math inline">\(\phi\)</span> denotes the dispersion parameter and <span class="math inline">\(\nu(\cdot)\)</span> is a function.</p>
+<p>As we can see from the above specification, the GLM provides a unifying framework to handle different types of dependent variables, including discrete and continuous variables. For more information about GLMs, readers are referred to <span class="citation">(Jong and Heller <a href="#ref-dejong2008">2008</a>)</span> and <span class="citation">(Frees <a href="#ref-frees2009">2009</a>)</span>.</p>
+</div>
+<div id="tree-based-models" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Tree-based Models</h3>
+<p>Decision trees, also known as tree-based models, involve dividing the predictor space (i.e., the space formed by independent variables) into a number of simple regions and using the mean or the mode of the region for prediction <span class="citation">(Breiman et al. <a href="#ref-breiman1984">1984</a>)</span>. There are two types of tree-based models: classification trees and regression trees. When the dependent variable is categorical, the resulting tree models are called classification trees. When the dependent variable is continuous, the resulting tree models are called regression trees.</p>
+<p>The process of building classification trees is similar to that of building regression trees. Here we only briefly describe how to build a regression tree. To do that, the predictor space is divided into non-overlapping regions such that the following objective function</p>
+<p><span class="math display">\[f(R_1,R_2,\ldots,R_J) = \sum_{j=1}^J \sum_{i=1}^n I_{R_j}(\textbf{x}_i)(y_i - \mu_j)^2\]</span> is minimized, where <span class="math inline">\(I\)</span> is an indicator function, <span class="math inline">\(R_j\)</span> denotes the set of indices of the observations that belong to the <span class="math inline">\(j\)</span>th box, <span class="math inline">\(\mu_j\)</span> is the mean response of the observations in the <span class="math inline">\(j\)</span>th box, <span class="math inline">\(\textbf{x}_i\)</span> is the vector of predictor values for the <span class="math inline">\(i\)</span>th observation, and <span class="math inline">\(y_i\)</span> is the response value for the <span class="math inline">\(i\)</span>th observation.</p>
+<p>In terms of predictive accuracy, decision trees generally do not perform to the level of other regression and classification models. However, tree-based models may outperform linear models when the relationship between the response and the predictors is nonlinear. For more information about decision trees, readers are referred to <span class="citation">(Breiman et al. <a href="#ref-breiman1984">1984</a>)</span> and <span class="citation">(Mitchell <a href="#ref-mitchell1997">1997</a>)</span>.</p>
+<!-- ###Statistical Inference -->
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bandyo2011">
+<p>Bandyopadhyay, Prasanta S., and Malcolm R. Forster, eds. 2011. <em>Philosophy of Statistics</em>. Handbook of the Philosophy of Science 7. North Holland.</p>
+</div>
+<div id="ref-bluman2012">
+<p>Bluman, Allan. 2012. <em>Elementary Statistics: A Step by Step Approach</em>. New York, NY: McGraw-Hill.</p>
+</div>
+<div id="ref-samuel1959ml">
+<p>Samuel, A. L. 1959. “Some Studies in Machine Learning Using the Game of Checkers.” <em>IBM Journal of Research and Development</em> 3 (3): 210–29.</p>
+</div>
+<div id="ref-bishop2007">
+<p>Bishop, Christopher M. 2007. <em>Pattern Recognition and Machine Learning</em>. New York, NY: Springer.</p>
+</div>
+<div id="ref-clarke2009">
+<p>Clarke, Bertrand, Ernest Fokoue, and Hao Helen Zhang. 2009. <em>Principles and Theory for Data Mining and Machine Learning</em>. New York, NY: Springer-Verlag.</p>
+</div>
+<div id="ref-mohri2012">
+<p>Mohri, Mehryar, Afshin Rostamizadeh, and Ameet Talwalkar. 2012. <em>Foundations of Machine Learning</em>. Cambridge, MA: MIT Press.</p>
+</div>
+<div id="ref-kubat2017">
+<p>Kubat, Miroslav. 2017. <em>An Introduction to Machine Learning</em>. 2nd ed. New York, NY: Springer.</p>
+</div>
+<div id="ref-aggarwal2015">
+<p>Aggarwal, Charu C. 2015. <em>Data Mining: The Textbook</em>. New York, NY: Springer.</p>
+</div>
+<div id="ref-mirkin2011">
+<p>Mirkin, Boris. 2011. <em>Core Concepts in Data Analysis: Summarization, Correlation and Visualization</em>. London, UK: Springer.</p>
+</div>
+<div id="ref-gan2007">
+<p>Gan, Guojun, Chaoqun Ma, and Jianhong Wu. 2007. <em>Data Clustering: Theory, Algorithms, and Applications</em>. Philadelphia, PA: SIAM Press. doi:<a href="https://doi.org/10.1137/1.9780898718348">10.1137/1.9780898718348</a>.</p>
+</div>
+<div id="ref-gan2011">
+<p>Gan, Guojun. 2011. <em>Data Clustering in C++: An Object-Oriented Approach</em>. Data Mining and Knowledge Discovery Series. Boca Raton, FL, USA: Chapman &amp; Hall/CRC Press. doi:<a href="https://doi.org/10.1201/b10814">10.1201/b10814</a>.</p>
+</div>
+<div id="ref-frees2009">
+<p>Frees, Edward W. 2009. <em>Regression Modeling with Actuarial and Financial Applications</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-dejong2008">
+<p>Jong, Piet de, and Gillian Z. Heller. 2008. <em>Generalized Linear Models for Insurance Data</em>. Cambridge, UK: Cambridge University Press.</p>
+</div>
+<div id="ref-breiman1984">
+<p>Breiman, Leo, Jerome Friedman, Charles J. Stone, and R.A. Olshen. 1984. <em>Classification and Regression Trees</em>. Raton Boca, FL: Chapman; Hall/CRC.</p>
+</div>
+<div id="ref-mitchell1997">
+<p>Mitchell, Tom M. 1997. <em>Machine Learning</em>. McGraw-Hill.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-analysis-preliminary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="some-r-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

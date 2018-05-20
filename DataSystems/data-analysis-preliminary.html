@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data And Systems</title>
+  <meta name="description" content="Data And Systems">
+  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data And Systems" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data And Systems" />
+  
+  
+  
+
+<meta name="author" content="Guojun Gan">
+
+
+<meta name="date" content="2018-02-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data.html">
+<link rel="next" href="data-analysis-techniques.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>1</b> Data</a><ul>
+<li class="chapter" data-level="1.1" data-path="data.html"><a href="data.html#data-types-and-sources"><i class="fa fa-check"></i><b>1.1</b> Data Types and Sources</a></li>
+<li class="chapter" data-level="1.2" data-path="data.html"><a href="data.html#data-structures-and-storage"><i class="fa fa-check"></i><b>1.2</b> Data Structures and Storage</a></li>
+<li class="chapter" data-level="1.3" data-path="data.html"><a href="data.html#data-quality"><i class="fa fa-check"></i><b>1.3</b> Data Quality</a></li>
+<li class="chapter" data-level="1.4" data-path="data.html"><a href="data.html#data-cleaning"><i class="fa fa-check"></i><b>1.4</b> Data Cleaning</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html"><i class="fa fa-check"></i><b>2</b> Data Analysis Preliminary</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#S:process"><i class="fa fa-check"></i><b>2.1</b> Data Analysis Process</a></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#exploratory-versus-confirmatory"><i class="fa fa-check"></i><b>2.2</b> Exploratory versus Confirmatory</a></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#supervised-versus-unsupervised"><i class="fa fa-check"></i><b>2.3</b> Supervised versus Unsupervised</a></li>
+<li class="chapter" data-level="2.4" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#parametric-versus-nonparametric"><i class="fa fa-check"></i><b>2.4</b> Parametric versus Nonparametric</a></li>
+<li class="chapter" data-level="2.5" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#S:expred"><i class="fa fa-check"></i><b>2.5</b> Explanation versus Prediction</a></li>
+<li class="chapter" data-level="2.6" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#data-modeling-versus-algorithmic-modeling"><i class="fa fa-check"></i><b>2.6</b> Data Modeling versus Algorithmic Modeling</a></li>
+<li class="chapter" data-level="2.7" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#big-data-analysis"><i class="fa fa-check"></i><b>2.7</b> Big Data Analysis</a></li>
+<li class="chapter" data-level="2.8" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#reproducible-analysis"><i class="fa fa-check"></i><b>2.8</b> Reproducible Analysis</a></li>
+<li class="chapter" data-level="2.9" data-path="data-analysis-preliminary.html"><a href="data-analysis-preliminary.html#ethical-issues"><i class="fa fa-check"></i><b>2.9</b> Ethical Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html"><i class="fa fa-check"></i><b>3</b> Data Analysis Techniques</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#exploratory-techniques"><i class="fa fa-check"></i><b>3.1</b> Exploratory Techniques</a></li>
+<li class="chapter" data-level="3.2" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#principal-component-analysis"><i class="fa fa-check"></i><b>3.2.1</b> Principal Component Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#cluster-analysis"><i class="fa fa-check"></i><b>3.3</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="3.4" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#confirmatory-techniques"><i class="fa fa-check"></i><b>3.4</b> Confirmatory Techniques</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#linear-models"><i class="fa fa-check"></i><b>3.4.1</b> Linear Models</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#generalized-linear-models"><i class="fa fa-check"></i><b>3.4.2</b> Generalized Linear Models</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data-analysis-techniques.html"><a href="data-analysis-techniques.html#tree-based-models"><i class="fa fa-check"></i><b>3.4.3</b> Tree-based Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="some-r-functions.html"><a href="some-r-functions.html"><i class="fa fa-check"></i><b>4</b> Some R Functions</a></li>
+<li class="chapter" data-level="5" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data And Systems</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-analysis-preliminary" class="section level1">
+<h1><span class="header-section-number">2</span> Data Analysis Preliminary</h1>
+<!-- aims 7.1.1  stages 7.1.2 -->
+<!-- 7.5.1 visualization reporting -->
+<!-- 7.5.2 reproducible mailund2017 -->
+<p>Data analysis involves inspecting, cleansing, transforming, and modeling data to discover useful information to suggest conclusions and make decisions. Data analysis has a long history. In 1962, statistician John Tukey defined data analysis as <span class="citation">(Tukey <a href="#ref-tukey1962data">1962</a>)</span>:</p>
+<pre><code>procedures for analyzing data,  techniques for interpreting the results of such procedures, ways of planning the  gathering of data to make its analysis easier, more precise or more accurate, and  all the machinery and results of (mathematical) statistics which apply to analyzing data.</code></pre>
+<p>Recently, Judd and coauthors defined data analysis as the following equation<span class="citation">(Judd, McClelland, and Ryan <a href="#ref-judd2017">2017</a>)</span>:</p>
+<p><span class="math display">\[\hbox{Data} = \hbox{Model} + \hbox{Error},\]</span> where Data represents a set of basic scores or observations to be analyzed, Model is a compact representation of the data, and Error is simply the amount the model fails to represent accurately. Using the above equation for data analysis, an analyst must resolve the following two conflicting goals:</p>
+<ul>
+<li>to add more parameters to the model so that the model represents the data better.</li>
+<li>to remove parameters from the model so that the model is simple and parsimonious.</li>
+</ul>
+<p>In this section, we give a high-level introduction to data analysis, including different types of methods.</p>
+<div id="S:process" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data Analysis Process</h2>
+<p>Data analysis is part of an overall study. For example, Figure <a href="data-analysis-preliminary.html#fig:study">2.1</a> shows the process of a typical study in behavioral and social sciences as described in <span class="citation">(Albers <a href="#ref-albers2017">2017</a>)</span>. The data analysis part consists of the following steps:</p>
+<ul>
+<li><p><strong>Exploratory analysis</strong> The purpose of this step is to get a feel of the relationships with the data and figure out what type of analysis for the data makes sense.</p></li>
+<li><p><strong>Statistical analysis</strong> This step performs statistical analysis such as determining statistical significance and effect size.</p></li>
+<li><p><strong>Make sense of the results</strong> This step interprets the statistical results in the context of the overall study.</p></li>
+<li><p><strong>Determine implications</strong> This step interprets the data by connecting it to the study goals and the larger field of this study.</p></li>
+</ul>
+<p>The goal of the data analysis as described above focuses on explaining some phenomenon (See Section <a href="data-analysis-preliminary.html#S:expred">2.5</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:study"></span>
+<img src="Figures/Figure%201.png" alt="The process of a typical study in behavioral and social sciences." width="80%" />
+<p class="caption">
+Figure 2.1: The process of a typical study in behavioral and social sciences.
+</p>
+</div>
+<p><span class="citation">Shmueli (<a href="#ref-shmueli2010model">2010</a>)</span> described a general process for statistical modeling, which is shown in Figure <a href="data-analysis-preliminary.html#fig:modeling">2.2</a>. Depending on the goal of the analysis, the steps differ in terms of the choice of methods, criteria, data, and information.</p>
+<div class="figure" style="text-align: center"><span id="fig:modeling"></span>
+<img src="Figures/Figure%202.png" alt="The process of statistical modeling." width="80%" />
+<p class="caption">
+Figure 2.2: The process of statistical modeling.
+</p>
+</div>
+</div>
+<div id="exploratory-versus-confirmatory" class="section level2">
+<h2><span class="header-section-number">2.2</span> Exploratory versus Confirmatory</h2>
+<p>There are two phases of data analysis <span class="citation">(Good <a href="#ref-good1983data">1983</a>)</span>: exploratory data analysis (EDA) and confirmatory data analysis (CDA). Table 2.1 summarizes some differences between EDA and CDA. EDA is usually applied to observational data with the goal of looking for patterns and formulating hypotheses. In contrast, CDA is often applied to experimental data (i.e., data obtained by means of a formal design of experiments) with the goal of quantifying the extent to which discrepancies between the model and the data could be expected to occur by chance <span class="citation">(Gelman <a href="#ref-gelman2004eda">2004</a>)</span>.</p>
+<p><span class="math display">\[\begin{matrix}
+\begin{array}{lll} \hline
+ &amp; \textbf{EDA} &amp; \textbf{CDA} \\\hline
+\text{Data} &amp; \text{Observational data} &amp; \text{Experimental data}\\[3mm]
+\text{Goal} &amp; \text{Pattern recognition,}  &amp; \text{Hypothesis testing,}  \\
+&amp; \text{formulate hypotheses} &amp; \text{estimation, prediction} \\[3mm]
+\text{Techniques} &amp; \text{Descriptive statistics,} &amp; \text{Traditional statistical tools of} \\
+&amp; \text{visualization, clustering} &amp; \text{inference, significance, and}\\
+&amp; &amp; \text{confidence} \\
+\hline
+\end{array}
+\end{matrix}
+\]</span> Table 2.1: Comparison of exploratory data analysis and confirmatory data analysis.</p>
+<p>Techniques for EDA include descriptive statistics (e.g., mean, median, standard deviation, quantiles), distributions, histograms, correlation analysis, dimension reduction, and cluster analysis. Techniques for CDA include the traditional statistical tools of inference, significance, and confidence.</p>
+</div>
+<div id="supervised-versus-unsupervised" class="section level2">
+<h2><span class="header-section-number">2.3</span> Supervised versus Unsupervised</h2>
+<p>Methods for data analysis can be divided into two types <span class="citation">(Abbott <a href="#ref-abbott2014">2014</a>; Igual and Segu <a href="#ref-igual2017">2017</a>)</span>: supervised learning methods and unsupervised learning methods. Supervised learning methods work with labeled data, which include a target variable. Mathematically, supervised learning methods try to approximate the following function: <span class="math display">\[
+Y = f(X_1, X_2, \ldots, X_p),
+\]</span> where <span class="math inline">\(Y\)</span> is a target variable and <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_p\)</span> are explanatory variables. Other terms are also used to mean a target variable. Table 2.2 gives a list of common names for different types of variables <span class="citation">(Frees <a href="#ref-frees2009">2009</a>)</span>. When the target variable is a categorical variable, supervised learning methods are called classification methods. When the target variable is continuous, supervised learning methods are called regression methods.</p>
+<p><span class="math display">\[\begin{matrix}
+\begin{array}{ll}
+\hline
+\textbf{Target Variable}  &amp;  \textbf{Explanatory Variable}\\\hline
+\text{Dependent variable} &amp; \text{Independent variable}\\
+\text{Response} &amp; \text{Treatment} \\
+\text{Output} &amp; \text{Input} \\
+\text{Endogenous variable} &amp; \text{Exogenous variable} \\
+\text{Predicted variable} &amp; \text{Predictor variable} \\
+\text{Regressand} &amp; \text{Regressor} \\
+\hline
+\end{array}
+\end{matrix}
+\]</span> Table 2.2: Common names of different variables.</p>
+<p>Unsupervised learning methods work with unlabeled data, which include explanatory variables only. In other words, unsupervised learning methods do not use target variables. As a result, unsupervised learning methods are also called descriptive modeling methods.</p>
+</div>
+<div id="parametric-versus-nonparametric" class="section level2">
+<h2><span class="header-section-number">2.4</span> Parametric versus Nonparametric</h2>
+<p>Methods for data analysis can be parametric or nonparametric <span class="citation">(Abbott <a href="#ref-abbott2014">2014</a>)</span>. Parametric methods assume that the data follow a certain distribution. Nonparametric methods do not assume distributions for the data and therefore are called distribution-free methods.</p>
+<p>Parametric methods have the advantage that if the distribution of the data is known, properties of the data and properties of the method (e.g., errors, convergence, coefficients) can be derived. A disadvantage of parametric methods is that analysts need to spend considerable time on figuring out the distribution. For example, analysts may try different transformation methods to transform the data so that it follows a certain distribution.</p>
+<p>Since nonparametric methods make fewer assumptions, nonparametric methods have the advantage that they are more flexible, more robust, and applicable to non-quantitative data. However, a drawback of nonparametric methods is that the conclusions drawn from nonparametric methods are not as powerful as those drawn from parametric methods.</p>
+</div>
+<div id="S:expred" class="section level2">
+<h2><span class="header-section-number">2.5</span> Explanation versus Prediction</h2>
+<p>There are two goals in data analysis <span class="citation">(Breiman <a href="#ref-breiman2001modeling">2001</a>; Shmueli <a href="#ref-shmueli2010model">2010</a>)</span>: explanation and prediction. In some scientific areas such as economics, psychology, and environmental science, the focus of data analysis is to explain the causal relationships between the input variables and the response variable. In other scientific areas such as natural language processing and bioinformatics, the focus of data analysis is to predict what the responses are going to be given the input variables.</p>
+<p><span class="citation">Shmueli (<a href="#ref-shmueli2010model">2010</a>)</span> discussed in detail the distinction between explanatory modeling and predictive modeling, which reflect the process of using data and methods for explaining or predicting, respectively. Explanatory modeling is commonly used for theory building and testing. However, predictive modeling is rarely used in many scientific fields as a tool for developing theory.</p>
+<p>Explanatory modeling is typically done as follows:</p>
+<ul>
+<li><p>State the prevailing theory.</p></li>
+<li><p>State causal hypotheses, which are given in terms of theoretical constructs rather than measurable variables. A causal diagram is usually included to illustrate the hypothesized causal relationship between the theoretical constructs.</p></li>
+<li><p>Operationalize constructs. In this step, previous literature and theoretical justification are used to build a bridge between theoretical constructs and observable measurements.</p></li>
+<li><p>Collect data and build models alongside the statistical hypotheses, which are operationalized from the research hypotheses.</p></li>
+<li><p>Reach research conclusions and recommend policy. The statistical conclusions are converted into research conclusions. Policy recommendations are often accompanied.</p></li>
+</ul>
+<p><span class="citation">Shmueli (<a href="#ref-shmueli2010model">2010</a>)</span> defined predictive modeling as the process of applying a statistical model or data mining algorithm to data for the purpose of predicting new or future observations. Predictions include point predictions, interval predictions, regions, distributions, and rankings of new observations. Predictive model can be any method that produces predictions.</p>
+</div>
+<div id="data-modeling-versus-algorithmic-modeling" class="section level2">
+<h2><span class="header-section-number">2.6</span> Data Modeling versus Algorithmic Modeling</h2>
+<p><span class="citation">Breiman (<a href="#ref-breiman2001modeling">2001</a>)</span> discussed two cultures in the use of statistical modeling to reach conclusions from data: the data modeling culture and the algorithmic modeling culture. In the data modeling culture, the data are assumed to be generated by a given stochastic data model. In the algorithmic modeling culture, the data mechanism is treated as unknown and algorithmic models are used.</p>
+<p>Data modeling gives the statistics field many successes in analyzing data and getting information about the data mechanisms. However, <span class="citation">Breiman (<a href="#ref-breiman2001modeling">2001</a>)</span> argued that the focus on data models in the statistical community has led to some side effects such as</p>
+<ul>
+<li><p>Produced irrelevant theory and questionable scientific conclusions.</p></li>
+<li><p>Kept statisticians from using algorithmic models that might be more suitable.</p></li>
+<li><p>Restricted the ability of statisticians to deal with a wide range of problems.</p></li>
+</ul>
+<p>Algorithmic modeling was used by industrial statisticians long time ago. However, the development of algorithmic methods was taken up by a community outside statistics <span class="citation">(Breiman <a href="#ref-breiman2001modeling">2001</a>)</span>. The goal of algorithmic modeling is predictive accuracy. For some complex prediction problems, data models are not suitable. These prediction problems include speech recognition, image recognition, handwriting recognition, nonlinear time series prediction, and financial market prediction. The theory in algorithmic modeling focuses on the properties of algorithms, such as convergence and predictive accuracy.</p>
+</div>
+<div id="big-data-analysis" class="section level2">
+<h2><span class="header-section-number">2.7</span> Big Data Analysis</h2>
+<p>Unlike traditional data analysis, big data analysis employs additional methods and tools that can extract information rapidly from massive data. In particular, big data analysis uses the following processing methods <span class="citation">(Chen et al. <a href="#ref-chen2014b">2014</a>)</span>:</p>
+<ul>
+<li><p><strong>Bloom filter</strong> A bloom filter is a space-efficient probabilistic data structure that is used to determine whether an element belongs to a set. It has the advantages of high space efficiency and high query speed. A drawback of using bloom filter is that there is a certain misrecognition rate.</p></li>
+<li><p><strong>Hashing</strong> Hashing is a method that transforms data into fixed-length numerical values through a hash function. It has the advantages of rapid reading and writing. However, sound hash functions are difficult to find.</p></li>
+<li><p><strong>Indexing</strong> Indexing refers to a process of partitioning data in order to speed up reading. Hashing is a special case of indexing.</p></li>
+<li><p><strong>Tries</strong> A trie, also called digital tree, is a method to improve query efficiency by using common prefixes of character strings to reduce comparison on character strings to the greatest extent.</p></li>
+<li><p><strong>Parallel computing</strong> Parallel computing uses multiple computing resources to complete a computation task. Parallel computing tools include MPI (Message Passing Interface), MapReduce, and Dryad.</p></li>
+</ul>
+<p>Big data analysis can be conducted in the following levels <span class="citation">(Chen et al. <a href="#ref-chen2014b">2014</a>)</span>: memory-level, business intelligence (BI) level, and massive level. Memory-level analysis is conducted when the data can be loaded to the memory of a cluster of computers. Current hardware can handle hundreds of gigabytes (GB) of data in memory. BI level analysis can be conducted when the data surpass the memory level. It is common for BI level analysis products to support data over terabytes (TB). Massive level analysis is conducted when the data surpass the capabilities of products for BI level analysis. Usually Hadoop and MapReduce are used in massive level analysis.</p>
+</div>
+<div id="reproducible-analysis" class="section level2">
+<h2><span class="header-section-number">2.8</span> Reproducible Analysis</h2>
+<p>As mentioned in Section <a href="data-analysis-preliminary.html#S:process">2.1</a>, a typical data analysis workflow includes collecting data, analyzing data, and reporting results. The data collected are saved in a database or files. The data are then analyzed by one or more scripts, which may save some intermediate results or always work on the raw data. Finally a report is produced to describe the results, which include relevant plots, tables, and summaries of the data. The workflow may subject to the following potential issues <span class="citation">(Mailund <a href="#ref-mailund2017">2017</a>, Chapter 2)</span>:</p>
+<ul>
+<li><p>The data are separated from the analysis scripts.</p></li>
+<li><p>The documentation of the analysis is separated from the analysis itself.</p></li>
+</ul>
+<p>If the analysis is done on the raw data with a single script, then the first issue is not a major problem. If the analysis consists of multiple scripts and a script saves intermediate results that are read by the next script, then the scripts describe a workflow of data analysis. To reproduce an analysis, the scripts have to be executed in the right order. The workflow may cause major problems if the order of the scripts is not documented or the documentation is not updated or lost. One way to address the first issue is to write the scripts so that any part of the workflow can be run completely automatically at any time.</p>
+<p>If the documentation of the analysis is synchronized with the analysis, then the second issue is not a major problem. However, the documentation may become completely useless if the scripts are changed but the documentation is not updated.</p>
+<p>Literate programming is an approach to address the two issues mentioned above. In literate programming, the documentation of a program and the code of the program are written together. To do literate programming in R, one way is to use the R Markdown and the <span class="math inline">\(\texttt{knitr}\)</span> package.</p>
+</div>
+<div id="ethical-issues" class="section level2">
+<h2><span class="header-section-number">2.9</span> Ethical Issues</h2>
+<p>Analysts may face ethical issues and dilemmas during the data analysis process. In some fields, for example, ethical issues and dilemmas include participant consent, benefits, risk, confidentiality, and data ownership <span class="citation">(Miles, Hberman, and Sdana <a href="#ref-miles2014">2014</a>)</span>. For data analysis in actuarial science and insurance in particular, we face the following ethical matters and issues <span class="citation">(Miles, Hberman, and Sdana <a href="#ref-miles2014">2014</a>)</span>:</p>
+<ul>
+<li><p><strong>Worthness of the project</strong> Is the project worth doing? Will the project contribute in some significant way to a domain broader than my career? If a project is only opportunistic and does not have a larger significance, then it might be pursued with less care. The result may be looked good but not right.</p></li>
+<li><p><strong>Competence</strong> Do I or the whole team have the expertise to carry out the project? Incompetence may lead to weakness in the analytics such as collecting large amounts of data poorly and drawing superficial conclusions.</p></li>
+<li><p><strong>Benefits, costs, and reciprocity</strong> Will each stakeholder gain from the project? Are the benefit and the cost equitable? A project will likely to fail if the benefit and the cost for a stakeholder do not match.</p></li>
+<li><p><strong>Privacy and confidentiality</strong> How do we make sure that the information is kept confidentially? Where raw data and analysis results are stored and how will have access to them should be documented in explicit confidentiality agreements.</p></li>
+</ul>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-tukey1962data">
+<p>Tukey, John W. 1962. “The Future of Data Analysis.” <em>The Annals of Mathematical Statistics</em> 33 (1). Institute of Mathematical Statistics: 1–67.</p>
+</div>
+<div id="ref-judd2017">
+<p>Judd, Charles M., Gary H. McClelland, and Carey S. Ryan. 2017. <em>Data Analysis. a Model Comparison Approach to Regression, ANOVA and Beyond</em>. 3rd ed. New York, NY: Routledge.</p>
+</div>
+<div id="ref-albers2017">
+<p>Albers, Michael J. 2017. <em>Introduction to Quantitative Data Analysis in the Behavioral and Social Sciences</em>. Hoboken, NJ: John Wiley &amp; Sons, Inc.</p>
+</div>
+<div id="ref-shmueli2010model">
+<p>Shmueli, Galit. 2010. “To Explain or to Predict?” <em>Statistical Science</em> 25 (3): 289–310.</p>
+</div>
+<div id="ref-good1983data">
+<p>Good, I. J. 1983. “The Philosophy of Exploratory Data Analysis.” <em>Philosophy of Science</em> 50 (2): 283–95.</p>
+</div>
+<div id="ref-gelman2004eda">
+<p>Gelman, Andrew. 2004. “Exploratory Data Analysis for Complex Models.” <em>Journal of Computational and Graphical Statistics</em> 13 (4): 755–79.</p>
+</div>
+<div id="ref-abbott2014">
+<p>Abbott, Dean. 2014. <em>Applied Predictive Analytics: Principles and Techniques for the Professional Data Analyst</em>. Hoboken, NJ: Wiley.</p>
+</div>
+<div id="ref-igual2017">
+<p>Igual, Laura, and Santi Segu. 2017. <em>Introduction to Data Science. a Python Approach to Concepts, Techniques and Applications</em>. New York, NY: Springer.</p>
+</div>
+<div id="ref-frees2009">
+<p>Frees, Edward W. 2009. <em>Regression Modeling with Actuarial and Financial Applications</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-breiman2001modeling">
+<p>Breiman, Leo. 2001. “Statistical Modeling: The Two Cultures.” <em>Statistical Science</em> 16 (3): 199–231.</p>
+</div>
+<div id="ref-chen2014b">
+<p>Chen, Min, Shiwen Mao, Yin Zhang, and Victor CM Leung. 2014. <em>Big Data: Related Technologies, Challenges and Future Prospects</em>. New York, NY: Springer.</p>
+</div>
+<div id="ref-mailund2017">
+<p>Mailund, Thomas. 2017. <em>Beginning Data Science in R: Data Analysis, Visualization, and Modelling for the Data Scientist</em>. Apress.</p>
+</div>
+<div id="ref-miles2014">
+<p>Miles, Matthew, Michael Hberman, and Johnny Sdana. 2014. <em>Qualitative Data Analysis: A Methods Sourcebook</em>. 3rd ed. Thousand Oaks, CA: Sage.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-analysis-techniques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
