@@ -1,2 +1,5 @@
 # Loss-Data-Analytics---Chapter-Drafts
-Bookdown to compile chapter drafts
+
+This site serves to compile chapter drafts for Loss Data Analytics
+
+This site also demonstrates referencing in Bookdown
