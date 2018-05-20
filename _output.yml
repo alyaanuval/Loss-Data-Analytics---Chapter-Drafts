@@ -18,3 +18,4 @@ bookdown::gitbook:
       after: |
         <li><a href="https://ewfrees.github.io/Loss-Data-Analytics/" target="blank">Loss Data Analytics on GitHub</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+bookdown::html_document2:

@@ -1,105 +1,30 @@
-\documentclass[12pt,letterpaper]{article}
-\usepackage{url}
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{makeidx}
-\usepackage{amsmath}
-\usepackage{eurosym}
-\usepackage{amsfonts}
-\usepackage{rotating}
-\usepackage{scalefnt}
-\usepackage{float}
-\usepackage{geometry}
-%\geometry{left=0.6in,right=0.6in,top=0.6in,bottom=0.6in}
-\geometry{left=0.8in,right=0.8in,top=1in,bottom=1in}
-\usepackage{alltt}
-\usepackage{multicol}
-\usepackage{setspace}
-\usepackage{lscape}
-\usepackage{longtable}
-\usepackage{color}
-\begin{document}
+# AggregateLossModelTEXTEST
 
-\title{Aggregate Loss Models}
+*Example. Course 3, May 2000, 19.* An insurance company sold 300 fire insurance policies as follows:   
 
-\author{
-    Peng Shi \\
-    Wisconsin School of Business\\
-    University of Wisconsin--Madison\\
-    Email: pshi@bus.wisc.edu\\
-    \and
-    Lisa Gao \\
-    Wisconsin School of Business\\
-    University of Wisconsin--Madison\\
-    Email: lisa.gao@wisc.edu\\
-}
-\maketitle
+$$\begin{matrix}
+	\begin{array}{c c c} \hline
+		\text{Number of} & \text{Policy} & \text{Probability of}\\
+		\text{Policies} &  \text{Maximum} &  \text{Claim Per Policy}\\ \hline
+		100 & 400 & 0.05\\
+		200 & 300 & 0.06\\ \hline
+	\end{array}
+\end{matrix}$$
 
-\abstract{
-This chapter introduces probability models for describing the aggregate claims that arise from a portfolio of insurance contracts. We presents two standard modeling approaches, the individual risk model and the collective risk model. Further, we discuss strategies for computing the distribution of the aggregate claims. Finally, we examine the effects of individual policy modifications on the aggregate loss distribution.
+<!-- Table: (\#tab:simple-table) Fire table -->
 
-}
+<!-- As you can see in Table \#tab:simple-table.  -->
 
-\scalefont{0.8} \tableofcontents
-
-\scalefont{1.25}
+```{r}
+knitr::kable(
+  head(mtcars[, 1:8], 10), booktabs = TRUE,
+  caption = 'A table of the first 10 rows of the mtcars data.'
+)
+```
 
 
-\section{Introduction}
 
-The objective of this chapter is to build a probability model to describe the aggregate claims by an insurance system occurring in a fixed time period. The insurance system could be a single policy, a group insurance contract, a business line, or an entire book of an insurance's business. In the chapter, aggregate claims refers to either the number or the amount of claims from a portfolio of insurance contracts. However, the modeling framework is readily to apply in the more general setup.
-
-Consider an insurance portfolio of $n$ individual contracts, and let $S$ denote the aggregate losses of the portfolio in a given time period. There are two approaches to modeling the aggregate losses $S$, the individual risk model and the collective risk model. The individual risk model emphasizes the loss from each individual contract and represents the aggregate losses as:
-\begin{align*}
-S=X_1 +X_2 +\cdots+X_n,
-\end{align*}
-where $X_i~(i=1,\ldots,n)$ is interpreted as the loss amount from the $i$th contract. It is worth stressing that $n$ denotes the number of contracts in the portfolio and thus is a fixed number rather than a random variable. For the individual risk model, one usually assumes $X_{i}$'s are independent, i.e., $X_{i}\perp X_{j}$ $\forall $ $i,j$. Because of different contract features such as coverage and exposure, $X_{i}$'s are not necessarily identically
-distributed. A notable feature of the distribution of each $X_i$ is the probability mass at zero corresponding to the event of no claims.
-
-The collective risk model represents the aggregate losses in terms of a frequency distribution and a severity distribution:
-\begin{align*}
-S=X_1 +X_2 +\cdots+X_N.
-\end{align*}
-Here one thinks of a random number of claims $N$ that may represent either the number of losses or the number of payments. In contrast, in the individual risk model, we use a fixed number of contracts $n$. We think of $X_1, X_2, \ldots, X_N$ as representing the amount of each loss. Each loss may or may not corresponding to a unique contract. For instance, there may be multiple claims arising from a single contract. It is natural to think about $X_i>0$ because if $X_i=0$ then no claim has occurred. Typically we assume that conditional on $N=n$, $X_{1},X_{2},\cdots ,X_{n}$ are i.i.d. random variables. The distribution of $N$ is known as the frequency distribution, and the common distribution of $X$ is known as the severity distribution. We further assume $N$ and $X$ are independent. With the collective risk model, we may decompose the aggregate losses into the frequency ($N$) process and the severity ($X$) process. This flexibility allows the analyst to comment on these two separate components. For example, sales growth due to lower underwriting standards could lead to higher frequency of losses but might not affect severity. Similarly, inflation or other economic forces could have an impact on severity but not on frequency.
-
-
-\section{Individual Risk Model}
-
-As noted earlier, for the individual risk model, we think of $X_i$ as the loss from $i^{th}$ contract and interpret
-\begin{eqnarray*}
-S_n=X_1 +X_2 +\cdots+X_n
-\end{eqnarray*}
-to be the aggregate loss from all contracts in a portfolio or group of contracts. Under the independence assumption on $X_i's$, it is straightforward to show
- \begin{align*}
-    {\rm E}(S_n) &= \sum_{i=1}^{n} {\rm E}(X_i),~~~~
-    {\rm Var}(S_n) = \sum_{i=1}^{n} {\rm Var}(X_i)\\
-    P_{S_n}(z) &= \prod_{i=1}^{n}P_{X_i}(z), ~~~~
-    M_{S_n}(t) = \prod_{i=1}^{n}M_{X_i}(t) \\
- \end{align*}
-where $P_S(\cdot)$ and $M_S(\cdot)$ are probability generating function and moment generating function of $S$, respectively. The distribution of each $X_i$ contains mass at zero, corresponding to the event of no claim. One strategy to incorporate the zero mass in the distribution is using the two-part framework:
-\begin{align*}
-X_i = I_i\times B_i = \left\{\begin{array}{ll}
-                               0 & I_i=0 \\
-                               B_i & I_i=1
-                             \end{array}
-             \right.
-\end{align*}
-Here $I_i$ is a Bernoulli variable indicating whether or not a loss occurs for the $i$th contract, and $B_i$, a r.v. with nonnegative support, represents the amount of losses of the contract given loss occurrence. Assume that $I_1 ,\ldots,I_n ,B_1 ,\ldots,B_n$ are mutually independent. Denote ${\rm Pr} (I_i =1)=q_i$, $\mu_i={\rm E}(B_i)$, and $\sigma_i^2={\rm Var}(B_i)$. One can show
-\begin{align*}
-\mathrm{E}(S_n)& =\sum_{i=1}^n ~q_i  ~\mu _j \\
-\mathrm{Var}(S_n) & =\sum_{i=1}^n \left( q_i \sigma _i^2+q_i (1-q_j)\mu_i^2 \right)\\
-P_{S_n}(z) & =\sum_{i=1}^n \left( 1-q_i+q_i P_{B_i}(z) \right)\\
-M_{S_n}(t) & =\sum_{i=1}^n \left( 1-q_i+q_i M_{B_i}(t) \right)
-\end{align*}
-A special case of the above model is when $B_i$ follows a degenerate distribution with $\mu_i=b_i$ and $\sigma^2_i=0$. One example is term life insurance or a pure endowment insurance where $b_i$ represents the amount of insurance of the $i$th contract.
-
-Another strategy to accommodate zero mass in the distribution of $X_i$ is a collective risk model, i.e. $X_i=Z_{i1}+\cdots+Z_{iN_i}$ where $X_i=0$ when $N_i=0$. The collective risk model will be discussed in detail in the next section. \\
-
-
-%{\color{red} Lisa clean up the example below}\\
-
-\noindent \textit{Example. Course 3, May 2000, 19.} An insurance company sold 300 fire insurance policies as follows:
-\bigskip
+```latex
 \begin{center}
 	\begin{tabular}{c c c} \hline
 		Number of & Policy & Probability of\\
@@ -108,6 +33,5 @@ Another strategy to accommodate zero mass in the distribution of $X_i$ is a coll
 		200 & 300 & 0.06\\ \hline
 	\end{tabular}
 \end{center}
-\bigskip
+```
 
-\end{document}
