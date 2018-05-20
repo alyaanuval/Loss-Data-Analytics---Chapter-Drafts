@@ -18,4 +18,21 @@ bookdown::gitbook:
       after: |
         <li><a href="https://ewfrees.github.io/Loss-Data-Analytics/" target="blank">Loss Data Analytics on GitHub</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+bookdown::html_book:
+  theme: default
+  toc: yes
+  css: toc.css
+  number_sections: true
+bookdown::pdf_document2:
+  includes:
+    in_header: preamble.tex
+  toc: TRUE
+  toc_depth: '3'
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
 bookdown::html_document2:
+  includes:
+    in_header: disqus.html
+  theme: default
+  toc: yes
