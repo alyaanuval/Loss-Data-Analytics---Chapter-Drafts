@@ -1,37 +1,68 @@
-# AggregateLossModelTEXTEST
+# Aggregate Loss Models TEX TEST
+
+## Referencing a section
+* See Section \@ref(S:Referencing-equations) for referencing equations
+* See Section \@ref(S:Referencing-tables) for referencing tables
+* See Section \@ref(S:Referencing-figures) for referencing figures
+
+## Equations {#S:Referencing-equations}
+
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation}
+
+See \@ref(eq:binom)
+
+## Tables {#S:Referencing-tables}
+
+### Using equation style referencing for handmade converted latex table
 
 *Example. Course 3, May 2000, 19.* An insurance company sold 300 fire insurance policies as follows:   
 
-$$\begin{matrix}
+\begin{matrix}
 	\begin{array}{c c c} \hline
 		\text{Number of} & \text{Policy} & \text{Probability of}\\
 		\text{Policies} &  \text{Maximum} &  \text{Claim Per Policy}\\ \hline
 		100 & 400 & 0.05\\
 		200 & 300 & 0.06\\ \hline
+		(\#eq:test)
 	\end{array}
-\end{matrix}$$
+\end{matrix}
+
+See \@ref(eq:test)
+
+### Using table style on R generated tables
 
 <!-- Table: (\#tab:simple-table) Fire table -->
 
 <!-- As you can see in Table \#tab:simple-table.  -->
 
-```{r}
+```{r table1}
 knitr::kable(
   head(mtcars[, 1:8], 10), booktabs = TRUE,
   caption = 'A table of the first 10 rows of the mtcars data.'
 )
 ```
 
+See \@ref(tab:table1)
 
+<!-- * Original latex code -->
+<!-- ```latex -->
+<!-- \begin{center} -->
+<!-- 	\begin{tabular}{c c c} \hline -->
+<!-- 		Number of & Policy & Probability of\\ -->
+<!-- 		Policies &  Maximum &  Claim Per Policy\\ \hline -->
+<!-- 		100 & 400 & 0.05\\ -->
+<!-- 		200 & 300 & 0.06\\ \hline -->
+<!-- 	\end{tabular} -->
+<!-- \end{center} -->
+<!-- ``` -->
 
-```latex
-\begin{center}
-	\begin{tabular}{c c c} \hline
-		Number of & Policy & Probability of\\
-		Policies &  Maximum &  Claim Per Policy\\ \hline
-		100 & 400 & 0.05\\
-		200 & 300 & 0.06\\ \hline
-	\end{tabular}
-\end{center}
+## Figures {#S:Referencing-figures}
+
+```{r, figure1, echo=FALSE, fig.cap='GitHub profile picture', out.width='20%', fig.align='center'}
+knitr::include_graphics("Figures/togepi.png")
 ```
 
+See \@ref(fig:figure1)
