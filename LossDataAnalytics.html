@@ -11,7 +11,7 @@
 
 <meta name="author" content="An open text authored by the Actuarial Community" />
 
-<meta name="date" content="2018-05-20" />
+<meta name="date" content="2018-05-21" />
 
 <title>Loss Data Analytics</title>
 
@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Loss Data Analytics</h1>
 <h4 class="author"><em>An open text authored by the Actuarial Community</em></h4>
-<h4 class="date"><em>2018-05-20</em></h4>
+<h4 class="date"><em>2018-05-21</em></h4>
 
 </div>
 
@@ -133,7 +133,10 @@ $(document).ready(function () {
 <li><a href="#S:Referencing-equations"><span class="toc-section-number">2.2</span> Equations</a></li>
 <li><a href="#S:Referencing-tables"><span class="toc-section-number">2.3</span> Tables</a><ul>
 <li><a href="#using-equation-style-referencing-for-handmade-converted-latex-table"><span class="toc-section-number">2.3.1</span> Using equation style referencing for handmade converted latex table</a></li>
-<li><a href="#using-table-style-on-r-generated-tables"><span class="toc-section-number">2.3.2</span> Using table style on R generated tables</a></li>
+<li><a href="#using-equation-style-referencing-for-original-latex-table"><span class="toc-section-number">2.3.2</span> Using equation style referencing for original latex table</a></li>
+<li><a href="#using-table-style-on-r-generated-tables"><span class="toc-section-number">2.3.3</span> Using table style on R generated tables</a></li>
+<li><a href="#using-converted-tex-and-in-block-referencing"><span class="toc-section-number">2.3.4</span> Using converted tex and in-block referencing</a></li>
+<li><a href="#using-original-latex-code-and-in-block-referencing"><span class="toc-section-number">2.3.5</span> Using original Latex code and in-block referencing</a></li>
 </ul></li>
 <li><a href="#S:Referencing-figures"><span class="toc-section-number">2.4</span> Figures</a></li>
 </ul></li>
@@ -174,13 +177,20 @@ $(document).ready(function () {
         \text{Policies} &amp;  \text{Maximum} &amp;  \text{Claim Per Policy}\\ \hline
         100 &amp; 400 &amp; 0.05\\
         200 &amp; 300 &amp; 0.06\\ \hline
-        \tag{2.2}
+        \tag{2.2} \text{Table of testing}
     \end{array}
 \end{matrix}\]</span>
-<p>See <a href="#eq:test">(2.2)</a></p>
+<p>See Table <a href="#eq:test">(2.2)</a></p>
+</div>
+<div id="using-equation-style-referencing-for-original-latex-table" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Using equation style referencing for original latex table</h3>
+<p><em>Example. Course 3, May 2000, 19.</em> An insurance company sold 300 fire insurance policies as follows:</p>
+
+<p>See Table <a href="#eq:testOri">(<strong>??</strong>)</a>. This clearly shows that there is an error.</p>
+<p>Warning message: The label(s) eq:testOri not found</p>
 </div>
 <div id="using-table-style-on-r-generated-tables" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Using table style on R generated tables</h3>
+<h3><span class="header-section-number">2.3.3</span> Using table style on R generated tables</h3>
 <!-- Table: (\#tab:simple-table) Fire table -->
 <!-- As you can see in Table \#tab:simple-table.  -->
 <pre class="r"><code>knitr::kable(
@@ -316,17 +326,35 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p>See <a href="#tab:table1">2.1</a></p>
-<!-- * Original latex code -->
-<!-- ```latex -->
-<!-- \begin{center} -->
-<!--    \begin{tabular}{c c c} \hline -->
-<!--        Number of & Policy & Probability of\\ -->
-<!--        Policies &  Maximum &  Claim Per Policy\\ \hline -->
-<!--        100 & 400 & 0.05\\ -->
-<!--        200 & 300 & 0.06\\ \hline -->
-<!--    \end{tabular} -->
-<!-- \end{center} -->
-<!-- ``` -->
+</div>
+<div id="using-converted-tex-and-in-block-referencing" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Using converted tex and in-block referencing</h3>
+Table: (#tab:fooTableConv) Testing this converted table
+<span class="math display">\[\begin{matrix}
+    \begin{array}{c c c} \hline
+        \text{Number of} &amp; \text{Policy} &amp; \text{Probability of}\\
+        \text{Policies} &amp;  \text{Maximum} &amp;  \text{Claim Per Policy}\\ \hline
+        100 &amp; 400 &amp; 0.05\\
+        200 &amp; 300 &amp; 0.06\\ \hline
+    \end{array}
+\end{matrix}\]</span>
+<p>See Table <a href="#tab:fooTableConv">2.2</a>. The label displays.</p>
+</div>
+<div id="using-original-latex-code-and-in-block-referencing" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Using original Latex code and in-block referencing</h3>
+<p>See style of referencing</p>
+<p>Table: (#tab:fooTable) Testing the original table <span class="math display">\[\documentclass{article}
+\begin{document}
+\begin{center}
+    \begin{tabular}{c c c} \hline
+        Number of &amp; Policy &amp; Probability of\\
+        Policies &amp;  Maximum &amp;  Claim Per Policy\\ \hline
+        100 &amp; 400 &amp; 0.05\\
+        200 &amp; 300 &amp; 0.06\\ \hline
+    \end{tabular}
+\end{center}
+\end{document}\]</span></p>
+<p>See Table <a href="#tab:fooTable">2.3</a>. This clearly shows that there is an error. The label also displays.</p>
 </div>
 </div>
 <div id="S:Referencing-figures" class="section level2">
@@ -338,6 +366,32 @@ Figure 2.1: GitHub profile picture
 </p>
 </div>
 <p>See <a href="#fig:figure1">2.1</a></p>
+<!-- * Original latex code -->
+<!-- ```latex -->
+<!-- \begin{center} -->
+<!--    \begin{tabular}{c c c} \hline -->
+<!--        Number of & Policy & Probability of\\ -->
+<!--        Policies &  Maximum &  Claim Per Policy\\ \hline -->
+<!--        100 & 400 & 0.05\\ -->
+<!--        200 & 300 & 0.06\\ \hline -->
+<!--    \end{tabular} -->
+<!-- \end{center} -->
+<!-- ``` -->
+<!-- ## Aisha test -->
+<!-- ```{r} -->
+<!-- library(data.table) # loads the smart "fast" fread function -->
+<!-- #import data into R -->
+<!-- data <- fread("file.tex", skip=8, sep="&", data.table=F) # skips in compatible lines -->
+<!-- names <- read.table("file.tex", skip=6, nrow=1, sep="&", stringsAsFactors=F) -->
+<!-- #remove latex symbols from header -->
+<!-- names<-gsub("\\\\", "", as.character(names)) -->
+<!-- names<-gsub(" ", "", as.character(names)) -->
+<!-- colnames(data) <- names -->
+<!-- #remove latex end of line from last column -->
+<!-- data[,ncol(data)]<-gsub("\\\\", "", as.character(data[,ncol(data)])) -->
+<!-- data[,ncol(data)]<-gsub(" ", "", as.character(data[,ncol(data)])) -->
+<!-- data[,ncol(data)] <- as.numeric(data[,ncol(data)]) #change type as desired -->
+<!-- ``` -->
 <!--chapter:end:Chapters/AggregateLossModelsTEXTEST.Rmd-->
 </div>
 </div>

@@ -1,68 +1,141 @@
-<!-- # Code for referencing -->
+# Code for referencing
 
-<!-- ## Referencing a section -->
-<!-- * See Section \@ref(S:Referencing-equations) for referencing equations -->
-<!-- * See Section \@ref(S:Referencing-tables) for referencing tables -->
-<!-- * See Section \@ref(S:Referencing-figures) for referencing figures -->
+## Referencing a section
+* See Section \@ref(S:Referencing-equations) for referencing equations
+* See Section \@ref(S:Referencing-tables) for referencing tables
+* See Section \@ref(S:Referencing-figures) for referencing figures
 
-<!-- ## Equations {#S:Referencing-equations} -->
+## Equations {#S:Referencing-equations}
 
-<!-- \begin{equation}  -->
-<!--   f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k} -->
-<!--   (\#eq:binom) -->
-<!-- \end{equation} -->
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation}
 
-<!-- See \@ref(eq:binom) -->
+See \@ref(eq:binom)
 
-<!-- ## Tables {#S:Referencing-tables} -->
+## Tables {#S:Referencing-tables}
 
-<!-- ### Using equation style referencing for handmade converted latex table -->
+### Using equation style referencing for handmade converted latex table
 
-<!-- *Example. Course 3, May 2000, 19.* An insurance company sold 300 fire insurance policies as follows:    -->
+*Example. Course 3, May 2000, 19.* An insurance company sold 300 fire insurance policies as follows:   
 
-<!-- \begin{matrix} -->
-<!-- 	\begin{array}{c c c} \hline -->
-<!-- 		\text{Number of} & \text{Policy} & \text{Probability of}\\ -->
-<!-- 		\text{Policies} &  \text{Maximum} &  \text{Claim Per Policy}\\ \hline -->
+\begin{matrix}
+	\begin{array}{c c c} \hline
+		\text{Number of} & \text{Policy} & \text{Probability of}\\
+		\text{Policies} &  \text{Maximum} &  \text{Claim Per Policy}\\ \hline
+		100 & 400 & 0.05\\
+		200 & 300 & 0.06\\ \hline
+		(\#eq:test) \text{Table of testing}
+	\end{array}
+\end{matrix}
+
+See Table \@ref(eq:test)
+
+### Using equation style referencing for original latex table
+*Example. Course 3, May 2000, 19.* An insurance company sold 300 fire insurance policies as follows:
+
+\begin{center}
+	\begin{tabular}{c c c} \hline
+		Number of & Policy & Probability of\\
+		Policies &  Maximum &  Claim Per Policy\\ \hline
+		100 & 400 & 0.05\\
+		200 & 300 & 0.06\\ \hline
+		(\#eq:testOri) \text{Table of testing the original}
+	\end{tabular}
+\end{center}
+
+See Table \@ref(eq:testOri). This clearly shows that there is an error.
+
+Warning message:
+The label(s) eq:testOri not found
+
+### Using table style on R generated tables
+
+<!-- Table: (\#tab:simple-table) Fire table -->
+
+<!-- As you can see in Table \#tab:simple-table.  -->
+
+```{r table1}
+knitr::kable(
+  head(mtcars[, 1:8], 10), booktabs = TRUE,
+  caption = 'A table of the first 10 rows of the mtcars data.'
+)
+```
+
+See \@ref(tab:table1)
+
+### Using converted tex and in-block referencing
+```{block, fooTableConv}
+Table: (\#tab:fooTableConv) Testing this converted table
+\begin{matrix}
+	\begin{array}{c c c} \hline
+		\text{Number of} & \text{Policy} & \text{Probability of}\\
+		\text{Policies} &  \text{Maximum} &  \text{Claim Per Policy}\\ \hline
+		100 & 400 & 0.05\\
+		200 & 300 & 0.06\\ \hline
+	\end{array}
+\end{matrix}
+```
+
+See Table \@ref(tab:fooTableConv). The label displays.
+
+### Using original Latex code and in-block referencing
+
+See style of referencing
+
+```{block, fooTable}
+Table: (\#tab:fooTable) Testing the original table
+$$\documentclass{article}
+\begin{document}
+\begin{center}
+	\begin{tabular}{c c c} \hline
+		Number of & Policy & Probability of\\
+		Policies &  Maximum &  Claim Per Policy\\ \hline
+		100 & 400 & 0.05\\
+		200 & 300 & 0.06\\ \hline
+	\end{tabular}
+\end{center}
+\end{document}$$
+```
+
+See Table \@ref(tab:fooTable). This clearly shows that there is an error. The label also displays.
+
+## Figures {#S:Referencing-figures}
+
+```{r, figure1, echo=FALSE, fig.cap='GitHub profile picture', out.width='20%', fig.align='center'}
+knitr::include_graphics("Figures/togepi.png")
+```
+
+See \@ref(fig:figure1)
+
+<!-- * Original latex code -->
+<!-- ```latex -->
+<!-- \begin{center} -->
+<!-- 	\begin{tabular}{c c c} \hline -->
+<!-- 		Number of & Policy & Probability of\\ -->
+<!-- 		Policies &  Maximum &  Claim Per Policy\\ \hline -->
 <!-- 		100 & 400 & 0.05\\ -->
 <!-- 		200 & 300 & 0.06\\ \hline -->
-<!-- 		(\#eq:test) -->
-<!-- 	\end{array} -->
-<!-- \end{matrix} -->
-
-<!-- See \@ref(eq:test) -->
-
-<!-- ### Using table style on R generated tables -->
-
-<!-- <!-- Table: (\#tab:simple-table) Fire table --> -->
-
-<!-- <!-- As you can see in Table \#tab:simple-table.  --> -->
-
-<!-- ```{r table1} -->
-<!-- knitr::kable( -->
-<!--   head(mtcars[, 1:8], 10), booktabs = TRUE, -->
-<!--   caption = 'A table of the first 10 rows of the mtcars data.' -->
-<!-- ) -->
+<!-- 	\end{tabular} -->
+<!-- \end{center} -->
 <!-- ``` -->
 
-<!-- See \@ref(tab:table1) -->
+<!-- ## Aisha test -->
+<!-- ```{r} -->
+<!-- library(data.table) # loads the smart "fast" fread function -->
 
-<!-- <!-- * Original latex code --> -->
-<!-- <!-- ```latex --> -->
-<!-- <!-- \begin{center} --> -->
-<!-- <!-- 	\begin{tabular}{c c c} \hline --> -->
-<!-- <!-- 		Number of & Policy & Probability of\\ --> -->
-<!-- <!-- 		Policies &  Maximum &  Claim Per Policy\\ \hline --> -->
-<!-- <!-- 		100 & 400 & 0.05\\ --> -->
-<!-- <!-- 		200 & 300 & 0.06\\ \hline --> -->
-<!-- <!-- 	\end{tabular} --> -->
-<!-- <!-- \end{center} --> -->
-<!-- <!-- ``` --> -->
+<!-- #import data into R -->
+<!-- data <- fread("file.tex", skip=8, sep="&", data.table=F) # skips in compatible lines -->
+<!-- names <- read.table("file.tex", skip=6, nrow=1, sep="&", stringsAsFactors=F) -->
 
-<!-- ## Figures {#S:Referencing-figures} -->
+<!-- #remove latex symbols from header -->
+<!-- names<-gsub("\\\\", "", as.character(names)) -->
+<!-- names<-gsub(" ", "", as.character(names)) -->
+<!-- colnames(data) <- names -->
 
-<!-- ```{r, figure1, echo=FALSE, fig.cap='GitHub profile picture', out.width='20%', fig.align='center'} -->
-<!-- knitr::include_graphics("Figures/togepi.png") -->
+<!-- #remove latex end of line from last column -->
+<!-- data[,ncol(data)]<-gsub("\\\\", "", as.character(data[,ncol(data)])) -->
+<!-- data[,ncol(data)]<-gsub(" ", "", as.character(data[,ncol(data)])) -->
+<!-- data[,ncol(data)] <- as.numeric(data[,ncol(data)]) #change type as desired -->
 <!-- ``` -->
-
-<!-- See \@ref(fig:figure1) -->
