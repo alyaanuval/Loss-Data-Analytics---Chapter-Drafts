@@ -32,7 +32,5 @@ bookdown::pdf_document2:
   citation_package: natbib
   keep_tex: yes
 bookdown::html_document2:
-  includes:
-    in_header: disqus.html
   theme: default
   toc: yes
