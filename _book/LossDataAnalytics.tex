@@ -89,6 +89,20 @@
 \usepackage{booktabs}
 \setcounter{secnumdepth}{2}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -115,6 +129,9 @@ Placeholder
 latex
 table}\label{using-equation-style-referencing-for-handmade-converted-latex-table}
 
+\subsection{Using equation style referencing for original latex
+table}\label{using-equation-style-referencing-for-original-latex-table}
+
 \subsection{Using table style on R generated
 tables}\label{using-table-style-on-r-generated-tables}
 
@@ -125,6 +142,40 @@ referencing}\label{using-converted-tex-and-in-block-referencing}
 referencing}\label{using-original-latex-code-and-in-block-referencing}
 
 \section{Figures}\label{S:Referencing-figures}
+
+\chapter{Risk classification}\label{risk-classification}
+
+Placeholder
+
+\section{Introduction}\label{introduction}
+
+\section{Poisson regression model}\label{poisson-regression-model}
+
+\subsection{Need of Poisson regression}\label{S:Need.Poi.reg}
+
+\subsection{Poisson regression}\label{poisson-regression}
+
+\subsection{Incorporating exposure}\label{incorporating-exposure}
+
+\subsection{Exercises}\label{exercises}
+
+\section{Categorical variables and multiplicative
+tariff}\label{categorical-variables-and-multiplicative-tariff}
+
+\subsection{Rating factors and tariff}\label{rating-factors-and-tariff}
+
+\section{Multiplicative tariff model}\label{multiplicative-tariff-model}
+
+\subsection{Poisson regression for multiplicative
+tariff}\label{poisson-regression-for-multiplicative-tariff}
+
+\subsection{Numerical examples}\label{numerical-examples}
+
+\section{Further Reading and
+References}\label{further-reading-and-references}
+
+\section{Technical supplements -- Estimating Poisson regression
+model}\label{S:mle.Pois.reg}
 
 \bibliography{Bibliography/LDAReference.bib,Bibliography/LDAReferenceChap4.bib,Bibliography/dsref.bib,Bibliography/packages.bib}
 
