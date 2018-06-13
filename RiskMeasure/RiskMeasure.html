@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="0.1" data-path=""><a href="#tails-of-distributions"><i class="fa fa-check"></i><b>0.1</b> Tails of distributions</a><ul>
+<li class="chapter" data-level="0.1.1" data-path=""><a href="#classification-based-on-moments"><i class="fa fa-check"></i><b>0.1.1</b> Classification Based on Moments</a></li>
+<li class="chapter" data-level="0.1.2" data-path=""><a href="#comparison-based-on-limiting-tail-behavior"><i class="fa fa-check"></i><b>0.1.2</b> Comparison Based on Limiting Tail Behavior</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path=""><a href="#risk-measures"><i class="fa fa-check"></i><b>0.2</b> Risk measures</a><ul>
+<li class="chapter" data-level="0.2.1" data-path=""><a href="#value-at-risk"><i class="fa fa-check"></i><b>0.2.1</b> Value-at-Risk</a></li>
+<li class="chapter" data-level="0.2.2" data-path=""><a href="#tail-value-at-risk"><i class="fa fa-check"></i><b>0.2.2</b> Tail Value-at-Risk</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path=""><a href="#further-reading-and-resources"><i class="fa fa-check"></i><b>0.3</b> Contributors and Further Resources</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="tails-of-distributions" class="section level2">
+<h2><span class="header-section-number">0.1</span> Tails of distributions</h2>
+<p>In 1998 freezing rains fell on eastern Ontario, south-western Quebec and lasted for six days. The event doubled the amount of precipitation in the area experienced in any prior ice storm, and resulted in a catastrophe that produced excess of 840,000 cases of insurance claims. This number is 20<span class="math inline">\(\%\)</span> more than that of the claims caused by the Hurricane Andrew - one of the largest natural disasters in the history of North America. After all, the catastrophe caused approximately 1.44 billion Canadian dollars insurance settlements which is the highest loss burden in the history of Canada. More examples of similar catastrophic events that caused extremal insurance losses are Hurricanes Harvey and Sandy, the 2011 Japanese earthquake and tsunami, and so forth.</p>
+<p>In the context of insurance, a few large losses hitting a portfolio and then converting into claims usually represent the greatest part of the indemnities paid by insurance companies. The aforementioned losses, also called `extremes’, are quantitatively modelled by the tails of the associated probability distributions. From the quantitative modelling standpoint, relying on probabilistic models with improper tails is rather daunting. For instance, periods of financial stress may appear with higher frequency than expected, and insurance losses may occur with worse severity. Therefore, the study of probabilistic behavior in the tail portion of actuarial models is of utmost importance in the modern framework of quantitative risk management. For this reason, this section is devoted to the introduction of a few mathematical notions that characterize the tail weight of random variables (r.v.’s). The applications of these notions will benefit us in the construction and selection of appropriate models with desired mathematical properties in the tail portion, that are suitable for a given task.</p>
+<p>Formally, define <span class="math inline">\(X\)</span> to be the (random) obligations that arise from a collection (portfolio) of insurance contracts. We are particularly interested in studying the right tail of the distribution of <span class="math inline">\(X\)</span>, which represents the occurrence of large losses. Speaking plainly, a r.v. is said to be heavier-tailed if higher probabilities are assigned to larger values. Unwelcome outcomes are more likely to occur for an insurance portfolio that is described by a loss r.v. possessing heavier (right) tail. Tail weight can be an absolute or a relative concept. Specifically, for the former, we may consider a r.v. to be heavy-tailed if certain mathematical properties of the probability distribution are met. For the latter, we can say the tail of one distribution is heavier than the other if some tail measures are larger/smaller.</p>
+<p>In the statistics and probability literature, there are several quantitative approaches have been proposed to classify and compare tail weight. Among most of these approaches, the survival functions serve as the building block. In what follows, we are going to introduce two simple yet useful tail classification methods, in which the basic idea is to study the quantities that are closely related to behavior of the survival function of <span class="math inline">\(X\)</span>.</p>
+<div id="classification-based-on-moments" class="section level3">
+<h3><span class="header-section-number">0.1.1</span> Classification Based on Moments</h3>
+<p>One possible way of classifying the tail weight of distribution is by assessing the existence of raw moments. Since our major interest lies in the right tails of distributions, we henceforth assume the obligation/loss r.v. <span class="math inline">\(X\)</span> to be positive. At the outset, let us recall that the <span class="math inline">\(k-\)</span>th raw moment of a continuous r.v. <span class="math inline">\(X\)</span>, for <span class="math inline">\(k\geq 0\)</span>, can be computed via <span class="math display">\[\begin{eqnarray*}
+    \mu_k&#39; &amp;=&amp; k \int_0^{\infty} x^{k-1} S(x) dx, \\
+    \end{eqnarray*}\]</span> where <span class="math inline">\(S(\cdot)\)</span> denotes the survival function of <span class="math inline">\(X\)</span>. It is a simple matter to see that the existence of the raw moments depends on the asymptotic behavior of the survival function at infinity. Namely, the faster the survival function decays to zero, the higher the order of finite moment the associated r.v. possesses. Hence the maximal order of finite moment, denoted by <span class="math inline">\(k^{\ast}:=\sup\{k\in \mathbf{R}_+:\mu_k&#39;&lt;\infty \}\)</span>, can be considered as an indicator of tail weight. This observation leads us to the moment-based tail weight classification method, which is defined formally next.</p>
+<!-- \label{def:moment-base} -->
+<p><strong>Definition 1.</strong> <em>For a positive loss random variable <span class="math inline">\(X\)</span>, if all the positive raw moments exist, namely the maximal order of finite moment <span class="math inline">\(k^{\ast}=\infty\)</span>, then <span class="math inline">\(X\)</span> is said to be light-tailed based on the moment method. If <span class="math inline">\(k^{\ast}=a \in (0,\infty)\)</span>, then <span class="math inline">\(X\)</span> is said to be heavy-tailed based on the moment method. Moreover, for two positive loss random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with maximal orders of moment <span class="math inline">\(k^{\ast}_1\)</span> and <span class="math inline">\(k^{\ast}_2\)</span> respectively, we say <span class="math inline">\(X_1\)</span> has a heavier (right) tail than <span class="math inline">\(X_2\)</span> if <span class="math inline">\(k^{\ast}_1\leq k^{\ast}_2\)</span>.</em></p>
+<p>It is noteworthy that the first part of Definition 1 is an absolute concept of tail weight, while the second part is a relative concept of tail weight which compares the (right) tails between two distributions. Next, we are going to present a few examples that illustrate the applications of the moment-based method for comparing tail weight. Some of these examples are borrowed from <span class="citation">Klugman, Panjer, and Willmot (<a href="#ref-klugman2012">2012</a>)</span>.</p>
+<!-- \label{exm:gamma}   -->
+<p><strong>Example 1.</strong> <em>Let <span class="math inline">\(X\sim Gamma(\alpha,\theta)\)</span>, with <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>, then for all <span class="math inline">\(k&gt;0\)</span>, <span class="math display">\[\begin{eqnarray*}
+    \mu_k&#39; &amp;=&amp; \int_0^{\infty} x^k \frac{x^{\alpha-1} e^{-x/\theta}}{\Gamma(\alpha) \theta^{\alpha}} dx \\
+    &amp;=&amp; \int_0^{\infty} (y\theta)^k  \frac{(y\theta)^{\alpha-1} e^{-y}}{\Gamma(\alpha) \theta^{\alpha}} \theta dy \\
+    &amp;=&amp; \frac{\theta^k}{\Gamma(\alpha)} \Gamma(\alpha+k) &lt; \infty.\end{eqnarray*}\]</span> Since all the positive moments exist, i.e., <span class="math inline">\(k^{\ast}=\infty\)</span>, in accordance with the moment-based classification method in Definition 1, the gamma distribution is light-tailed.</em></p>
+<!-- \label{exm:weibull} -->
+<p><strong>Example 2.</strong> <em>Let <span class="math inline">\(X\sim Weibull(\theta,\tau)\)</span>, with <span class="math inline">\(\theta&gt;0\)</span> and <span class="math inline">\(\tau&gt;0\)</span>, then for all <span class="math inline">\(k&gt;0\)</span>, <span class="math display">\[\begin{eqnarray*}
+    \mu_k&#39; &amp;=&amp; \int_0^{\infty} x^k \frac{\tau x^{\tau-1} }{\theta^{\tau}} e^{-(x/\theta)^{\tau}}dx \\
+    &amp;=&amp; \int_0^{\infty}  \frac{ y^{k/\tau} }{\theta^{\tau}} e^{-y/\theta^{\tau}}dy \\
+    &amp;=&amp; \theta^{k} \Gamma(1+k/\tau) &lt; \infty.\end{eqnarray*}\]</span> Again, due to the existence of all the positive moments, the Weibull distribution is light-tailed.</em></p>
+<p>We notice in passing that the gamma and Weibull distributions have been used quite intensively in the actuarial practice nowadays. Applications of these two distributions are vast which include, but are not limited to, insurance claim severity modelling, solvency assessment, loss reserving, aggregate risk approximation, reliability engineering and failure analysis. We have thus far seen two examples of using the moment-based method to analyze light-tailed distributions. We document a heavy-tailed example in what follows.</p>
+<p><strong>Example 3.</strong> <em>Let <span class="math inline">\(X\sim Pareto(\alpha,\theta)\)</span>, with <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>, then for <span class="math inline">\(k&gt;0\)</span> <span class="math display">\[\begin{eqnarray*}
+    \mu_k^{&#39;} &amp;=&amp; \int_0^{\infty} x^k \frac{\alpha \theta^{\alpha}}{(x+\theta)^{\alpha+1}} dx \\
+    &amp;=&amp; \alpha \theta^{\alpha} \int_{\theta}^{\infty} (y-\theta)^k {y^{-(\alpha+1)}} dy.
+\end{eqnarray*}\]</span> Consider a similar integration: <span class="math display">\[\begin{eqnarray*}
+  g_k:=\int_{\theta}^{\infty} {y^{k-\alpha-1}} dy=\left\{
+  \begin{array}{ll}
+    &lt;\infty, &amp; \hbox{for } k&lt;\alpha;\\
+    =\infty, &amp; \hbox{for } k\geq \alpha.
+  \end{array}
+\right.
+\end{eqnarray*}\]</span> Meanwhile, <span class="math display">\[\lim_{y\rightarrow \infty} \frac{(y-\theta)^k {y^{-(\alpha+1)}}}{y^{k-\alpha-1}}=\lim_{y\rightarrow \infty}
+(1-\theta/y)^{k}=1.\]</span> Application of the limit comparison theorem for improper integrals yields <span class="math inline">\(\mu_k&#39;\)</span> is finite if and only if <span class="math inline">\(g_k\)</span> is finite. Hence we can conclude that the raw moments of Pareto r.v.’s exist only up to <span class="math inline">\(k&lt;\alpha\)</span>, i.e., <span class="math inline">\(k^{\ast}=\alpha\)</span>, and thus the distribution is heavy-tailed. What is more, the maximal order of finite moment depends only on the shape parameter <span class="math inline">\(\alpha\)</span> and it is an increasing function of <span class="math inline">\(\alpha\)</span>. In other words, based on the moment method, the tail weight of Pareto r.v.’s is solely manipulated by <span class="math inline">\(\alpha\)</span> – the smaller the value of <span class="math inline">\(\alpha\)</span>, the heavier the tail weight becomes. Since <span class="math inline">\(k^{\ast}&lt;\infty\)</span>, the tail of Pareto distribution is heavier than those of the gamma and Weibull distributions.</em></p>
+<p>We are going to conclude this current section by an open discussion on the limitations of the moment-based method. Despite its simple implementation and intuitive interpretation, there are certain circumstances in which the application of the moment-based method is not suitable. First, for more complicated probabilistic models, the <span class="math inline">\(k\)</span>-th raw moment may not be simple to derive, and thus the identification of the maximal order of finite moment can be challenging. Second, the moment-based method does not well comply with main body of the well established heavy tail theory in literature. Specifically, the existence of moment generating functions (MGF’s) is arguably the most popular method for classifying heavy tail versus light tail within the community of academic actuaries. However, for some r.v’s such as the log normal r.v.’s, their MGF’s do not exist even that all the positive moments are finite. In these cases, applications of the moment-based and the MFG-based methods can lead to different tail weight assessment. Third, when we need to compare the tail weight between two light-tailed distributions both having all positive moments exist, the moment-based method is no longer informative (see, e.g., Examples 1 and 2).</p>
+</div>
+<div id="comparison-based-on-limiting-tail-behavior" class="section level3">
+<h3><span class="header-section-number">0.1.2</span> Comparison Based on Limiting Tail Behavior</h3>
+<p>In order to resolve the aforementioned issues of the moment-based classification method, an alternative approach for comparing tail weight is to directly study the limiting behavior of the survival functions.</p>
+<p><strong>Definition 2.</strong> <em>For two r.v.’s <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and let <span class="math display">\[
+\gamma:=\lim_{t\rightarrow \infty}\frac{S_X(t)}{S_Y(t)}.
+\]</span> We say that</em></p>
+<ul>
+<li><em><span class="math inline">\(X\)</span> has a heavier right tail than <span class="math inline">\(Y\)</span> if <span class="math inline">\(\gamma=\infty\)</span>;</em><br />
+</li>
+<li><em><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are proportionally equivalent in the right tail, if <span class="math inline">\(\gamma =c\in \mathbf{R}_+\)</span>;</em></li>
+<li><em><span class="math inline">\(X\)</span> has a lighter right tail than <span class="math inline">\(Y\)</span> if <span class="math inline">\(\gamma=0\)</span>.</em></li>
+</ul>
+<p><strong>Example 4.</strong> <em>Let <span class="math inline">\(X\sim Pareto(\alpha, \theta)\)</span> and <span class="math inline">\(Y\sim Weibull(\tau, \theta)\)</span>, for <span class="math inline">\(\alpha&gt;0\)</span>, <span class="math inline">\(\tau&gt;0\)</span>, and <span class="math inline">\(\theta&gt;0\)</span>, we have <span class="math display">\[\begin{eqnarray*}
+    \lim_{t\rightarrow \infty}\frac{S_X(t)}{S_Y(t)} &amp;=&amp; \lim_{t\rightarrow \infty}\frac{(1+t/\theta)^{-\alpha}}{\exp\{-(t/\theta)^{\tau}\}} \\
+    &amp;=&amp; \lim_{t\rightarrow \infty}\frac{\exp\{t/\theta^{\tau} \}}{(1+t^{1/\tau}/\theta)^{\alpha}} \\
+    &amp;=&amp; \lim_{t\rightarrow \infty}\frac{\sum_{i=0}^{\infty}\left(\frac{t}{\theta^{\tau}}\right)^{i}/i!}{(1+t^{1/\tau}/\theta)^{\alpha}}\\
+    &amp;=&amp; \lim_{t\rightarrow \infty} \sum_{i=0}^{\infty} \left(t^{-i/\alpha}+\frac{t^{(1/\tau-i/\alpha)}}{\theta} \right)^{-\alpha}/\theta^{\tau i}i!\\
+    &amp;=&amp; \infty.
+    \end{eqnarray*}\]</span> Therefore, the Pareto distribution has a heavier tail than the Weibull distribution. One may also realize that exponentials go to infinity faster than polynomials, thus the aforementioned limit must be infinite.</em></p>
+<p>For some distributions of which the survival functions do not admit explicit expressions, we may find the following alternative formula useful: <span class="math display">\[\begin{eqnarray*}
+    \lim_{t\to \infty} \frac{S_X(t)}{S_Y(t)} &amp;=&amp; \lim_{t \to \infty} \frac{S_X^{&#39;}(t)}{S_Y^{&#39;}(t)} \\
+    &amp;=&amp; \lim_{t \to \infty} \frac{-f_X(t)}{-f_Y(t)}\\
+ &amp;=&amp; \lim_{t\to \infty} \frac{f_X(t)}{f_Y(t)}.
+\end{eqnarray*}\]</span> given that the density functions exist.</p>
+<p><strong>Example 5.</strong> <em>Let <span class="math inline">\(X\sim Pareto(\alpha, \theta)\)</span> and <span class="math inline">\(Y\sim Gamma(\alpha, \theta)\)</span>, for <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>, we have <span class="math display">\[\begin{eqnarray*}
+    \lim_{t\to \infty} \frac{f_{X}(t)}{f_{Y}(t)} &amp;=&amp; \lim_{t \to \infty} \frac{\alpha \theta^{\alpha} (t+ \theta)^{-\alpha-1}}{t^{\tau-1} e^{-t/\lambda} \lambda^{-\tau} \Gamma(\tau)^{-1}} \\
+ &amp;\propto&amp;  \lim_{t\to \infty} \frac{e^{t/\lambda}}{(t+\theta)^{\alpha+1} t^{\tau-1}} \\
+    &amp;=&amp; \infty,\end{eqnarray*}\]</span> as exponentials go to infinity faster than polynomials.</em></p>
+</div>
+</div>
+<div id="risk-measures" class="section level2">
+<h2><span class="header-section-number">0.2</span> Risk measures</h2>
+<p>In this previous section, we studied two methods for classifying the weight of distribution tails. We may claim that the risk associated with one distribution is more dangerous (asymptotically) than the others if the tail is heavier. However, knowing one risk is more dangerous (asymptotically) than the others may not provide sufficient information for a sophisticated risk management purpose, and in addition, one is also interested in quantifying how much more. In fact, the magnitude of risk associated with a given loss distribution is an essential input for many insurance applications, such as actuarial pricing, reserving, hedging, insurance regulatory oversight, and so forth.</p>
+<p>To compare the magnitude of risk in a practically convenient manner, we aim to seek a function that maps the loss r.v. of interest to a numerical value indicating the level of riskiness, which is termed the risk measure. Putting mathematically, denoted by <span class="math inline">\(\mathcal{X}\)</span> a set of insurance loss r.v.’s, a risk measure is a functional map <span class="math inline">\(H:\mathcal{X}\rightarrow \mathbf{R}_+\)</span>. In principle, risk measures can admit an unlimited number of functional formats. Classical examples of risk measures include the mean <span class="math inline">\(\mathbf{E}[X]\)</span>, the standard deviation <span class="math inline">\(\mathbf{SD}(X):=\sqrt{\mathbf{Var}(X)}\)</span>, the standard deviation principle</p>
+<!-- \label{eqn:SD-principle} -->
+<span class="math display" id="eq:SD-principle">\[\begin{equation}
+H_{\mathbf{SD}}(X):=\mathbf{E}[X]+\alpha \mathbf{SD}(X),\text{ for } \alpha\geq 0,
+\tag{1}
+\end{equation}\]</span>
+<p>and the variance principle <span class="math display">\[
+H_{\mathbf{Var}}(X):=\mathbf{E}[X]+\alpha \mathbf{Var}(X),\text{ for } \alpha\geq 0.
+\]</span> It is a simple matter to check that all the aforementioned functions are risk measures in which we input the loss r.v. and the functions output a numerical value. On a different note, the function <span class="math inline">\(H^{\ast}(X):=\alpha X^{\beta}\)</span> for any real-valued <span class="math inline">\(\alpha,\beta\neq 0\)</span>, is not a risk measure since <span class="math inline">\(H^{\ast}\)</span> produces another r.v. rather than a single numerical value.</p>
+<p>Since risk measures are scalar measures which aim to use a single numerical value to describe the stochastic nature of loss r.v.’s, it should not be surprising to us that there is no risk measures can capture all the risk information of the associated r.v.’s. Therefore, when seeking useful risk measures, it is important for us to keep in mind that the measures should be at least</p>
+<ul>
+<li>interpretable practically;<br />
+</li>
+<li>computable conveniently; and<br />
+</li>
+<li>being able to reflect the most critical information of risk underpinning the loss distribution.</li>
+</ul>
+<p>A vast number of risk measures have been developed in the literature of actuarial mathematics. Unfortunately, there is no best risk measure that can outperform the others, and the selection of appropriate risk measure depends mainly on the application questions at hand. In this respect, it is imperative to emphasize that `risk’ is a subjective concept, and thus even given the same problem, there are multifarious approaches to assess risk. However, for many risk management applications, there is a wide agreement that economically sounded risk measures should satisfy four major axioms which we are going to describe them in detail next. Risk measures that satisfy these axioms are termed <em>coherent</em> risk measures.</p>
+<p>Consider in what follows a risk measure <span class="math inline">\(H(\cdot)\)</span>, then <span class="math inline">\(H\)</span> is a coherent risk measure if the following axioms are satisfied.</p>
+<ul>
+<li><strong>Axiom 1.</strong> <em>Subadditivity:</em> <span class="math inline">\(H(X+Y)\leq H(X)+H(Y)\)</span>. The economic implication of this axiom is that diversification benefits exist if different risks are combined.<br />
+</li>
+<li><strong>Axiom 2.</strong> <em>Monotonicity:</em> if <span class="math inline">\(\mathbf{P}[X\leq Y]=1\)</span>, then <span class="math inline">\(H(X)\leq H(Y)\)</span>. Recall that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are r.v.’s representing losses, the underlying economic implication is that higher losses essentially leads to a higher level of risk.<br />
+</li>
+<li><strong>Axiom 3.</strong> <em>Positive homogeneity:</em> <span class="math inline">\(H(cX)=cH(X)\)</span> for any positive constant <span class="math inline">\(c\)</span>. A potential economic implication about this axiom is that risk measure should be independent of the monetary units in which the risk is measured. For example, let <span class="math inline">\(c\)</span> be the currency exchange rate between the US and Canadian dollars, then the risk of random losses measured in terms of US dollars (i.e., X) and Canadian dollars (i.e., cX) should be different only up to the exchange rate <span class="math inline">\(c\)</span> (i.e., <span class="math inline">\(cH(x)=H(cX)\)</span>).<br />
+</li>
+<li><strong>Axiom 4.</strong> <em>Translation invariance:</em> <span class="math inline">\(H(X+c)=H(X)+c\)</span> for any positive constant <span class="math inline">\(c\)</span>. If the constant <span class="math inline">\(c\)</span> is interpreted as risk-free cash, this axiom tells that no additional risk is created for adding cash to an insurance portfolio, and injecting risk-free capital of <span class="math inline">\(c\)</span> can only reduce the risk by the same amount.</li>
+</ul>
+<p>Verifying the coherent properties for some risk measures can be quite straightforward, but it can be very challenging sometimes. For example, it is a simple matter to check that the mean is a coherent risk measure since for any pair of r.v.’s <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> having finite means and constant <span class="math inline">\(c&gt;0\)</span>,</p>
+<ul>
+<li>validation of <em>subadditivity</em>: <span class="math inline">\(\mathbf{E}[X+Y]=\mathbf{E}[X]+\mathbf{E}[Y]\)</span>;</li>
+<li>validation of <em>monotonicity</em>: if <span class="math inline">\(\mathbf{P}[X\leq Y]=1\)</span>, then <span class="math inline">\(\mathbf{E}[X]\leq \mathbf{E}[Y]\)</span>;</li>
+<li>validation of <em>positive homogeneity</em>: <span class="math inline">\(\mathbf{E}[cX]=c\mathbf{E}[X]\)</span>;</li>
+<li>validation of <em>translation invariance</em>: <span class="math inline">\(\mathbf{E}[X+c]=\mathbf{E}[X]+c\)</span>.</li>
+</ul>
+<p>On a different note, the standard deviation is not a coherent risk measure. Specifically, one can check that the standard deviation satisfies</p>
+<ul>
+<li>validation of <em>subadditivity</em>: <span class="math display">\[\begin{eqnarray*} \mathbf{SD}[X+Y]&amp;=&amp;\sqrt{\mathbf{Var}(X)+\mathbf{Var}(Y)+2\mathbf{Cov}(X,Y)}\\
+  &amp;\leq&amp; \sqrt{\mathbf{SD}(X)^2+\mathbf{SD}(Y)^2+2\mathbf{SD}(X)\mathbf{SD}(Y)}\\
+  &amp;=&amp; \mathbf{SD}(X)+\mathbf{SD}(Y);
+  \end{eqnarray*}\]</span></li>
+<li>validation of <em>positive homogeneity</em>: <span class="math inline">\(\mathbf{SD}[cX]=c~\mathbf{SD}[X]\)</span>.</li>
+</ul>
+However, the standard deviation does not comply with translation invariance property as for any positive constant <span class="math inline">\(c\)</span>, <span class="math display">\[
+\mathbf{SD}(X+c)=\mathbf{SD}(X)&lt;\mathbf{SD}(X)+c.
+\]</span> Moreover, the standard deviation also does not satisfy the monotonicity property. To see this, consider the following two r.v.’s <!-- \label{eqn:special_x} -->
+<span class="math display" id="eq:special-x">\[\begin{eqnarray}
+X=\left\{
+    \begin{array}{ll}
+      0, &amp; \hbox{with probability $0.25$;} \\
+      4, &amp; \hbox{with probability $0.75$,}
+    \end{array}
+  \right.
+\tag{2}
+\end{eqnarray}\]</span>
+and <span class="math inline">\(Y\)</span> is a degenerated r.v. such that <!-- \label{eqn:special_y} -->
+<span class="math display" id="eq:special-y">\[\begin{eqnarray}
+\mathbf{P}[Y=4]=1.
+\tag{3}
+\end{eqnarray}\]</span>
+<p>It is easy to check that <span class="math inline">\(\mathbf{P}[X\leq Y]=1\)</span>, but <span class="math inline">\(\mathbf{SD}(X)=\sqrt{4^2\cdot 0.25\cdot 0.75}=\sqrt{3}&gt;\mathbf{SD}(Y)=0\)</span>.</p>
+<p>We have so far checked that <span class="math inline">\(\mathbf{E}[\cdot]\)</span> is a coherent risk measure, but not <span class="math inline">\(\mathbf{SD}(\cdot)\)</span>. Let us now proceed to study the coherent property for the standard deviation principle <a href="#eq:SD-principle">(1)</a> which is a linear combination of two coherent and incoherent risk measures. To this end, for a given <span class="math inline">\(\alpha&gt;0\)</span>, we check the four axioms for <span class="math inline">\(H_{\mathbf{SD}}(X+Y)\)</span> one by one:</p>
+<ul>
+<li>validation of <em>subadditivity:</em> <span class="math display">\[\begin{eqnarray*}
+  H_{\mathbf{SD}}(X+Y) &amp;=&amp; \mathbf{E}[X+Y]+\alpha \mathbf{SD}(X+Y) \\
+  &amp;\leq&amp; \mathbf{E}[X]+\mathbf{E}[Y]+\alpha [\mathbf{SD}(X) +\mathbf{SD}(Y)]\\
+  &amp;=&amp; H_{\mathbf{SD}}(X)+ H_{\mathbf{SD}}(Y);
+\end{eqnarray*}\]</span></li>
+<li>validation of <em>positive homogeneity:</em> <span class="math display">\[
+H_{\mathbf{SD}}(cX)=c\mathbf{E}[X]+c\alpha\mathbf{SD}(X)=cH_{\mathbf{SD}}(X);
+\]</span></li>
+<li>validation of <em>translation invariance:</em> <span class="math display">\[
+H_{\mathbf{SD}}(X+c)=\mathbf{E}[X]+c+\alpha\mathbf{SD}(X)=H_{\mathbf{SD}}(X)+c.
+\]</span></li>
+</ul>
+<p>It only remains to verify the monotonicity property, which may or may not be satisfied depending on the value of <span class="math inline">\(\alpha\)</span>. To see this, consider again the setup of <a href="#eq:special-x">(2)</a> and <a href="#eq:special-y">(3)</a> in which <span class="math inline">\(\mathbf{P}[X\leq Y]=1\)</span>. Let <span class="math inline">\(\alpha=0.1\cdot \sqrt{3}\)</span>, then <span class="math inline">\(H_{\mathbf{SD}}(X)=3+0.3=3.3&lt; H_{\mathbf{SD}}(Y)=4\)</span> and the monotonicity condition is met. On the other hand, let <span class="math inline">\(\alpha=\sqrt{3}\)</span>, then <span class="math inline">\(H_{\mathbf{SD}}(X)=3+3=6&gt; H_{\mathbf{SD}}(Y)=4\)</span> and the monotonicity condition is not satisfied. More precisely, by setting <span class="math display">\[
+  H_{\mathbf{SD}}(X) = 3+\alpha\sqrt{3}
+\leq4= H_{\mathbf{SD}}(Y),
+\]</span> we find that the monotonicity condition is only satisfied for <span class="math inline">\(0\leq\alpha\leq 1/\sqrt{3}\)</span>, and thus the standard deviation principle <span class="math inline">\(H_{\mathbf{SD}}\)</span> is coherent. This result appears to be very intuitive to us since the standard deviation principle <span class="math inline">\(H_{\mathbf{SD}}\)</span> is a linear combination two risk measures of which one is coherent and the other is incoherent. If <span class="math inline">\(\alpha\leq 1/\sqrt{3}\)</span>, then the coherent measure dominates the incoherent one, thus the resulting measure <span class="math inline">\(H_{\mathbf{SD}}\)</span> is coherent and vice versa.</p>
+<p>The literature on risk measures has been growing rapidly in popularity and importance. In the succeeding subsections, we are going to introduce two indices which have recently earned unprecedented amount of interest among theoreticians, practitioners, and regulators. They are namely the <em>Value-at-Risk</em> (VaR) and the <em>Tail Value-at-Risk</em> (TVaR) measures. The economic rationale behind these two popular risk measures is similar to that for the tail classification methods introduced in the previous section, with which we hope to capture the risk of extremal losses represented by the distribution tails.</p>
+<div id="value-at-risk" class="section level3">
+<h3><span class="header-section-number">0.2.1</span> Value-at-Risk</h3>
+<p>At the outset, we offer the formal definition of VaR.</p>
+<p><strong>Definition 3.</strong> <em>Consider an insurance loss random variable <span class="math inline">\(X\)</span>. The Value-at-Risk measure of <span class="math inline">\(X\)</span> with confidence level <span class="math inline">\(q\in [0,1]\)</span> is formulated as <span class="math display" id="eq:Value-at-Risk">\[\begin{eqnarray}
+VaR_q[X]:=\inf\{x\in \mathbf{R}:F_X(x)\geq q\}.
+\tag{4}
+\end{eqnarray}\]</span></em></p>
+<p>Speaking bluntly, the VaR measure outputs the smallest value of <span class="math inline">\(X\)</span> such that the associated c.d.f. first excesses or equates to <span class="math inline">\(q\)</span>. In the fields of probability and statistics, the VaR is also known as the percentiles.</p>
+<p>Here is how we should interpret VaR in the lingo of actuarial mathematics. VaR is a forecast of the `maximal’ probable loss for a insurance product/portfolio or a risky investment occurring <span class="math inline">\(q\times 100\%\)</span> of times, over a specific time horizon (typically, one year). For instance, let <span class="math inline">\(X\)</span> be the annual loss r.v. of an insurance product, <span class="math inline">\(VaR_{0.95}[X]=100\)</span> million means that there is a <span class="math inline">\(5\%\)</span> chance that the loss will exceed 100 million over a given year. Owing to the meaningful interpretation, VaR has become the industrial standard to measuring financial and insurance risks since 1990’s. Financial conglomerates, regulators, and academics often utilize VaR to price insurance products, measure risk capital, ensure the compliance with regulatory rules, and disclose the financial positions.</p>
+<p>Next, we are going to present a few examples about the computation of VaR.</p>
+<!-- \label{exm:exponential}-->
+<p><strong>Example 6.</strong> <em>Consider an insurance loss r.v. <span class="math inline">\(X\sim Exp(\theta)\)</span> for <span class="math inline">\(\theta&gt;0\)</span>, then the c.d.f. of <span class="math inline">\(X\)</span> is given by <span class="math display">\[
+F_X(x)=1-e^{-x/\theta}, \text{ for } x&gt;0.
+\]</span> Since exponential distribution is a continuous distribution, the smallest value such that the c.d.f. first exceeds or equates to <span class="math inline">\(q \in [0,1]\)</span> must be at the point <span class="math inline">\(x_q\)</span> satisfying <span class="math display">\[
+q=F_X(x_q)=1-\exp\{-x_q/\theta \}.
+\]</span> Thus <span class="math display">\[
+VaR_q[X]=F_X^{-1}(q)=-\theta[\log(1-q)].
+\]</span></em></p>
+<p>The result reported in Example 6 can be generalized to any continuous r.v.’s having strictly increasing c.d.f. Specifically, the VaR of any continuous r.v.’s is simply the inverse of the corresponding c.d.f. Let us consider another example of continuous r.v. which has the support from negative infinity to positive infinity.</p>
+<!-- \label{exm:normal} -->
+<p><strong>Example 7.</strong> <em>Consider an insurance loss r.v. <span class="math inline">\(X\sim Normal(\mu,\sigma^2)\)</span> with <span class="math inline">\(\mu\in \mathbf{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>. In this case, one may interpret the negative values of <span class="math inline">\(X\)</span> as profit or revenue. Because normal distribution is a continuous distribution, the VaR of <span class="math inline">\(X\)</span> must satisfy <span class="math display">\[\begin{eqnarray*}
+ q &amp;=&amp; F_X(VaR_q[X])\\
+&amp;=&amp;\mathbf{P}\left[(X-\mu)/\sigma\leq (VaR_q[X]-\mu)/\sigma\right]\\
+&amp;=&amp;\Phi((VaR_q[X]-\mu)/\sigma).
+\end{eqnarray*}\]</span> Therefore, we have <span class="math display">\[
+VaR_q[X]=\Phi^{-1}(q)\ \sigma+\mu.
+\]</span></em></p>
+<p>In many insurance applications, we have to deal with transformations of r.v’s. For instance, in Example 7, the loss r.v. <span class="math inline">\(X\sim Normal(\mu, \sigma^2)\)</span> can be viewed as a linear transformation of a standard normal r.v. <span class="math inline">\(Z\sim Normal(0,1)\)</span>, namely <span class="math inline">\(X=Z\sigma+\mu\)</span>. By setting <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span>, it is straightforward for us to check <span class="math inline">\(VaR_q[Z]=\Phi^{-1}[q].\)</span> A useful finding revealed from Example 7 is that the VaR of a linear transformation of the normal r.v.’s is equivalent to the linear transformation of the VaR of the original r.v.’s. This finding can be further generalized to any r.v.’s as long as the transformations are strictly increasing. The next example highlights the usefulness of the abovementioned finding.</p>
+<p><strong>Example 8.</strong> <em>Consider an insurance loss r.v. <span class="math inline">\(Y\sim Log-Normal(\mu,\sigma^2)\)</span>, for <span class="math inline">\(\mu\in \mathbf{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>. That is <span class="math inline">\(\log Y\sim Normal(\mu,\sigma^2)\)</span>, or equivalently let <span class="math inline">\(X\sim Normal(\mu,\sigma^2)\)</span>, then <span class="math inline">\(Y\overset{d}{=}e^{X}\)</span> which is strictly increasing transformation. Here, the notation `<span class="math inline">\(\overset{d}{=}\)</span>’ means equality in distribution. The VaR of <span class="math inline">\(Y\)</span> is thus given by the exponential transformation of the VaR of <span class="math inline">\(X\)</span>. Precisely, for <span class="math inline">\(q\in [0,1]\)</span>, <span class="math display">\[
+VaR_{q}[Y]= e^{VaR_q[X]}=\exp\{\Phi^{-1}(q)\ \sigma+\mu\}.
+\]</span></em></p>
+<p>We have thus far seen a number of examples about the VaR for continuous r.v.’s, let us consider an example concerning the VaR for a discrete r.v.</p>
+<!-- \label{exm:discrete} -->
+<p><strong>Example 9.</strong> <em>Consider an insurance loss r.v. with the following probability distribution: <span class="math display">\[
+\mathbf{P}[X=x]=\left\{
+                  \begin{array}{ll}
+                    1, &amp; \hbox{with probability $0.75$;} \\
+                    3, &amp; \hbox{with probability $0.20$;} \\
+                    4, &amp; \hbox{with probability $0.05$.}
+                  \end{array}
+                \right.
+\]</span> The corresponding c.d.f. of <span class="math inline">\(X\)</span> is <span class="math display">\[
+F_X(x)=\left\{
+         \begin{array}{ll}
+           0, &amp; \hbox{ $x&lt;1$;} \\
+           0.75, &amp; \hbox{ $1\leq x&lt;3$;} \\
+           0.95, &amp; \hbox{ $3\leq x&lt;4$;} \\
+           1, &amp; \hbox{ $4\leq x$.}
+         \end{array}
+       \right.
+\]</span> By the definition of VaR, we thus have, for example,</em></p>
+<ul>
+<li><em><span class="math inline">\(VaR_{0.6}[X]=1\)</span>;</em></li>
+<li><em><span class="math inline">\(VaR_{0.9}[X]=3\)</span>;</em></li>
+<li><em><span class="math inline">\(VaR_{0.95}[X]=3\)</span>;</em></li>
+<li><em><span class="math inline">\(VaR_{0.950001}[X]=4\)</span>.</em></li>
+</ul>
+<p>Let us now conclude this current subsection by an open discussion of the VaR measure. Some advantages of utilizing VaR include</p>
+<ul>
+<li>possessing a practically meaningful interpretation;</li>
+<li>relatively simple to compute for many distributions with closed-form distribution functions;</li>
+<li>no additional assumption is required for the computation of VaR.</li>
+</ul>
+<p>On the other hand, the limitations of VaR can be particularly pronounced for some risk management practices. We report some of them herein:</p>
+<ul>
+<li>the selection of the confidence level <span class="math inline">\(q\in [0,1]\)</span> is highly subjective, while the VaR can be very sensitive to the choice of <span class="math inline">\(q\)</span> (e.g., in Example 9, <span class="math inline">\(VaR_{0.95}[X]=3\)</span> and <span class="math inline">\(VaR_{0.950001}[X]=4\)</span>);</li>
+<li>the scenarios/loss information that are above the <span class="math inline">\((1-p)\times 100\%\)</span> worst event, are completely neglected;</li>
+<li>VaR is not a coherent risk measure (specifically, the VaR measure does not satisfy the subadditivity axiom, meaning that diversification benefits may not be fully reflected).</li>
+</ul>
+</div>
+<div id="tail-value-at-risk" class="section level3">
+<h3><span class="header-section-number">0.2.2</span> Tail Value-at-Risk</h3>
+<p>Recall that the VaR represents the <span class="math inline">\((1-p)\times100\%\)</span> chance maximal loss. As we mentioned in the previous section, one major drawback of the VaR measure is that it does not reflect the extremal losses occurring beyond the <span class="math inline">\((1-p)\times100\%\)</span> chance worst scenario. For an illustration purpose, let us consider the following slightly unrealistic yet inspiring example.</p>
+<p><strong>Example 10.</strong> <em>Consider two loss r.v.’s <span class="math inline">\(X\sim Uniform [0,100]\)</span>, and <span class="math inline">\(Y\sim Exp(31.71)\)</span>. We use VaR at <span class="math inline">\(95\%\)</span> confidence level to measure the riskiness of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Simple calculation yields (see, also, Example 6), <span class="math display">\[
+VaR_{0.95}[X]=VaR_{0.95}[Y]=95,
+\]</span> and thus these two loss distributions have the same level of risk according to <span class="math inline">\(VaR_{0.95}\)</span>. However, it is clear that <span class="math inline">\(Y\)</span> is more risky than <span class="math inline">\(X\)</span> if extremal losses are of major concern since <span class="math inline">\(X\)</span> is bounded above while <span class="math inline">\(Y\)</span> is unbounded. Simply quantifying risk by using VaR at a specific confidence level could be misleading and may not reflect the true nature of risk.</em></p>
+<p>As a remedy, the <em>Tail Value-at-Risk</em> (TVaR) was proposed to measure the extremal losses that are above a given level of VaR as an average. We document the definition of TVaR in what follows. For the sake of simplicity, we are going to confine ourselves to continuous positive r.v’s only, which are more frequently used in the context of insurance risk management. We refer the interested reader to <span class="citation">Hardy (<a href="#ref-hardy2006">2006</a>)</span> for a more comprehensive discussion of TVaR for both discrete and continuous r.v.’s.</p>
+<!-- \label{def:TVaR}-->
+<p><strong>Definition 4.</strong> <em>Fix <span class="math inline">\(q\in [0,1]\)</span>, the Tail Value-at-Risk of a (continuous) r.v. <span class="math inline">\(X\)</span> is formulated as <span class="math display">\[\begin{eqnarray*}
+  TVaR_q[X] &amp;:=&amp; \mathbf{E}[X|X&gt;VaR_q[X]],
+\end{eqnarray*}\]</span> given that the expectation exists.</em></p>
+In light of Definition 4, the computation of TVaR typically consists of two major components - the VaR and the average of losses that are above the VaR. The TVaR can be computed via a number of formulas. Consider a continuous positive r.v. <span class="math inline">\(X\)</span>, for notional convenience, henceforth let us write <span class="math inline">\(\pi_q:=VaR_q[X]\)</span>. By definition, the TVaR can be computed via <!-- \label{eqn:cte-pdf} -->
+<span class="math display" id="eq:cte-pdf">\[\begin{eqnarray}
+TVaR_{q}[X]=\frac{1}{(1-q)}\int_{\pi_q}^{\infty}xf_X(x)dx.
+\tag{5}
+\end{eqnarray}\]</span>
+<!-- \label{exm:cte-normal} -->
+<p><strong>Example 11.</strong> <em>Consider an insurance loss r.v. <span class="math inline">\(X\sim Normal (\mu,\sigma^2)\)</span> with <span class="math inline">\(\mu\in \mathbf{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>. Denoted by <span class="math inline">\(Z\)</span> the standard normal r.v., for <span class="math inline">\(q\in[0,1]\)</span>, the TVaR of <span class="math inline">\(X\)</span> can be computed via <span class="math display">\[\begin{eqnarray*}
+  TVaR_q[X] &amp;=&amp; \mathbf{E}[X|X&gt;VaR_q[X]]\\
+&amp;=&amp;\mathbf{E}[\sigma Z+\mu|\sigma Z+\mu&gt;VaR_q[X]]\\
+&amp;=&amp; \sigma\mathbf{E}[Z|Z&gt;(VaR_q[X]-\mu)/\sigma]+\mu\\
+&amp;\overset{(1)}{=}&amp; \sigma\mathbf{E}[Z|Z&gt;VaR_q[Z]]+\mu,
+\end{eqnarray*}\]</span> where `<span class="math inline">\(\overset{(1)}{=}\)</span>’ holds because of the results reported in Example 7. Next, we turn to study <span class="math inline">\(TVaR_q[Z]=\mathbf{E}[Z|Z&gt;VaR_q[Z]]\)</span>. Let <span class="math inline">\(\omega(q)=(\Phi^{-1}(q))^2/2\)</span>, we have <span class="math display">\[\begin{eqnarray*}
+  (1-q)\ TVaR_q[Z] &amp;=&amp; \int_{\Phi^{-1}(q)}^{\infty} z \frac{1}{\sqrt{2\pi}} e^{-z^2/2}dz\\
+&amp;=&amp; \int_{\omega(q)}^{\infty}  \frac{1}{\sqrt{2\pi}} e^{-x}dx\\
+&amp;=&amp; \frac{1}{\sqrt{2\pi}} e^{-\omega(q)}\\
+&amp;=&amp; \phi(\Phi^{-1}(q)).
+\end{eqnarray*}\]</span> Thus, <span class="math display">\[
+TVaR_q[X]=\sigma\frac{\phi(\Phi^{-1}(q))}{1-q}+\mu.
+\]</span></em></p>
+<p>We mentioned earlier in the previous subsection that the VaR of a strictly increasing function of r.v. is equal to the function of VaR of the original r.v. Motivated by the results in Example 11, one can show that the TVaR of a strictly increasing linear transformation of r.v. is equal to the function of VaR of the original r.v. This is due to the linearity property of expectation. However, the aforementioned finding can not be extended to non-linear functions. The following example of log normal r.v. serves as a counter example.</p>
+<p><strong>Example 12.</strong> <em>Consider an insurance loss r.v. <span class="math inline">\(X\sim Log-Normal (\mu,\sigma^2)\)</span>, with <span class="math inline">\(\mu\in \mathbf{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>. Recall that the p.d.f. of log normal distribution is formulated as <span class="math display">\[
+f_X(x)=\frac{1}{\sigma\sqrt{2\pi} x}\exp\{-(\ln x-\mu )^2/2\sigma^2 \}, \text{ for } x&gt;0.
+\]</span> Fix <span class="math inline">\(q\in[0,1]\)</span>, then the TVaR of <span class="math inline">\(X\)</span> can be computed via</em></p>
+<!-- \label{eqn:cte-normal} -->
+<span class="math display" id="eq:cte-normal">\[\begin{eqnarray}
+  TVaR_q[X] &amp;=&amp; \frac{1}{(1-q)} \int_{\pi_q}^{\infty} x f_X(x)dx \nonumber\\
+&amp;=&amp;\frac{1}{(1-q)} \int_{\pi_q}^{\infty} \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{ -\frac{(\log x-\mu)^2}{2\sigma^2}
+\right\}dx\nonumber\\
+&amp;\overset{(1)}{=}&amp;\frac{1}{(1-q)} \int_{\omega(q)}^{\infty} \frac{1}{\sqrt{2\pi}} e^{ -\frac{1}{2}w^2+\sigma w+\mu}dw\nonumber\\
+&amp;=&amp;\frac{e^{\mu+\sigma^2/2}}{(1-q)} \int_{\omega(q)}^{\infty} \frac{1}{\sqrt{2\pi}} e^{ -\frac{1}{2}(w-\sigma)^2}dw\nonumber\\
+&amp;=&amp;\frac{e^{\mu+\sigma^2/2}}{(1-q)} \Phi(\omega(q)-\sigma),
+\tag{6}
+\end{eqnarray}\]</span>
+<p><em>where `<span class="math inline">\(\overset{(1)}{=}\)</span>’ holds by applying change of variable <span class="math inline">\(w=(\log x-\mu)/\sigma\)</span>, and <span class="math inline">\(\omega(q)=(\log \pi_q-\mu)/\sigma\)</span>. Evoking the formula of VaR for log normal r.v. reported in Example 7, we can simplify the expression <a href="#eq:cte-normal">(6)</a> into <span class="math display">\[\begin{eqnarray*}
+  TVaR_q[X] &amp;=&amp; \frac{e^{\mu+\sigma^2/2}}{(1-q)} \Phi(\Phi^{-1}(q)-\sigma).
+\end{eqnarray*}\]</span> Clearly, the TVaR of log normal r.v. is not the exponential of the TVaR of normal r.v.</em></p>
+<p>For distributions of which the distribution functions are more tractable to work with, we may apply integration by parts technique to rewrite Equation <a href="#eq:cte-pdf">(5)</a> as <span class="math display">\[\begin{eqnarray*}
+TVaR_{q}[X]&amp;=&amp;\left[-x S_X(x)\big |_{\pi_q}^{\infty}+\int_{\pi_q}^{\infty}S_X(x)dx\right]\frac{1}{(1-q)}\\
+&amp;=&amp; \pi_q +\frac{1}{(1-q)}\int_{\pi_q}^{\infty}S_X(x)dx.
+\end{eqnarray*}\]</span></p>
+<!-- \label{exm:cte-exponential} -->
+<p><strong>Example 13.</strong> <em>Consider an insurance loss r.v. <span class="math inline">\(X\sim Exp(\theta)\)</span> for <span class="math inline">\(\theta&gt;0\)</span>, we have seen from the previous subsection that <span class="math display">\[
+\pi_q=-\theta[\log(1-q)].
+\]</span> Let us now consider the TVaR: <span class="math display">\[\begin{eqnarray*}
+  TVaR_q[X] &amp;=&amp; \pi_q+\int_{\pi_q}^{\infty} e^{-x/\theta}dx/(1-q)\\
+&amp;=&amp; \pi_q+\theta e^{-\pi_q/\theta}dx/(1-q)\\
+&amp;=&amp; \pi_q+\theta.
+\end{eqnarray*}\]</span></em></p>
+<p>In the SOA exam, we may use the expectation formulas provided in the distribution table to compute TVaR. Specifically, we have <!-- \label{eqn:cte-expectation} --></p>
+<span class="math display" id="eq:cte-expectation">\[\begin{eqnarray}
+  TVaR_q[X] &amp;=&amp; \int_{\pi_q}^{\infty} (x-\pi_q+\pi_q)f_X(x)dx/(1-q) \nonumber\\
+&amp;=&amp; \pi_q+\frac{1}{(1-q)}\int_{\pi_q}^{\infty} (x-\pi_q)f_X(x)dx\nonumber\\
+&amp;=&amp; \pi_q+e_X(\pi_q)\nonumber\\
+&amp;=&amp; \pi_q +\frac{\left({\mathbf{E}[X]-\mathbf{E}[X\wedge\pi_q]}\right)}{(1-q)},
+\tag{7}
+\end{eqnarray}\]</span>
+<p>where <span class="math inline">\(e_X(d):=\mathbf{E}[X-d|X&gt;d]\)</span> for <span class="math inline">\(d&gt;0\)</span> denotes the mean excess loss function, and for many commonly used parametric distributions, the formulas for calculating <span class="math inline">\(\mathbf{E}[X]\)</span> and <span class="math inline">\(\mathbf{E}[X\wedge\pi_q]\)</span> can be found in the distribution table.</p>
+<strong>Example 14.</strong> <em>Consider a loss r.v. <span class="math inline">\(X\sim Pareto(\theta,\alpha)\)</span> with <span class="math inline">\(\theta&gt;0\)</span> and <span class="math inline">\(\alpha&gt;0\)</span>. The c.d.f. of <span class="math inline">\(X\)</span> is given by <span class="math display">\[
+F_X(x)=1-\left(\frac{\theta}{\theta+x} \right)^{\alpha}, \text{ for } x&gt;0 .
+\]</span> Fix <span class="math inline">\(q\in [0,1]\)</span> and set <span class="math inline">\(F_X(\pi_q)=q\)</span>, we readily obtain</em> <!-- \label{eqn:var-pareto} -->
+<span class="math display" id="eq:var-pareto">\[\begin{eqnarray}
+\pi_q=\theta\left[(1-q)^{-1/\alpha}-1 \right].
+\tag{8}
+\end{eqnarray}\]</span>
+<p><em>According to the distribution table provided in the SOA exam C, we know <span class="math display">\[
+\mathbf{E}[X]=\frac{\theta}{\alpha-1},
+\]</span> and <span class="math display">\[
+\mathbf{E}[X\wedge \pi_q]=\frac{\theta}{\alpha-1}\left[
+1-\left(\frac{\theta}{\theta+\pi_q}\right)^{\alpha-1}
+\right].
+\]</span> Evoking Equation <a href="#eq:cte-expectation">(7)</a> yields <span class="math display">\[\begin{eqnarray*}
+  TVaR_q[X] &amp;=&amp; \pi_q+\frac{\theta}{\alpha-1} \frac{(\theta/(\theta+\pi_q))^{\alpha-1}}
+{(\theta/(\theta+\pi_q))^{\alpha}}\\
+&amp;=&amp;\pi_q +\frac{\theta}{\alpha-1}\left( \frac{\pi_q+\theta}{\theta} \right)\\
+&amp;=&amp; \pi_q+\frac{\pi_q+\theta}{\alpha-1},
+\end{eqnarray*}\]</span> where <span class="math inline">\(\pi_q\)</span> is given by <a href="#eq:var-pareto">(8)</a>.</em></p>
+<p>Via change of variable, we can also rewrite Equation <a href="#eq:cte-pdf">(5)</a> as <!-- \label{eqn:cte-var} --></p>
+<span class="math display" id="eq:cte-var">\[\begin{eqnarray}
+  TVaR_{q}[X] &amp;=&amp; \frac{1}{(1-q)}\int_{q}^{1} VaR_{\alpha}[X]\ d\alpha.
+  \tag{9}
+\end{eqnarray}\]</span>
+<p>What this alternative formula <a href="#eq:cte-var">(9)</a> tells is that TVaR in fact is the average of <span class="math inline">\(VaR_{\alpha}[X]\)</span> with varying degree of confidence level over <span class="math inline">\(\alpha\in [q,1]\)</span>. Therefore, the TVaR effectively resolves most of the limitations of VaR outlined in the previous subsection. First, due to the averaging effect, the TVaR may be less sensitive to the change of confidence level compared with VaR. Second, all the extremal losses that are above the <span class="math inline">\((1-q)\times 100\%\)</span> worst probable event are taken in account. In this respect, it is a simple matter for us to see that for any given <span class="math inline">\(q\in [0,1]\)</span> <span class="math display">\[
+TVaR_q[X]\geq VaR_q[X].
+\]</span> Third and perhaps foremost, TVaR is a coherent risk measure and thus is able to more accurately capture the diversification effects of insurance portfolio. Herein, we do not intend to provide the proof of the coherent feature for TVaR, which is considered to be challenging technically.</p>
+</div>
+</div>
+<div id="further-reading-and-resources" class="section level2">
+<h2><span class="header-section-number">0.3</span> Contributors and Further Resources</h2>
+<div id="contributor" class="section level4 unnumbered">
+<h4>Contributor</h4>
+<ul>
+<li><strong>Jianxi Su</strong> - Purdue University</li>
+</ul>
+<div id="refs" class="references">
+<div>
+<p>Hardy, M. R. 2006. “An Introduction to Risk Measures for Actuarial Applications.” CAS; SOA.</p>
+</div>
+<div>
+<p>Klugman, S.A., H.H. Panjer, and G.E. Willmot. 2012. <em>Loss Models: From Data to Decisions</em>. 4th ed. NJ: Wiley.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-klugman2012">
+<p>Klugman, S.A., H.H. Panjer, and G.E. Willmot. 2012. <em>Loss Models: From Data to Decisions</em>. 4th ed. NJ: Wiley.</p>
+</div>
+<div id="ref-hardy2006">
+<p>Hardy, M. R. 2006. “An Introduction to Risk Measures for Actuarial Applications.” CAS; SOA.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
