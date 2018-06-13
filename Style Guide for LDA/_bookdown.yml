@@ -1,0 +1,5 @@
+book_filename: "Style Guide for LDA"
+rmd_file: ["index.Rmd", "AuthorTemplate.Rmd"]
+language:
+  ui:
+    chapter_name: "Chapter "

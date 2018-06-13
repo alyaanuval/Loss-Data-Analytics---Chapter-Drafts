@@ -1,9 +1,7 @@
 # Loss-Data-Analytics---Chapter-Drafts
 
-This site serves to compile chapter drafts for Loss Data Analytics
+This is a site to help store chapter drafts, style guide and display the style guide for authors.
 
-This site also demonstrates referencing in Bookdown
 
-https://rawgit.com/alyaanuval/Loss-Data-Analytics---Chapter-Drafts/master/LossDataAnalytics.html
 
 

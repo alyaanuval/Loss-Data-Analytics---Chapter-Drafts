@@ -1,0 +1,632 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{rotating}
+\usepackage{scalefnt}
+\usepackage{float}
+\usepackage{geometry}
+%\geometry{left=1in,right=1in,top=1in,bottom=1in}
+\geometry{left=0.8in,right=0.8in,top=1in,bottom=1in}
+\usepackage{alltt}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{indentfirst}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\setkeys{Gin}{width=0.6\textwidth}
+\title{General Insurance Case Study 1}
+
+\author{Edward W. (Jed) Frees
+%\thanks{University of Wisconsin} 
+\thanks{Keywords: Indonesian Fire Insurance} }
+
+%\doublespace
+
+\maketitle
+
+
+\scalefont{0.8} \tableofcontents
+
+\scalefont{1.25}
+
+\bigskip 
+
+\noindent\textit{Case Summary.} In this case study, we show the details of modeling the frequency and severity of fire insurance experience, summarized in Table \ref{T:BasicData}. 
+The data are from the Data Center Management Board of the National Insurance (BPPDAN), see the website by PT. REASURANSI INTERNASIONAL INDONESIA
+at \url{http://www.reindo.co.id/bppdan/default.asp}. \\
+
+After you have read the case, your assignment will be to replicate this analysis using different data. 
+\begin{itemize}
+\item You may use fire insurance experience but for a different year. 
+\item You may analyze another line of business, BPPDAN also provides data by industrial all risk, lost of profit, and earthquake..
+\item You may use all lines of business but focus a specific province, BPPDAN subdivides Indonesian experience into 32 provinces. 
+\item Alternatively, you may consider a group by occupation code such as mining, drilling, and so forth, 
+BPPDAN provides data by 14 occupation codes.
+\end{itemize}
+
+\newpage
+
+\section{Data}
+
+The data are summarized in Table \ref{T:BasicData}.
+
+\begin{table}[h]
+\begin{center}\scalefont{0.8}
+\caption{Indonesian Risk and Loss Profile 2009}\label{T:BasicData}
+\begin{tabular}{rrrrrrrr}
+\hline
+\multicolumn{3}{r}{Class of Business} &      \multicolumn{1}{l}{{\bf : FIRE}} & \multicolumn{3}{r}{{ Data Position from}} & { : 01/01/2009} \\
+
+\multicolumn{3}{r}{Underwriting Year} &  \multicolumn{1}{l}{{: 2009}} &    \multicolumn{3}{r}{{ to}} &     { : 15/06/2011} \\
+
+\multicolumn{3}{r}{Occupation Code} & \multicolumn{1}{l}{{: All Code}} &   \multicolumn{3}{r}{{ Processing Date}} & {: 15/10/2011} \\
+
+\hline
+           & \multicolumn{ 2}{c}{{\bf Sum Insured}} &  {\bf Number of} & {\bf Original} &  {\bf Claim} & {\bf Claim} &   {\bf Loss} \\
+
+{\bf Class} & \multicolumn{ 2}{c}{{ (In Million Rp)}} & {\bf Policies}& {\bf Premium} & {\bf Frequency} & {\bf Severity}  &
+{\bf Ratio} \\
+
+     & {From} &   {To} & & {(In Million Rp)} & & { (In Million Rp)}  \\
+\hline
+         1 &          0 &         50 &   161,015 & 64,850.58 &       668 & 38,243.84 &     58.97 \\
+         2 &         50 &        100 &   147,879 & 31,499.72 &       280 &  8,297.62 &     26.34 \\
+\hline
+         3 &        100 &        200 &   192,417 & 73,241.06 &       461 & 15,813.84 &     21.59 \\
+         4 &        200 &        300 &   120,484 & 71,680.01 &       314 & 14,515.05 &     20.25 \\
+         5 &        300 &        500 &   131,621 & 121,468.45 &       381 & 21,907.68 &     18.04 \\
+         6 &        500 &        750 &    65,260 & 90,817.97 &       210 & 13,030.42 &     14.35 \\
+         7 &        750 &      1,000 &    44,413 & 87,321.01 &       215 & 21,361.32 &     24.46 \\
+\hline
+         8 &      1,000 &      1,500 &    32,665 & 85,188.86 &       206 & 16,853.43 &     19.78 \\
+         9 &      1,500 &      2,000 &    16,922 & 58,965.73 &        83 & 13,492.44 &     22.88 \\
+        10 &      2,000 &      2,500 &     8,860 & 39,307.82 &        78 & 10,901.01 &     27.73 \\
+        11 &      2,500 &      3,000 &     6,673 & 35,803.31 &        77 &  9,007.83 &     25.16 \\
+        12 &      3,000 &      4,000 &     7,495 & 43,755.51 &        88 &  5,577.63 &     12.75 \\
+        13 &      4,000 &      5,000 &     4,660 & 34,239.52 &        77 & 13,154.63 &     38.42 \\
+\hline
+        14 &      5,000 &      7,500 &     5,819 & 50,291.28 &       145 & 12,752.13 &     25.36 \\
+        15 &      7,500 &     10,000 &     3,100 & 33,666.94 &        85 &  5,118.05 &     15.20 \\
+        16 &     10,000 &     20,000 &     4,821 & 67,854.71 &       354 & 43,203.70 &     63.67 \\
+        17 &     20,000 &     50,000 &     3,989 & 54,993.99 &       377 & 93,502.17 &    170.02 \\
+\hline
+        18 &     50,000 &    100,000 &     1,867 & 25,606.71 &       145 & 27,008.69 &    105.48 \\
+        19 &    100,000 &    500,000 &     2,349 & 26,276.96 &       280 & 156,418.90 &    595.27 \\
+        20 &    500,000 &      above &     1,089 & 73,162.42 &       222 &  4,093.45 &      5.60 \\
+\hline
+   \multicolumn{ 3}{c}{{\bf T o t a l s}} & {963,398} & {1,169,992.55} & {4,746} & {544,253.84} & {46.52} \\
+\hline
+\multicolumn{8}{l}{{\it Source: PT. Reasuransi Internasional Indonesia}} \\
+\multicolumn{8}{l}{{Website : http://www.reindo.co.id/bppdan/default.asp}} \\
+\hline
+\end{tabular}\scalefont{1.25}\end{center}
+\end{table}
+
+
+For this case study, we used the statistical package ``R'' for the analysis. 
+You may replicate the analysis using this package and the command syntax given in the following. 
+(Of course, there are several other languages that will do similar analyses.)
+For an introduction to ``R'' in the context regression modeling (which will be used for much of the 
+following analysis), one source is the web site for the book 
+\textit{Regression Modeling with Actuarial and Financial Applications}, Frees (2010), at
+\url{http://research.bus.wisc.edu/RegActuaries}.
+
+Here are the ``R'' Commands used to import the data and create important variables.
+
+\scalefont{0.8}
+<<>>=
+#  "R" Commands to Import Data
+Fire2009 =read.csv("FireRisk2009.csv", header=TRUE)#, sep="\t")
+#View(Fire2009)
+Fire2009$LossRatio <- 100*Fire2009$Claim/Fire2009$Premium
+Fire2009$NumClmPol <- Fire2009$NumClaim/Fire2009$NumPol
+#summary(Fire2009)
+#attach(Fire2009)
+@
+\scalefont{1.25}
+
+\newpage
+\section{Frequency Modeling}
+
+\subsection{Graphical Approaches}
+
+To understand patterns in the frequency of claims, we first examine several graphs. \\
+
+
+We first plot the number of policies by class. 
+Not surprisingly, we see that the number of policies decreases as class (a measure of size of the policy) increases.
+
+\scalefont{0.8}
+\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+plot(Fire2009$Class,Fire2009$NumPol, xlab="Class", ylab="Number of Policies")  #  FEWER POLICIES WITH LARGE SUM INSURED
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+We next examine the number of claims and the number of policies by class size. 
+The figure shows that classes with a large number of policies tend to have a large number of claims and similarly 
+for classes with small numbers. However, the pattern does not appear to be linear.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+plot(Fire2009$NumPol,Fire2009$NumClaim, xlab="Number of Policies", ylab="Number of Claims") #  MORE CLAIMS WITH MORE POLICIES
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+The number of policies is commonly used as an exposure measure for claim frequency. Thus, we rescale
+claim frequency and examine the average number of claims per policy.  
+The figure shows number of claims per policy versus class, which is a measure of the size of insurance. Interestingly, the number of claims per policy
+increases as the class (sum insured) increases. 
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$NumClmPol <- Fire2009$NumClaim/Fire2009$NumPol
+plot(Fire2009$Class,Fire2009$NumClmPol, xlab="Class", 
+                    ylab="Number of Claims per Policy")          
+#  MORE CLAIMS PER POLICIES AS SUM INSURED INCREASES
+@
+\end{center}\scalefont{1.25}
+
+
+\newpage
+Here is another way to see that the the frequency, as measured by the number of claims per policy, grows with the sum insured.
+Here, sum insured is defined to be the average of the upper and lower endpoints of the interval defining
+the class, or band. 
+This figure shows a linear relationship between average number of claims per policy and sum insured for small values of the sum insured.
+Although not displayed, this linear pattern does not hold for larger values of sum insured.
+
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$SumIns <- (Fire2009$SumFrom+Fire2009$SumTo)/2
+plot(Fire2009$SumIns,Fire2009$NumClmPol,xlab="Sum Insured", 
+      ylab="Average Number of Claims per Policy",xlim=c(0,50000)) 
+#  MORE CLAIMS PER POLICIES AS SUM INSURED INCREASES
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+Here is another way to see the relationship between the average number claims per policy and the sum insured. 
+This figure plots the logarithmic sum insured versus claims frequency. 
+This figure also shows that the claims frequency increases with
+sum insured.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>= 
+plot(log(Fire2009$SumIns),Fire2009$NumClmPol,xlab="Logarithmic Sum Insured",
+                                             ylab="Average Number of Claims per Policy")  
+#  MORE CLAIMS PER POLICIES AS SUM INSURED INCREASES
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+
+Another exposure measure is premium. Here is a plot that shows that the premium (per policy) is related to policy size as measured by sum 
+insured or class.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$PremPol <- Fire2009$Premium/Fire2009$NumPol
+plot(Fire2009$Class,Fire2009$PremPol, ylab="Premium per Policy",
+                                      xlab="Class")    # PREMIUM PER POLICY ALSO INCREASES AS SUM INSURED INCREASES
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+Here is a plot of premium per policy versus number of claims per policy. This suggests that premium might
+also be a useful exposure measure. From the figure, we see that premium is positively relatied to the number of claims.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$NumClmPol <- Fire2009$NumClaim/Fire2009$NumPol
+plot(Fire2009$PremPol,Fire2009$NumClmPol, xlab="Premium per Policy", ylab="Number of Claims per Policy")  
+          # INTERESTING THAT THE NUMBER OF CLAIMS PER POLICY INCREASES
+           # AS THE PREMIUM PER POLICY INCREASES
+@
+\end{center}\scalefont{1.25}
+
+
+\newpage
+
+\subsection{Fitting Claims Number Models}
+
+The graphical analysis section suggests a number of variables that may influence the number of claims per policy.
+In this section, we fit several frequency models that are suggested by the graphical analysis.
+We use regression and generalized linear model techniques for this fitting. For an introduction
+or review of these techniques, one source is Frees (2010),
+\textit{Regression Modeling with Actuarial and Financial Applications}, Cambridge University Press.
+
+
+\subsubsection{Model without Explanatory Variables}
+
+As a benchmark, we fit models that do not use any information from potential explanatory variables.
+To begin, we calculate the average number of claims per policy to be:
+
+\scalefont{0.8}
+<<>>=
+#  CLAIMS NUMBER MODELS
+#  MODEL 1 - IGNORE SUM INSURED, FIT NUMBER OF CLAIMS USING ONLY NUMBER OF POLICIES.
+(ModFreq.1.Estimate <- sum(Fire2009$NumClaim)/sum(Fire2009$NumPol))
+@
+\scalefont{1.25}
+
+As is well-known, this is the maximum likelihood estimate of a Poisson model. Here is the ``R'' code that verifies this:
+
+\scalefont{0.8}
+<<>>=
+ModFreq.1 <- glm(NumClaim ~ 1, offset=log(NumPol),poisson(link=log), data=Fire2009)
+summary(ModFreq.1)
+exp(ModFreq.1$coefficients) # SAME AS THE MEAN
+@
+\scalefont{1.25}
+
+From this, we can estimate the number of claims as the overall average times the number of policies in each class. 
+One way to assess the fit of a model that is easy to understand and explain is through a chi-square goodness of fit statistic. 
+Here is the calculation of this statistic.
+
+\begin{center}\scalefont{0.8}
+<<>>=
+ModFreq.1.Summary <- cbind (Fire2009$NumClaim,
+   ModFreq.1.Estimate*Fire2009$NumPol)
+   ModFreq.1.Summary  #  THIS IS A POOR FITTING MODEL
+(SM.ModFreq.1 <- sum((Fire2009$NumClaim - ModFreq.1.Estimate*Fire2009$NumPol)^2/(ModFreq.1.Estimate*Fire2009$NumPol)))
+@
+\scalefont{1.25}\end{center}
+
+Here is a function to make the calculation of these statistics more routine:
+
+\scalefont{0.8}
+<<>>=
+#  MAKE THESE STATISTICS ROUTINE TO SAVE WORK
+ModelSummary1 <- function(ModEstimate){
+   ModFreq.Summary <- cbind (Fire2009$NumClaim,ModEstimate)  
+   ModFreq.Summary } 
+   ModelSummary2 <- function(ModEstimate){sum((Fire2009$NumClaim - ModEstimate)^2/(ModEstimate))}
+
+ModelSummary1( ModFreq.1.Estimate*Fire2009$NumPol);ModelSummary2( ModFreq.1.Estimate*Fire2009$NumPol)
+@
+\scalefont{1.25}
+
+\subsubsection{Model with Number of Policies}
+
+We next consider a Poisson model where the number of policies is an explanatory variable in a Poisson regression.
+This is a slight extension of prior work in the sense that, in the previous model, we used logarithm number of policies
+as an offset. Recall, in GLM terminology, that an offset is simply an explanatory variable where the coefficient is
+pre-specified to be 1, regardless of the data.\\
+
+The goodness of fit statistic shows that the extra flexibility of allowing
+number of policies to be an explanatory variable improves the fit.
+
+\scalefont{0.8}
+<<>>=
+#  MODEL 1A - FIT NUMBER OF CLAIMS USING NUMBER OF POLICIES AS AN EXPLANATORY VARIABLE IN A POISSON REGRESSION
+ModFreq.1A <- glm(NumClaim ~ log(NumPol),poisson(link=log), data=Fire2009)
+summary(ModFreq.1A)
+ModelSummary1(ModFreq.1A$fitted.values);ModelSummary2(ModFreq.1A$fitted.values) #  NOT GREAT BUT BETTER THAN MODEL 1
+@
+\scalefont{1.25}
+
+\subsubsection{Model with Additonal Explanatory Variables}
+
+Adding logarithmic sum insured, a measure of the policy size, helps improve our fits.
+
+\scalefont{0.8}
+<<>>=
+#  MODEL 2 - INCLUDE CLASS AND log(NumPol) AS EXPLANATORY VARIABLEs IN A POISSON REGRESSION
+ModFreq.2 <- glm(NumClaim ~ log(SumIns)+log(NumPol),poisson(link=log), data=Fire2009)
+ModelSummary2(ModFreq.2$fitted.values) #  NOT GREAT BUT BETTER THAN MODEL 1
+@
+\scalefont{1.25}
+
+Replace logarithmic sum insured with Class, another measure of the policy size, helps improve our fits.
+
+\scalefont{0.8}
+<<>>=
+#  MODEL 2 - INCLUDE CLASS AND log(NumPol) AS EXPLANATORY VARIABLEs IN A POISSON REGRESSION
+ModFreq.2A <- glm(NumClaim ~ Class+log(NumPol),poisson(link=log), data=Fire2009)
+summary(ModFreq.2A)
+ModelSummary2(ModFreq.2A$fitted.values) #  NOT GREAT BUT BETTER THAN MODEL 1
+@
+\scalefont{1.25}
+
+For this model, the coefficient associated with logarithmic number of policies is nearly one.
+Thus, we call it one and go back to using logarithmic number of policies as an offset.
+The following model is a our preferred fitted model.
+This model essentially treats claims per policy as the dependent variable and 
+``class'' as an explanatory variable.
+
+
+\scalefont{0.8}
+<<>>=
+#  MODEL 2B - INCLUDE CLASS AS AN EXPLANATORY VARIABLE, NUMPOL AS AN OFFSET, IN A POISSON REGRESSION
+ModFreq.2B <- glm(NumClaim ~ Class, offset=log(NumPol),poisson(link=log), data=Fire2009)
+summary(ModFreq.2B)
+
+ModelSummary1(ModFreq.2B$fitted.values);ModelSummary2(ModFreq.2B$fitted.values) #  THIS IS THE BEST
+#  AS EITHER THE SUM INSURED OR THE NUMBER OF POLICIES INCREASE, THE EXPECTED NUMBER OF CLAIMS INCREASE
+@
+\scalefont{1.25}
+
+We tried a few other models. They were not bad but also did not provide a significant improvement.
+
+\scalefont{0.8}
+<<>>=
+#  A FEW OTHER MODELS TRIED BUT NOT ADOPTED
+ModFreq.3 <- glm(NumClaim ~ log(SumIns),offset=log(NumPol),poisson(link=log), data=Fire2009)
+ModelSummary2(ModFreq.3$fitted.values)
+ModFreq.4 <- glm(NumClaim ~ log(SumIns)+log(PremPol),offset=log(NumPol),poisson(link=log), data=Fire2009)
+ModelSummary2(ModFreq.4$fitted.values)
+ModFreq.5 <- glm(NumClaim ~ Class+log(PremPol),offset=log(NumPol),poisson(link=log), data=Fire2009)
+ModelSummary2(ModFreq.5$fitted.values)
+@
+\scalefont{1.25}
+
+\newpage
+\section{Severity Modeling}
+
+\subsection{Graphical Approaches}
+
+To understand patterns in the claim severity, we again begin by examining several graphs. \\
+
+Somewhat surprisingly, the relationship between number of policies and total claims is not clear. 
+One would expect that for bands with more polices that we can observe greater claims.
+However, the figure shows that the relationship is not clear.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+plot(Fire2009$NumPol, Fire2009$Claim,xlab="Number of Policies",ylab="Claim")  # RELATIONSHIP BETWEEN TOTAL CLAIMS AND NUMBER OF POLICIES NOT CLEAR
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+
+Similar plots (not displayed here) of (1) total claims versus sum insured and 
+(2) total claims versus total premiums do not reveal clear patterns.
+
+For another approach, the following figure shows a plot of total claims
+versus number of claims (for each class, or band). Here, we see that as the total amount of
+claims increases as the number of claims increases although the relationship
+is not linear.
+
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+#Fire2009$SumIns <- (Fire2009$SumFrom+Fire2009$SumTo)/2
+#plot(Fire2009$SumIns,Fire2009$Claim,xlab="Sum Insured",ylab="Claim") #  SIZE OF POLICY
+#plot(Fire2009$Premium,Fire2009$Claim,xlab="Premium",ylab="Claim")     # SAME WITH PREMIUMS
+plot(Fire2009$NumClaim, Fire2009$Claim,xlab="Number of Claims",ylab="Claim")  
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+
+Let us instead examine claims on a per claim basis. 
+Here is the histogram of the claims distribution. The figure shows that the distribution is right skewed
+with a few outlying large observations.
+
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$AvgClaim <- Fire2009$Claim/Fire2009$NumClaim
+hist(Fire2009$AvgClaim, main="", xlab="Distribution of Average Claim")
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+
+For another way of looking at the claims distribution, here is a smooth histogram of claims per policy. 
+Like the unsmooth version, the
+figure shows that the distribution is right skewed
+with a few outlying large observations.
+
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+plot(density(Fire2009$AvgClaim), main="", xlab="Average Claims")#Gaussian kernel
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+
+Let us know examine the claim in terms of policy size. 
+This figure shows the average claim by sum insured.
+Recall that sum insured is defined to be the average of the upper and lower endpoints of the interval defining
+the class, or band. This figure shows that the average claim increases as sum insured increases, 
+although the relationship is not linear. The largest class was omitted from this graph to
+allow a viewer to see this nonlinear pattern.
+
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+#  CLAIM SEVERITY BY SUM INSURED
+Fire2009$SumIns <- (Fire2009$SumFrom+Fire2009$SumTo)/2     
+plot(Fire2009$SumIns,Fire2009$AvgClaim,xlab="Sum Insured",ylab="Average Claim",xlim=c(0,80000))   
+@
+\end{center}\scalefont{1.25}
+
+
+\newpage
+
+Here is a plot of average claim by logarithmic sum insured. The pattern is now clearer on this scale
+with the effect of the unusual highest class apparant.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+#  CLAIM SEVERITY BY SUM INSURED     
+plot(log(Fire2009$SumIns),Fire2009$AvgClaim,xlab="Logarithmic Sum Insured",ylab="Average Claim")
+@
+\end{center}\scalefont{1.25}
+
+
+\newpage
+
+As one way of incorporating premiums, we might also examine premium on a per policy basis
+Here is a plot of average claim by premium per policy. This plot shows that
+larger claim sizes are associated with larger premiums.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$PremPol <- Fire2009$Premium/Fire2009$NumPol
+plot(Fire2009$PremPol,Fire2009$AvgClaim,xlab="Premium",ylab="Average Claim",xlim=c(0,20))     
+@
+\end{center}\scalefont{1.25}
+
+
+\newpage
+
+For an alternative basis, we might also consider average claims per premium (the loss ratio). 
+Here is the smooth histogram of average claims per premium. The distribution is similar to the distribution
+of claims per policy, the
+figure shows that the distribution is right skewed
+with a few outlying large observations.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+Fire2009$ClaimPrem <- Fire2009$Claim/Fire2009$Premium
+plot(density(Fire2009$ClaimPrem), main="", xlab="Claims Per Premium")
+@
+\end{center}\scalefont{1.25}
+
+\newpage
+
+This is a plot of average claims per premium in terms of logarithmic sum insured. There appears to be a slight
+"U shape" pattern, indicating large average claims for small and large sums insured when compared
+to intermediate sums insured.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+plot(log(Fire2009$SumIns),Fire2009$ClaimPrem, xlab="Class", ylab="Average Claims Per Premium")         # CLAIMS PER PREMIUM ARE HIGH FOR LOW SUM INSURED AND HIGH SUM INSURED ("u SHAPE"???)
+@
+\end{center}\scalefont{1.25}
+
+
+\newpage
+
+\subsection{Fitting Claims Severity Models}
+
+As seen in Table \ref{T:BasicData} and graphical summaries, there are some classes with unusually large
+average claims. In particular, for class 19, corresponding to sum insured between 100,000 and 500,000
+million Rupiahs, the average claim per policy is $156,418.90/280 = 558.64$ which is far in excess of the overall
+average claim, $544,253.84/4,746 = 114.68$.
+
+\scalefont{0.8}
+<<>>=
+Fire2009$Claim[19]/Fire2009$NumClaim[19] #  average claim for band 19
+sum(Fire2009$Claim)/sum(Fire2009$NumClaim) #  average claim
+@ 
+\scalefont{1.25}
+
+We can start by fitting a linear model of average claims in terms of logarithmic sum insured. 
+The following output shows that logarithmic sum insured is a statistically significant variable 
+with a goodness of fit $R^2 = 21.54\%.$
+
+\scalefont{0.8}
+<<>>=
+summary(lm(AvgClaim ~ log(SumIns),data=Fire2009)) 
+@
+\scalefont{1.25}
+
+
+By omitting the largest class, the significance of logarithmic sum insured increases
+and the goodness of fit increases to $R^2 = 56.15\%.$ 
+\scalefont{0.8}
+<<>>=
+Fire2009small <- subset(Fire2009,Class<20)     
+summary(lm(AvgClaim ~ log(SumIns),data=Fire2009small))
+@
+\scalefont{1.25}
+
+By incorporating premiums per policy, the goodness of fit increases to $R^2 = 64.12\%.$ 
+The new variable is ``somewhat'' statistically signficant (with a $p$-value of $7.766\%$).
+
+\scalefont{0.8}
+<<>>=
+summary(lm(AvgClaim ~ log(SumIns)+PremPol,data=Fire2009small))
+@
+\scalefont{1.25}
+
+\newpage
+Another approach is to use a generalized linear model (GLM). 
+Here is the result from a gamma regression with a logarithmic link.
+Note that we were able to fit the entire data set with this model
+(on your own, trying fitting the model without the class corresponding to the largest
+sum insured. There is not that much difference.)
+
+\scalefont{0.8}
+<<>>=
+GLM.model <- glm(AvgClaim ~ log(SumIns)+PremPol, data=Fire2009,    
+      control = glm.control(maxit = 50), 
+    family=Gamma(link="log"))      
+summary(GLM.model)
+@
+\scalefont{1.25}
+
+\newpage
+
+\section{Summarizing the Fit}
+
+Graphically summarizing the fit is helpful for communication to many users. 
+Here is a plot of the fitted frequency model versus the actually number of claims.
+Recall that only two coefficients (plus knowledge of the explanatory variables) are needed
+to produce the fitted values. The nonparametric (Spearman) correlation associated with
+this plot is $78.13\%$.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+cor(ModFreq.2B$fitted.values,Fire2009$NumClaim, method="spearman")      
+plot (ModFreq.2B$fitted.values,Fire2009$NumClaim,
+      xlab="Frequency Model Fits",ylab="Number of Claims")
+abline(0,1)
+@
+\end{center}\scalefont{1.25}
+
+
+To see how well the GLM model fits the severity, here is a plot of fitted values versus average claims.
+Recall that only three coefficients (plus knowledge of the explanatory variables) are needed
+to produce the fitted values. The nonparametric (Spearman) correlation associated with
+this plot is $83.15\%$.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+cor(GLM.model$fitted.values,Fire2009$AvgClaim, method="spearman")      
+plot(GLM.model$fitted.values,Fire2009$AvgClaim,xlab="Fitted Values from the GLM Model",
+                                               ylab="Average Claim")
+abline(0,1)
+@
+\end{center}\scalefont{1.25}
+
+These plots look good. However, when we multiply fitted frequency times fitted severity
+and plot the point estimates versus total claims, we see that there is room to improve
+upon our models. We urge the reader to explore this.
+
+\scalefont{0.8}\begin{center}
+<<fig=TRUE, echo=TRUE, height=6, width=6>>=
+FinalModelFit <- GLM.model$fitted.values*ModFreq.2B$fitted.values
+plot (FinalModelFit,Fire2009$Claim,
+     xlab="Final Models Fit",ylab="Claim",xlim=c(0,150000))
+abline(0,1)
+cor(FinalModelFit,Fire2009$Claim, method="spearman")
+@
+\end{center}\scalefont{1.25}
+
+\end{document}
+
+
+
+
+
+
+\end{document}
+
+Sweave("FireSweave.Rnw")

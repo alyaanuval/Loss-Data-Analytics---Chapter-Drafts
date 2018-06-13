@@ -1,0 +1,500 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Style Guide for Loss Data Analytics},
+            pdfauthor={An open text authored by the Actuarial Community},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Style Guide for Loss Data Analytics}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{An open text authored by the Actuarial Community}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2018-06-12}
+
+\usepackage{booktabs}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter{Chapter Structure}\label{chapter-structure}
+
+\emph{Chapter Preview}. Begin with a chapter preview to set the stage of
+the chapter. Do not finish with a ``preview of upcoming chapter'';
+finish instead with a ``Further Reading and References.'' This consists
+of a series of references with one or two lines of annotation for each
+reference that the interested reader could follow up on (self-citations
+are okay!). Historical developments are particularly nice in this
+section.
+
+This chapter begins with Section \ref{S:StructureBody} which provides a
+general overview of a section's main body. Section \ref{S:SampleSection}
+includes methods for referencing material in a chapter and ways to
+include tables and figures not generated by R code. Section
+\ref{S:Links} displays useful links regarding R Markdown, bookdown, best
+practices for R code and online actuarial resources for reference.
+
+\section{Structure of The Main Body}\label{S:StructureBody}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+In this section, you learn how to:
+
+\begin{itemize}
+\tightlist
+\item
+  Determine what and what not to include in a chapter
+\item
+  Include a technical supplement if needed
+\item
+  Assess types of exercises and book resources that are appropriate for
+  a chapter
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Split the chapter into 4-7 sections; within each section, introduce 0-5
+subsections. Do not develop a deeper hierarchy (e.g., a
+``sub-subsection''). Use nonlinear aspects of the web. For example,
+detailed mathematical developments go into a technical appendix or are
+simply hidden unless the viewer really wants to see the details. Case
+studies and historical references can be included in ``side-bars,'' a
+supporting webpage. For the main body of the chapter, think about ``25
+pages'' in length (whatever that means\ldots{}.).
+
+\subsection{Main Body}\label{main-body}
+
+\textbf{What to Include:}
+
+\begin{itemize}
+\tightlist
+\item
+  Within the chapter, use boxed and numbered lists of procedures for
+  easy reference. It is certainly okay (and expected) to use
+  mathematical notation. Each chapter should have examples interwoven
+  within theory, allowing readers to see the development of the theory
+  along with the importance of the applications.
+\item
+  Distinguish between an \emph{``Example''} and a \emph{``Special
+  Case''}. The former shows how to relate the mathematics to a practical
+  situation likely to be encountered by a practicing actuary. The latter
+  looks at a subset of a general (usually) mathematical result. A few
+  special cases are certainly acceptable but we want to focus on
+  developing examples.
+\item
+  Think of graphical ways to visualize/summarize relationships that you
+  want to emphasize.
+\item
+  Begin each section with a short bullet list describing the learning
+  objectives of that section. Finish each section with a short quiz on
+  these learning objectives. As of this writing (May 2016), quizzes are
+  multiple-choice.
+\item
+  Include short exercises/examples/special cases that can be readily
+  solved by the viewer (with solutions using ``hide/show'' features)
+  within the main body. These serve to reinforce concepts and provide
+  benchmarks for understanding.
+\end{itemize}
+
+\textbf{What Not to Include:} Do not include development of
+equations/formulas in the main body of the text. The main body of the
+text will be devoted to presenting results, providing context and
+intuition as to the importance of the results. Do not include references
+to the literature. This will appear in the last section on ``Further
+Reading and References.'' Do not include graphs whose information could
+easily be summarized by a table.
+
+\subsection{Technical Supplements}\label{technical-supplements}
+
+We want our viewers to understand the underpinnings of the theory (the
+old analogy of ``what is going on under the hood to see how the engine
+works'' - no black boxes.) So, there will be occasions when you feel
+like a short development or ``proof''; is reasonable. Put this in an
+appendix. Technical supplements should develop the theory in a
+step-by-step fashion, building on each concept in a crisp, mathematical
+fashion.
+
+\subsection{Exercises}\label{exercises}
+
+We anticipate that substantial exercise banks will be built over time by
+users, professional associations, and those with commercial interests.
+At this early stage of developing the chapter foundations, we recommend
+developing the following types of exercises. Exercises will be segmented
+by section (not subsection) and will be positioned at the end of each
+chapter.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Hand Calculation.} Similar to those appearing within the
+  chapter, include at the end of the chapter short
+  exercises/examples/special cases that can be readily solved by the
+  viewer.
+\item
+  \textbf{Software.} Include exercises that ask the viewer to work with
+  ``R'' software, such as calculating a function or reproducing a graph.
+\item
+  \textbf{Data.} The need for working with real data is well documented;
+  for example, see Hogg (1972), Moore and Roberts (1989) or Singer and
+  Willett (1990). By providing detailed guided tutorials that work with
+  theory and data, we teach our students the essence of Loss Data
+  Analtyics. Of course, there are some important disadvantages to
+  working with real data. Data sets can quickly become outdated.
+  Further, the ideal data set to illustrate a specific statistical issue
+  is difficult to find. Data exercises are complex and can span several
+  chapter sections as well as chapters.
+\end{itemize}
+
+\subsection{Book Resources Supporting Each
+Chapter}\label{book-resources-supporting-each-chapter}
+
+There will be several resources support the book that will appear
+outside of the chapter structure, including:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Case Studies and Historical Vignettes.} Similar to those
+  appearing within the chapter, include short exercises/examples/special
+  cases that can be readily solved by the viewer. These serve to
+  reinforce concepts and provide benchmarks for understanding. Case
+  studies can be used to emphasize different practices in different
+  countries. Historical vignettes can be interesting in their own right
+  and remind us all of the foundations of our discipline.
+\item
+  \textbf{Data.} We anticipate developing a library of data sets that
+  can be used by instructors who wish to emphasize different areas of
+  practice.
+\item
+  \textbf{Technical Supplements, Lists, and Tables.} The roles of
+  technical supplements has already been described and there could be
+  many. As is common in textbooks, we will also provide a place for
+  lists or tables of organized facts for learners.
+\end{itemize}
+
+\subsection{Software Support}\label{software-support}
+
+We will not focus on developing ``R'' tutorials but will provide guides
+and links to people who wish to learn ``R''. Our focus is on teaching
+statistical methods and actuarial issues, not software. We also will
+provide support for users of other software environments, such as
+Microsoft's Excel and SAS.
+
+\section{Samples of Useful Elements}\label{S:SampleSection}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+In this section, you learn how to:
+
+\begin{itemize}
+\tightlist
+\item
+  Reference other sections and equations
+\item
+  Include in-text citation that links to the bibliography
+\item
+  Include tables and figures not generated by R code
+\item
+  Include a footnote
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsection{Section References}\label{section-references}
+
+\begin{verbatim}
+## Samples of Useful Elements {#S:SampleSection}
+...
+
+### Section References
+... Section \\ref{S:SampleSection}.
+\end{verbatim}
+
+Here is some text to explain the current topic. It would be helpful if
+you could recall a certain concept we covered previously in Section
+\ref{S:SampleSection}.
+
+\subsection{Equation References}\label{equation-references}
+
+Here is an example of an equation using Latex in R Markdown.
+
+\begin{verbatim}
+\begin{equation}
+x + y = 1  
+\label{eq:ExampleEquation}
+\end{equation}
+\end{verbatim}
+
+\begin{equation}
+x + y = 1  
+\label{eq:ExampleEquation}
+\end{equation}
+
+\begin{verbatim}
+... equation \\eqref{eq:ExampleEquation}
+\end{verbatim}
+
+Instead of writing from the equation above, we can use from equation
+\eqref{eq:ExampleEquation} which is linked to the equation itself.
+
+\subsection{In-text Citations}\label{in-text-citations}
+
+\begin{verbatim}
+... R Bookdown [@xie2015]
+\end{verbatim}
+
+Here is an example of an in-text citation made possible by R Bookdown
+\citep{xie2015}. This links to the bibliography where the full reference
+is displayed. As a convention we use APA style citation.
+
+\subsection{Including Tables}\label{including-tables}
+
+In order to include table not generated by R such as a Latex table, we
+have to make some adjustments to regular Latex syntax.
+
+\begin{verbatim}
+$$\begin{matrix}
+\begin{array}{|c|c|} \hline
+\text{Policyholder} & \text{Number of claims} \\\hline
+\textbf{X} & 1 \\\hline
+\textbf{Y} & 2 \\\hline
+\end{array}
+\end{matrix}$$
+\end{verbatim}
+
+\[\begin{matrix}
+\begin{array}{|c|c|} \hline
+\text{Policyholder} & \text{Number of claims} \\\hline
+\textbf{X} & 1 \\\hline
+\textbf{Y} & 2 \\\hline
+\end{array}
+\end{matrix}\]
+
+Table 1: An example of including tables using Latex in an R Markdown
+document
+
+R Markdown does not have a convention for referencing non-R generated
+tables. For now, we reference them manually as in ``refer to Table 1''.
+
+\subsection{Including Figures}\label{including-figures}
+
+For figures, we have yet to find a method to include non-R generated
+figures in modifiable code form as seen with the tables. As a temporary
+solution, we store the figures as png or jpeg files in a separate folder
+called ``Figures''. Then we use R code to call those figures for display
+so that we can reference them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"Figures/RStudio-Ball.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.05\linewidth]{Figures/RStudio-Ball} 
+
+}
+
+\caption{An example of including figures in an R Markdown document}\label{fig:ExampleFigure}
+\end{figure}
+
+\begin{verbatim}
+... Figure \\ref{fig:ExampleFigure}
+\end{verbatim}
+
+As you can see from Figure \ref{fig:ExampleFigure}, we now know how to
+include non-R generated figures in our R Markdown document.
+
+\subsection{Including Footnotes}\label{including-footnotes}
+
+\begin{verbatim}
+... [^1]
+
+[^1]: ... # note: the footnote displays at the end of the document
+\end{verbatim}
+
+Here is how you can include a footnote \footnote{A footnote.}.
+
+\section{Useful Links}\label{S:Links}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+In this section, you learn how to:
+
+\begin{itemize}
+\tightlist
+\item
+  Use R Markdown and bookdown
+\item
+  Style R code according to best practices
+\item
+  Use online actuarial text resources as examples
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+For an R Markdown guide refer
+\href{https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html}{here}.
+
+For a bookdown guide refer
+\href{https://bookdown.org/yihui/bookdown/}{here}.
+
+For R best practices refer
+\href{http://r-pkgs.had.co.nz/style.html}{here}.
+
+For online actuarial text resources refer
+\href{https://sites.google.com/a/wisc.edu/loss-data-analytics/online-actuarial-text-resources}{here}.
+
+\section{Exercises}\label{exercises-1}
+
+Here are a set of exercises at the end of the chapter.
+
+\section{Contributors and Further
+Resources}\label{further-reading-and-resources}
+
+\subsubsection*{Contributor}\label{contributor}
+\addcontentsline{toc}{subsubsection}{Contributor}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Edward W. (Jed) Frees}, University of Wisconsin-Madison
+\end{itemize}
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}

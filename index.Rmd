@@ -19,6 +19,3 @@ description: "Loss Data Analytics is an interactive, online, freely available te
 ```{r setupo, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-# Referencing
-This is a site to help with referencing within bookdown.
